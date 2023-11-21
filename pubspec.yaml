@@ -59,25 +59,26 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+
   assets:
-    - image/puang.png
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+    - assets/fonts/
+    - assets/images/
 
 
-#  fonts:
-#    - family: Light
-#      fonts:
-#        - asset: fonts/NanumSquareRoundL.ttf
-#    - family: Round
-#      fonts:
-#        - asset: fonts/NanumSquareRoundR.ttf
-#    - family: Bold
-#      fonts:
-#        - asset: fonts/NanumSquareRoundB.ttf
-#    - family: ExtraBold
-#      fonts:
-#        - asset: fonts/NanumSquareRoundEB.ttf
+
+  fonts:
+    - family: iblack
+      fonts:
+        - asset: assets/fonts/InterBlack.ttf
+
+    - family: nbold
+      fonts:
+        - asset: assets/fonts/NanumBarunGothicBold.ttf
+
+
+
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
