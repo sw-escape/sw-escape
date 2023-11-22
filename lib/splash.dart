@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'start.dart';
 
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -40,31 +42,38 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
 
     _textAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(0, -0.5), // 텍스트 위로 이동
+      end: const Offset(0, -0.89), // 텍스트 위로 이동
     ).animate(_controller);
 
     _imageAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(0, 0.5), // png 아래로 이동
+      end: const Offset(0, 0.46), // png 아래로 이동
     ).animate(_controller);
 
-    Timer(Duration(seconds: 1), () {
+    Timer(Duration(seconds: 2), () {
       _controller.forward().whenComplete(() {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => StartScreen()),
-        );
+        Navigator.pushReplacement(context, _createRoute());
       });
     });
   }
 
-
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => StartScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +90,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 70),
               SlideTransition(
                 position: _textAnimation,
                 child: Text(
@@ -115,6 +125,4 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     );
   }
 }
-
-
 
