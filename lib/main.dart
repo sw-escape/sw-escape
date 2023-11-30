@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:sw_escape/student.dart';
 import 'package:provider/provider.dart';
-import 'majorpage.dart';
-import 'progress.dart';
-import 'commonpage.dart';
-import 'etcpage.dart';
+import 'main_page.dart';
+import 'splash.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -14,14 +22,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => Progress(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Student()),
+      ],
       builder: (context, child) => MaterialApp(
-        title: 'My App',
+        title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.indigo,
-        ),
-        home: MajorPage(), // 페이지 계속 바뀜
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+            //useMaterial3: true,
+            fontFamily: 'NanumBarunGothic'),
+        home: SplashScreen(), //** splash 페이지로 교체함
       ),
     );
   }

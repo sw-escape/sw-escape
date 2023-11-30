@@ -1,36 +1,33 @@
-
 // 회원가입
-
-
 
 import 'package:flutter/material.dart';
 import 'signupSet.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: SignupScreen(),
+    return Scaffold(
+      body: const SignupForm(),
     );
   }
 }
 
+class SignupForm extends StatefulWidget {
+  const SignupForm({super.key});
 
+  @override
+  State<SignupForm> createState() => _SignupFormState();
+}
 
+class _SignupFormState extends State<SignupForm> {
+  final _authentication = FirebaseAuth.instance;
+  final _formKey = GlobalKey<FormState>();
+  String email = '';
+  String password = '';
 
-
-class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,137 +61,192 @@ class SignupScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50), // 큰 박스 모서리 둥글게
                   border: Border.all(color: Colors.black, width: 1),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // ID
-                    Text(
-                      '  ID',
-                      style: TextStyle(
-                        fontFamily: 'iblack',
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic,
-                        fontSize: 14,
-                        shadows: [
-                          Shadow( // Left
-                            offset: Offset(-1.1, 0),
-                            color: Colors.black,
-                          ),
-                          Shadow( // Right
-                            offset: Offset(1.1, 0),
-                            color: Colors.black,
-                          ),
-                          Shadow( // Top
-                            offset: Offset(0, -1.1),
-                            color: Colors.black,
-                          ),
-                          Shadow( // Bottom
-                            offset: Offset(0, 1.1),
-                            color: Colors.black,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 0),
-                    TextFormField(
-                      obscureText: false, // 입력 안 보이게
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15), // 비밀번호 폼 높이, 너비
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                          borderSide: BorderSide(color: Colors.black,),
-                        ),
-                        focusedBorder: OutlineInputBorder( // 포커스 됐을 때의 테두리
-                          borderRadius: BorderRadius.circular(15.0),
-                          borderSide: BorderSide(color: Colors.lightBlue),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-
-                    // PW
-                    Text(
-                      '  PASSWORD',
-                      style: TextStyle(
-                        fontFamily: 'iblack',
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic,
-                        fontSize: 14,
-                        shadows: [
-                          Shadow( // Left
-                            offset: Offset(-1.1, 0),
-                            color: Colors.black,
-                          ),
-                          Shadow( // Right
-                            offset: Offset(1.1, 0),
-                            color: Colors.black,
-                          ),
-                          Shadow( // Top
-                            offset: Offset(0, -1.1),
-                            color: Colors.black,
-                          ),
-                          Shadow( // Bottom
-                            offset: Offset(0, 1.1),
-                            color: Colors.black,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 0),
-                    TextFormField(
-                      obscureText: true, // 입력 안 보이게
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15), // 비밀번호 폼 높이, 너비
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                          borderSide: BorderSide(color: Colors.black,),
-                        ),
-                        focusedBorder: OutlineInputBorder( // 포커스 됐을 때의 테두리
-                          borderRadius: BorderRadius.circular(15.0),
-                          borderSide: BorderSide(color: Colors.lightBlue),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 50),
-
-                    // NEXT
-                    Center(
-                      child: Container(
-                        width: 130, // 로그인 버튼 너비
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(150), // 그림자 모서리 둥글게
-                          boxShadow: [
-                            BoxShadow(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // ID
+                      Text(
+                        '  EMAIL',
+                        style: TextStyle(
+                          fontFamily: 'iblack',
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 14,
+                          shadows: [
+                            Shadow(
+                              // Left
+                              offset: Offset(-1.1, 0),
                               color: Colors.black,
-                              offset: Offset(3.5, 2.2), // 그림자 위치
-                              blurRadius: 0, // 그림자 스프레드
-                              spreadRadius: -2, // 그림자 크기
+                            ),
+                            Shadow(
+                              // Right
+                              offset: Offset(1.1, 0),
+                              color: Colors.black,
+                            ),
+                            Shadow(
+                              // Top
+                              offset: Offset(0, -1.1),
+                              color: Colors.black,
+                            ),
+                            Shadow(
+                              // Bottom
+                              offset: Offset(0, 1.1),
+                              color: Colors.black,
                             ),
                           ],
                         ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(context, _createRoute());
-                          },
-                          child: Text('NEXT', style: TextStyle(fontFamily: 'iblack', fontSize: 18, color: Colors.lightBlue[800], fontStyle: FontStyle.italic,)),
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 7), // 로그인 버튼 높이
-                            primary: Colors.white,
-                            onPrimary: Colors.lightBlue[800],
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(150),
-                              side: BorderSide(color: Colors.black),
+                      ),
+                      SizedBox(height: 0),
+                      TextFormField(
+                        obscureText: false, // 입력 안 보이게
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          // 비밀번호 폼 높이, 너비
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            // 포커스 됐을 때의 테두리
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide(color: Colors.lightBlue),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          email = value;
+                        },
+                      ),
+                      SizedBox(height: 10),
+
+                      // PW
+                      Text(
+                        '  PASSWORD',
+                        style: TextStyle(
+                          fontFamily: 'iblack',
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 14,
+                          shadows: [
+                            Shadow(
+                              // Left
+                              offset: Offset(-1.1, 0),
+                              color: Colors.black,
+                            ),
+                            Shadow(
+                              // Right
+                              offset: Offset(1.1, 0),
+                              color: Colors.black,
+                            ),
+                            Shadow(
+                              // Top
+                              offset: Offset(0, -1.1),
+                              color: Colors.black,
+                            ),
+                            Shadow(
+                              // Bottom
+                              offset: Offset(0, 1.1),
+                              color: Colors.black,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 0),
+                      TextFormField(
+                        obscureText: true, // 입력 안 보이게
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          // 비밀번호 폼 높이, 너비
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            // 포커스 됐을 때의 테두리
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide(color: Colors.lightBlue),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          password = value;
+                        },
+                      ),
+                      SizedBox(height: 50),
+
+                      // NEXT
+                      Center(
+                        child: Container(
+                          width: 130, // 로그인 버튼 너비
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(150),
+                            // 그림자 모서리 둥글게
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                offset: Offset(2.5, 2), // 그림자 위치
+                                blurRadius: 0, // 그림자 스프레드
+                                spreadRadius: -3, // 그림자 크기
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              try {
+                                final newUser = await _authentication
+                                    .createUserWithEmailAndPassword(
+                                  email: email,
+                                  password: password,
+                                );
+                                if (newUser.user != null) {
+                                  // 회원가입 성공
+                                  _formKey.currentState!.reset();
+                                  if (!mounted) return;
+                                  FocusScope.of(context).unfocus();
+                                  Navigator.push(context, _createRoute());
+                                } else {
+                                  // 회원가입 실패 처리
+                                  print("회원가입 실패: 사용자 정보가 없습니다.");
+                                }
+                              } catch (e, stackTrace) {
+                                print("회원가입 실패: $e");
+                                print("스택 트레이스: $stackTrace");
+                              }
+                            },
+                            child: Text('NEXT',
+                                style: TextStyle(
+                                  fontFamily: 'iblack',
+                                  fontSize: 18,
+                                  color: Colors.lightBlue[800],
+                                  fontStyle: FontStyle.italic,
+                                )),
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 7),
+                              // 로그인 버튼 높이
+                              primary: Colors.white,
+                              onPrimary: Colors.lightBlue[800],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(150),
+                                side: BorderSide(color: Colors.black),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -206,9 +258,9 @@ class SignupScreen extends StatelessWidget {
 
   Route _createRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => SignupSetScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          SignupSetScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-
         // 현재 화면에 대한 슬라이드 효과
         var currentScreenSlide = Tween<Offset>(
           begin: Offset.zero,
@@ -225,7 +277,7 @@ class SignupScreen extends StatelessWidget {
           children: <Widget>[
             SlideTransition(
               position: currentScreenSlide,
-              child: this, // 현재 화면
+              child: SignupForm(), // 현재 화면
             ),
             SlideTransition(
               position: newScreenSlide,
@@ -237,6 +289,4 @@ class SignupScreen extends StatelessWidget {
       transitionDuration: Duration(milliseconds: 500), // 현재 -> 새로운 페이지 전환 시간
     );
   }
-
-
 }

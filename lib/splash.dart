@@ -9,23 +9,6 @@ import 'start.dart';
 
 
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: SplashScreen(),
-    );
-  }
-}
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -48,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _textAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(0, -0.89), // 텍스트 위로 이동
+      end: const Offset(0, -1.06), // 텍스트 위로 이동
     ).animate(_controller);
 
     _imageAnimation = Tween<Offset>(

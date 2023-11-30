@@ -8,23 +8,6 @@ import 'login.dart';
 import 'signup.dart';
 
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: StartScreen(),
-    );
-  }
-}
 
 class StartScreen extends StatelessWidget {
   @override
@@ -66,10 +49,10 @@ class StartScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15), // 그림자 모서리 둥글게
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black,
-                      offset: Offset(3.5, 2.2), // 그림자 위치
+                      color: Colors.black12,
+                      offset: Offset(2.5, 2), // 그림자 위치
                       blurRadius: 0, // 그림자 스프레드
-                      spreadRadius: -2, // 그림자 크기
+                      spreadRadius: -3, // 그림자 크기
                     ),
                   ],
                 ),
@@ -96,7 +79,7 @@ class StartScreen extends StatelessWidget {
                   },
                   child: Text('로그인', style: TextStyle(fontFamily: 'nbold', fontSize: 18, color: Colors.lightBlue[800]),),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 7), // 로그인 버튼 높이
+                    padding: EdgeInsets.symmetric(vertical: 8), // 로그인 버튼 높이
                     primary: Colors.white,
                     onPrimary: Colors.lightBlue[800],
                     shape: RoundedRectangleBorder(
@@ -106,17 +89,17 @@ class StartScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 5),
               Container(
                 width: 300, // 회원가입 버튼 너비
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15), // 그림자 모서리 둥글게
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black,
-                      offset: Offset(3.5, 2.2), // 그림자 위치
+                      color: Colors.black12,
+                      offset: Offset(2.5, 2), // 그림자 위치
                       blurRadius: 0, // 그림자 스프레드
-                      spreadRadius: -2, // 그림자 크기
+                      spreadRadius: -3, // 그림자 크기
                     ),
                   ],
                 ),
@@ -150,7 +133,7 @@ class StartScreen extends StatelessWidget {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 7), // 회원가입 버튼 높이
+                    padding: EdgeInsets.symmetric(vertical: 8), // 회원가입 버튼 높이
                     primary: Colors.white,
                     onPrimary: Colors.lightBlue[800],
                     shape: RoundedRectangleBorder(
