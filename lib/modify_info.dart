@@ -10,7 +10,7 @@ class ModifyInfo extends StatefulWidget {
 }
 
 class _ModifyInfoState extends State<ModifyInfo> {
-  String selectedCharacter = 'assets/images/glasses_girl.png';
+  late String selectedCharacter = 'assets/images/glasses_girl.png';
   @override
   Widget build(BuildContext context) {
     final _formkey = GlobalKey<FormState>(); // for textformfield validation

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sw_escape/majorpage.dart';
 import 'package:sw_escape/student.dart';
 
 import 'modify_info.dart';
@@ -23,7 +24,7 @@ class _MainPageState extends State<MainPage> {
             'SW ESCAPE',
             style: TextStyle(
                 color: Colors.black,
-                fontFamily: 'Inter',
+                //fontFamily: 'Inter',
                 fontSize: 23,
                 fontWeight: FontWeight.w900,
                 fontStyle: FontStyle.italic),
@@ -75,15 +76,25 @@ class _MainPageState extends State<MainPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8, top: 15),
-                child: Material(
-                  elevation: 4, // elevation 정도
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  child: Container(
-                    height: 90,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MajorPage(), // 이동할 화면 위젯
+                      ),
+                    );
+                  },
+                  child: Material(
+                    elevation: 4, // elevation 정도
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    child: Container(
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(40),
+                        ),
                       ),
                     ),
                   ),
@@ -173,7 +184,7 @@ class _MyInfoState extends State<MyInfo> {
                       top: 16,
                       left: 45,
                       child: Image.asset(
-                        context.watch<Student>().character, // 이미지 경로에 따라 수정해주세요
+                        context.watch<Student>().character,
                         width: 90,
                         height: 90,
                       ),
