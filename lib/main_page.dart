@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:sw_escape/majorpage.dart';
 import 'package:sw_escape/student.dart';
 
+import 'commonpage.dart';
+import 'etcpage.dart';
 import 'modify_info.dart';
 
 class MainPage extends StatefulWidget {
@@ -102,15 +104,25 @@ class _MainPageState extends State<MainPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8, top: 15),
-                child: Material(
-                  elevation: 4, // elevation 정도
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  child: Container(
-                    height: 90,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EtcPage(), // 이동할 화면 위젯
+                      ),
+                    );
+                  },
+                  child: Material(
+                    elevation: 4, // elevation 정도
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    child: Container(
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(40),
+                        ),
                       ),
                     ),
                   ),
@@ -118,15 +130,25 @@ class _MainPageState extends State<MainPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8, top: 15),
-                child: Material(
-                  elevation: 4, // elevation 정도
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  child: Container(
-                    height: 90,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CommonPage(), // 이동할 화면 위젯
+                      ),
+                    );
+                  },
+                  child: Material(
+                    elevation: 4, // elevation 정도
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    child: Container(
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(40),
+                        ),
                       ),
                     ),
                   ),
