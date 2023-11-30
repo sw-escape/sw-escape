@@ -31,7 +31,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
         ),
         child: Column(
           children: [
-            Image.asset('assets/교수님 면담 4회.png'),
+            Image.asset('assets/ProfessorInterviewEx.png'),
             const SizedBox(
               height: 20,
             ),
@@ -306,7 +306,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                 },
                 child: Transform.scale(
                     scale: 0.6,
-                    child: Image.asset('assets/레인보우.png')),
+                    child: Image.asset('assets/RainbowSystem.png')),
             ),
             const SizedBox(
               height: 20,

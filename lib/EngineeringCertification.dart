@@ -51,7 +51,7 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/공필 설명.png'),
+            Image.asset('assets/ECEx.png'),
             const SizedBox(
               height: 80,
             ),

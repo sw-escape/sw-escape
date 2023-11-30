@@ -25,7 +25,7 @@ class _LowestGraduateGPADialogState extends State<LowestGraduateGPADialog> {
         ),
         child: Column(
           children: [
-            Image.asset('assets/최저졸업평점.png'),
+            Image.asset('assets/LGGPAEx.png'),
             const SizedBox(
               height: 60,
             ),

@@ -25,7 +25,7 @@ class _GraduateThesisTopcitDialogState extends State<GraduateThesisTopcitDialog>
         ),
         child: Column(
           children: [
-            Image.asset('assets/졸업논문TOPCIT.png'),
+            Image.asset('assets/GTTEx.png'),
             const SizedBox(
               height: 60,
             ),

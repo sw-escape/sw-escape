@@ -52,7 +52,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/전필 설명.png'),
+            Image.asset('assets/MajorRequiredEx.png'),
             const SizedBox(
               height: 60,
             ),

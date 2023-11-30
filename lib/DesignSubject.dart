@@ -65,7 +65,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                 barRadius: const Radius.circular(20),
               ),
             ),
-            Image.asset('assets/설계 설명.png'),
+            Image.asset('assets/DesignSubjectEx.png'),
             const SizedBox(
               height: 50,
             ),

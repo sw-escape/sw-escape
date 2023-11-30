@@ -35,7 +35,7 @@ class _MACHElectivesDialogState extends State<MACHElectivesDialog> {
         ),
         child: Column(
           children: [
-            Image.asset('assets/마하교양.png'),
+            Image.asset('assets/MACHElectivesEx.png'),
             const SizedBox(
               height: 60,
             ),

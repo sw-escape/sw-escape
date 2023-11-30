@@ -52,7 +52,7 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/BSM 설명.png'),
+            Image.asset('assets/BSMEx.png'),
             const SizedBox(
               height: 80,
             ),
