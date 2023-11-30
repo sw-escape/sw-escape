@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sw_escape/progress.dart';
 import 'package:sw_escape/student.dart';
 import 'package:provider/provider.dart';
 import 'main_page.dart';
@@ -7,7 +8,6 @@ import 'splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => Student()),
+        ChangeNotifierProvider(create: (_) => Progress()),
       ],
       builder: (context, child) => MaterialApp(
         title: 'Flutter Demo',
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
             //useMaterial3: true,
             fontFamily: 'NanumBarunGothic'),
-        home: SplashScreen(), //** splash 페이지로 교체함
+        home: MainPage(), //** splash 페이지로 교체함
       ),
     );
   }
