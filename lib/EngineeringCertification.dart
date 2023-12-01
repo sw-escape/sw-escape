@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'sideMenu.dart';
+import 'package:provider/provider.dart';
+import 'Major.dart';
+
 class EngineeringCertification extends StatelessWidget {
   const EngineeringCertification({super.key});
 
@@ -26,15 +29,17 @@ class EngineeringCertificationPage extends StatefulWidget {
 }
 
 class _EngineeringCertificationPageState extends State<EngineeringCertificationPage> {
-  final _listGrade = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
+  final _listGrade = ['0-0','1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
   var _selectedGrade = List<String>.filled(5, '');
   @override
   void initState() {
     super.initState();
     setState(() {
-      for(int i = 0; i<5;i++){
-        _selectedGrade[i] = _listGrade[0];
-      }
+      _selectedGrade[0] = context.read<Major>().loadMajorTime('DiscreteMathematics');
+      _selectedGrade[1] = context.read<Major>().loadMajorTime('DataStructure');
+      _selectedGrade[2] = context.read<Major>().loadMajorTime('ComputerArchitecture');
+      _selectedGrade[3] = context.read<Major>().loadMajorTime('Algorithm');
+      _selectedGrade[4] = context.read<Major>().loadMajorTime('OperatingSystem');
     });
   }
   @override
@@ -91,7 +96,8 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[0] = value!;
+                          context.read<Major>().changeMajor('DiscreteMathematics', value!);
+                          _selectedGrade[0] = value;
                         });
                       },
                     ),
@@ -135,7 +141,8 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[1] = value!;
+                          context.read<Major>().changeMajor('DataStructure', value!);
+                          _selectedGrade[1] = value;
                         });
                       },
                     ),
@@ -179,7 +186,8 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[2] = value!;
+                          context.read<Major>().changeMajor('ComputerArchitecture', value!);
+                          _selectedGrade[2] = value;
                         });
                       },
                     ),
@@ -223,7 +231,8 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[3] = value!;
+                          context.read<Major>().changeMajor('Algorithm', value!);
+                          _selectedGrade[3] = value;
                         });
                       },
                     ),
@@ -267,7 +276,8 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[4] = value!;
+                          context.read<Major>().changeMajor('OperatingSystem', value!);
+                          _selectedGrade[4] = value;
                         });
                       },
                     ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
+import 'Major.dart';
 import 'sideMenu.dart';
 
 class DesignSubject extends StatelessWidget {
@@ -28,15 +30,27 @@ class DesignSubjectPage extends StatefulWidget {
 }
 
 class _DesignSubjectPageState extends State<DesignSubjectPage> {
-  final _listGrade = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
-  var _selectedGrade = List<String>.filled(15, '');
+  final _listGrade = ['0-0','1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
+  final _selectedGrade = List<String>.filled(15, '');
   @override
   void initState() {
     super.initState();
     setState(() {
-      for(int i = 0; i<15;i++){
-        _selectedGrade[i] = _listGrade[0];
-      }
+      _selectedGrade[0] = context.read<Major>().loadMajorTime('CreativeDesign');
+      _selectedGrade[1] = context.read<Major>().loadMajorTime('CapstoneDesign(1)');
+      _selectedGrade[2] = context.read<Major>().loadMajorTime('CapstoneDesign(2)');
+      _selectedGrade[3] = context.read<Major>().loadMajorTime('LogicCircuit');
+      _selectedGrade[4] = context.read<Major>().loadMajorTime('Programming');
+      _selectedGrade[5] = context.read<Major>().loadMajorTime('SoftwareProject');
+      _selectedGrade[6] = context.read<Major>().loadMajorTime('ObjectOrientedProgramming');
+      _selectedGrade[7] = context.read<Major>().loadMajorTime('PrinciplesOfProgrammingLanguage');
+      _selectedGrade[8] = context.read<Major>().loadMajorTime('DatabaseDesign');
+      _selectedGrade[9] = context.read<Major>().loadMajorTime('SoftwareEngineering');
+      _selectedGrade[10] = context.read<Major>().loadMajorTime('ArtificialIntelligence');
+      _selectedGrade[11] = context.read<Major>().loadMajorTime('AdvancedIoTProject');
+      _selectedGrade[12] = context.read<Major>().loadMajorTime('DatabaseSystem');
+      _selectedGrade[13] = context.read<Major>().loadMajorTime('NetworkApplicationAndDesign');
+      _selectedGrade[14] = context.read<Major>().loadMajorTime('DesignOfEmbeddedSystem');
     });
   }
   @override
@@ -105,7 +119,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[0] = value!;
+                          context.read<Major>().changeMajor('CreativeDesign', value!);
+                          _selectedGrade[0] = value;
                         });
                       },
                     ),
@@ -149,7 +164,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[1] = value!;
+                          context.read<Major>().changeMajor('CapstoneDesign(1)', value!);
+                          _selectedGrade[1] = value;
                         });
                       },
                     ),
@@ -193,7 +209,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[2] = value!;
+                          context.read<Major>().changeMajor('CapstoneDesign(2)', value!);
+                          _selectedGrade[2] = value;
                         });
                       },
                     ),
@@ -237,7 +254,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[3] = value!;
+                          context.read<Major>().changeMajor('LogicCircuit', value!);
+                          _selectedGrade[3] = value;
                         });
                       },
                     ),
@@ -281,7 +299,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[4] = value!;
+                          context.read<Major>().changeMajor('Programming', value!);
+                          _selectedGrade[4] = value;
                         });
                       },
                     ),
@@ -325,7 +344,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[5] = value!;
+                          context.read<Major>().changeMajor('SoftwareProject', value!);
+                          _selectedGrade[5] = value;
                         });
                       },
                     ),
@@ -369,7 +389,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[6] = value!;
+                          context.read<Major>().changeMajor('ObjectOrientedProgramming', value!);
+                          _selectedGrade[6] = value;
                         });
                       },
                     ),
@@ -413,7 +434,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[7] = value!;
+                          context.read<Major>().changeMajor('PrinciplesOfProgrammingLanguage', value!);
+                          _selectedGrade[7] = value;
                         });
                       },
                     ),
@@ -457,7 +479,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[8] = value!;
+                          context.read<Major>().changeMajor('DatabaseDesign', value!);
+                          _selectedGrade[8] = value;
                         });
                       },
                     ),
@@ -501,7 +524,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[9] = value!;
+                          context.read<Major>().changeMajor('SoftwareEngineering', value!);
+                          _selectedGrade[9] = value;
                         });
                       },
                     ),
@@ -545,7 +569,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[10] = value!;
+                          context.read<Major>().changeMajor('ArtificialIntelligence', value!);
+                          _selectedGrade[10] = value;
                         });
                       },
                     ),
@@ -589,7 +614,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[11] = value!;
+                          context.read<Major>().changeMajor('AdvancedIoTProject', value!);
+                          _selectedGrade[11] = value;
                         });
                       },
                     ),
@@ -633,7 +659,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[12] = value!;
+                          context.read<Major>().changeMajor('DatabaseSystem', value!);
+                          _selectedGrade[12] = value;
                         });
                       },
                     ),
@@ -677,7 +704,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[13] = value!;
+                          context.read<Major>().changeMajor('NetworkApplicationAndDesign', value!);
+                          _selectedGrade[13] = value;
                         });
                       },
                     ),
@@ -721,7 +749,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[14] = value!;
+                          context.read<Major>().changeMajor('DesignOfEmbeddedSystem', value!);
+                          _selectedGrade[14] = value;
                         });
                       },
                     ),

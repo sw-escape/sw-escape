@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'Major.dart';
 import 'sideMenu.dart';
 
 class MajorRequired extends StatelessWidget {
@@ -27,15 +29,18 @@ class MajorRequiredPage extends StatefulWidget {
 }
 
 class _MajorRequiredPageState extends State<MajorRequiredPage> {
-  final _listGrade = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
-  var _selectedGrade = List<String>.filled(6, '');
+  final _listGrade = ['0-0', '1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
+  final _selectedGrade = List<String>.filled(6, '');
   @override
   void initState() {
     super.initState();
     setState(() {
-      for(int i = 0; i<6;i++){
-        _selectedGrade[i] = _listGrade[0];
-      }
+      _selectedGrade[0] = context.read<Major>().loadMajorTime('DataStructure');
+      _selectedGrade[1] = context.read<Major>().loadMajorTime('ComputerArchitecture');
+      _selectedGrade[2] = context.read<Major>().loadMajorTime('PrinciplesOfProgrammingLanguage');
+      _selectedGrade[3] = context.read<Major>().loadMajorTime('SoftwareEngineering');
+      _selectedGrade[4] = context.read<Major>().loadMajorTime('Algorithm');
+      _selectedGrade[5] = context.read<Major>().loadMajorTime('OperatingSystem');
     });
   }
   @override
@@ -92,7 +97,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[0] = value!;
+                          context.read<Major>().changeMajor('DataStructure', value!);
+                          _selectedGrade[0] = value;
                         });
                       },
                     ),
@@ -136,7 +142,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[1] = value!;
+                          context.read<Major>().changeMajor('ComputerArchitecture', value!);
+                          _selectedGrade[1] = value;
                         });
                       },
                     ),
@@ -180,7 +187,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[2] = value!;
+                          context.read<Major>().changeMajor('PrinciplesOfProgrammingLanguage', value!);
+                          _selectedGrade[2] = value;
                         });
                       },
                     ),
@@ -224,7 +232,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[3] = value!;
+                          context.read<Major>().changeMajor('SoftwareEngineering', value!);
+                          _selectedGrade[3] = value;
                         });
                       },
                     ),
@@ -268,7 +277,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[4] = value!;
+                          context.read<Major>().changeMajor('Algorithm', value!);
+                          _selectedGrade[4] = value;
                         });
                       },
                     ),
@@ -312,7 +322,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[5] = value!;
+                          context.read<Major>().changeMajor('OperatingSystem', value!);
+                          _selectedGrade[5] = value;
                         });
                       },
                     ),

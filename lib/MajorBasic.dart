@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
+import 'Major.dart';
 import 'sideMenu.dart';
 
 class MajorBasic extends StatelessWidget {
@@ -28,15 +30,20 @@ class MajorBasicPage extends StatefulWidget {
 }
 
 class _MajorBasicPageState extends State<MajorBasicPage> {
-  final _listGrade = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
+  final _listGrade = ['0-0','1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
   var _selectedGrade = List<String>.filled(8, '');
   @override
   void initState() {
     super.initState();
     setState(() {
-      for(int i = 0; i<8;i++){
-        _selectedGrade[i] = _listGrade[0];
-      }
+      _selectedGrade[0] = context.read<Major>().loadMajorTime('Calculus');
+      _selectedGrade[1] = context.read<Major>().loadMajorTime('Physics(1)');
+      _selectedGrade[2] = context.read<Major>().loadMajorTime('PhysicsExperiment(1)');
+      _selectedGrade[3] = context.read<Major>().loadMajorTime('BasicComputerProgramming');
+      _selectedGrade[4] = context.read<Major>().loadMajorTime('LogicCircuit');
+      _selectedGrade[5] = context.read<Major>().loadMajorTime('LinearAlgebra');
+      _selectedGrade[6] = context.read<Major>().loadMajorTime('DiscreteMathematics');
+      _selectedGrade[7] = context.read<Major>().loadMajorTime('Programming');
     });
   }
   @override
@@ -105,7 +112,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[0] = value!;
+                          context.read<Major>().changeMajor('Calculus', value!);
+                          _selectedGrade[0] = value;
                         });
                       },
                     ),
@@ -149,7 +157,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[1] = value!;
+                          context.read<Major>().changeMajor('Physics(1)', value!);
+                          _selectedGrade[1] = value;
                         });
                       },
                     ),
@@ -193,7 +202,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[2] = value!;
+                          context.read<Major>().changeMajor('PhysicsExperiment(1)', value!);
+                          _selectedGrade[2] = value;
                         });
                       },
                     ),
@@ -237,7 +247,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[3] = value!;
+                          context.read<Major>().changeMajor('BasicComputerProgramming', value!);
+                          _selectedGrade[3] = value;
                         });
                       },
                     ),
@@ -281,7 +292,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[4] = value!;
+                          context.read<Major>().changeMajor('LogicCircuit', value!);
+                          _selectedGrade[4] = value;
                         });
                       },
                     ),
@@ -325,7 +337,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[5] = value!;
+                          context.read<Major>().changeMajor('LinearAlgebra', value!);
+                          _selectedGrade[5] = value;
                         });
                       },
                     ),
@@ -369,7 +382,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[6] = value!;
+                          context.read<Major>().changeMajor('DiscreteMathematics', value!);
+                          _selectedGrade[6] = value;
                         });
                       },
                     ),
@@ -413,7 +427,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
-                          _selectedGrade[7] = value!;
+                          context.read<Major>().changeMajor('Programming', value!);
+                          _selectedGrade[7] = value;
                         });
                       },
                     ),

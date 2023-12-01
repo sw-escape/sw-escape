@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MACHElectivesDialog extends StatefulWidget {
+class MACHCoursesDialog extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _MACHElectivesDialogState();
+    return _MACHCoursesDialogState();
   }
 }
 
-class _MACHElectivesDialogState extends State<MACHElectivesDialog> {
+class _MACHCoursesDialogState extends State<MACHCoursesDialog> {
   final _listGrade = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
   var _selectedGrade = List<String>.filled(4, '');
   @override
@@ -35,7 +35,7 @@ class _MACHElectivesDialogState extends State<MACHElectivesDialog> {
         ),
         child: Column(
           children: [
-            Image.asset('assets/MACHElectivesEx.png'),
+            Image.asset('assets/MACHCourseEx.png'),
             const SizedBox(
               height: 60,
             ),
