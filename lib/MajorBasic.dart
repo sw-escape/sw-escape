@@ -49,7 +49,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
       else{
         _selectedValue[i] = 0.125;
       }
-      _progressValue += _selectedValue[i];
+      _progressValue = 0;
+      _selectedValue.forEach((e) => _progressValue += e);
       if (_progressValue >= 1.0) {
         _progressValue = 1.0;
       }
