@@ -16,7 +16,9 @@ class SideMenu extends StatelessWidget {
               height: 100,
             ),
             TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => ));
+                },
                 child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text('메인', style: TextStyle(color: Colors.white, fontSize: 18)

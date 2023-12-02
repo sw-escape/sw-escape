@@ -57,7 +57,7 @@ class _CodingBootCampDialogState extends State<CodingBootCampDialog> {
         ),
         child: Column(
           children: [
-            Image.asset('assets/BootCampEx.png'),
+            Image.asset('assets/images/BootCampEx.png'),
             const SizedBox(
               height: 60,
             ),

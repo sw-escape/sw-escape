@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'Major.dart';
+import 'student.dart';
 import 'sideMenu.dart';
 
 class DesignSubject extends StatelessWidget {
@@ -79,7 +79,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                 barRadius: const Radius.circular(20),
               ),
             ),
-            Image.asset('assets/DesignSubjectEx.png'),
+            Image.asset('assets/images/DesignSubjectEx.png'),
             const SizedBox(
               height: 50,
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'sideMenu.dart';
 import 'package:provider/provider.dart';
-import 'Major.dart';
+import 'student.dart';
 
 class EngineeringCertification extends StatelessWidget {
   const EngineeringCertification({super.key});
@@ -56,7 +56,7 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/ECEx.png'),
+            Image.asset('assets/images/ECEx.png'),
             const SizedBox(
               height: 80,
             ),

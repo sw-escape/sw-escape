@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'Major.dart';
+import 'student.dart';
 import 'sideMenu.dart';
 
 class MajorRequired extends StatelessWidget {
@@ -57,7 +57,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/MajorRequiredEx.png'),
+            Image.asset('assets/images/MajorRequiredEx.png'),
             const SizedBox(
               height: 60,
             ),

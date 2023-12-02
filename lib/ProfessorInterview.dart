@@ -31,7 +31,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
         ),
         child: Column(
           children: [
-            Image.asset('assets/ProfessorInterviewEx.png'),
+            Image.asset('assets/images/ProfessorInterviewEx.png'),
             const SizedBox(
               height: 20,
             ),

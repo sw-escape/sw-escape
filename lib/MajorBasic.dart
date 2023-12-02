@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'Major.dart';
+import 'student.dart';
 import 'sideMenu.dart';
 
 class MajorBasic extends StatelessWidget {
@@ -72,7 +72,7 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                 barRadius: const Radius.circular(20),
               ),
             ),
-            Image.asset('assets/MajorBasicEx.png'),
+            Image.asset('assets/images/MajorBasicEx.png'),
             const SizedBox(
               height: 30,
             ),

@@ -8,7 +8,7 @@ class MACHCoursesDialog extends StatefulWidget {
 }
 
 class _MACHCoursesDialogState extends State<MACHCoursesDialog> {
-  final _listGrade = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
+  final _listGrade = ['0-0', '1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
   var _selectedGrade = List<String>.filled(4, '');
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _MACHCoursesDialogState extends State<MACHCoursesDialog> {
         ),
         child: Column(
           children: [
-            Image.asset('assets/MACHCourseEx.png'),
+            Image.asset('assets/images/MACHCourseEx.png'),
             const SizedBox(
               height: 60,
             ),

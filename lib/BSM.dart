@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'student.dart';
 import 'sideMenu.dart';
 
 class BSM extends StatelessWidget {
@@ -27,15 +29,19 @@ class BSMPage extends StatefulWidget {
 }
 
 class _BSMPageState extends State<BSMPage> {
-  final _listGrade = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
+  final _listGrade = ['0-0','1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
   var _selectedGrade = List<String>.filled(7, '');
   @override
   void initState() {
     super.initState();
     setState(() {
-      for(int i = 0; i<7;i++){
-        _selectedGrade[i] = _listGrade[0];
-      }
+      _selectedGrade[0] = context.read<Major>().loadMajorTime('Physics(1)');
+      _selectedGrade[1] = context.read<Major>().loadMajorTime('PhysicsExperiment(1)');
+      _selectedGrade[2] = context.read<Major>().loadMajorTime('Calculus');
+      _selectedGrade[3] = context.read<Major>().loadMajorTime('LinearAlgebra');
+      _selectedGrade[4] = context.read<Major>().loadMajorTime('DiscreteMathematics');
+      _selectedGrade[5] = context.read<Major>().loadMajorTime('ProbabilityAndStatistics');
+      _selectedGrade[6] = context.read<Major>().loadMajorTime('NumericalAnalysis');
     });
   }
   @override
@@ -52,7 +58,7 @@ class _BSMPageState extends State<BSMPage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/BSMEx.png'),
+            Image.asset('assets/images/BSMEx.png'),
             const SizedBox(
               height: 80,
             ),
@@ -92,6 +98,7 @@ class _BSMPageState extends State<BSMPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
+                          context.read<Major>().changeMajor('Physics(1)', value!);
                           _selectedGrade[0] = value!;
                         });
                       },
@@ -136,6 +143,7 @@ class _BSMPageState extends State<BSMPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
+                          context.read<Major>().changeMajor('PhysicsExperiment(1)', value!);
                           _selectedGrade[1] = value!;
                         });
                       },
@@ -180,6 +188,7 @@ class _BSMPageState extends State<BSMPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
+                          context.read<Major>().changeMajor('Calculus', value!);
                           _selectedGrade[2] = value!;
                         });
                       },
@@ -224,6 +233,7 @@ class _BSMPageState extends State<BSMPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
+                          context.read<Major>().changeMajor('LinearAlgebra', value!);
                           _selectedGrade[3] = value!;
                         });
                       },
@@ -268,6 +278,7 @@ class _BSMPageState extends State<BSMPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
+                          context.read<Major>().changeMajor('DiscreteMathematics', value!);
                           _selectedGrade[4] = value!;
                         });
                       },
@@ -312,6 +323,7 @@ class _BSMPageState extends State<BSMPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
+                          context.read<Major>().changeMajor('ProbabilityAndStatistics', value!);
                           _selectedGrade[5] = value!;
                         });
                       },
@@ -356,6 +368,7 @@ class _BSMPageState extends State<BSMPage> {
                       ).toList(),
                       onChanged: (value){
                         setState(() {
+                          context.read<Major>().changeMajor('NumericalAnalysis', value!);
                           _selectedGrade[6] = value!;
                         });
                       },
