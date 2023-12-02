@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sw_escape/progress.dart';
 import 'package:sw_escape/student.dart';
+import 'package:sw_escape/Major.dart';
 import 'package:provider/provider.dart';
 import 'main_page.dart';
 import 'splash.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => Student()),
         ChangeNotifierProvider(create: (_) => Progress()),
+        ChangeNotifierProvider(create: (_) => Major()),
       ],
       builder: (context, child) => MaterialApp(
         title: 'Flutter Demo',

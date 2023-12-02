@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'progress.dart';
 
+import 'sideMenu.dart';
+
 class EtcPage extends StatelessWidget {
   const EtcPage({super.key});
 
@@ -22,15 +24,15 @@ class EtcPage extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         actions: [
-          IconButton(
-            iconSize: 40,
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-
-            },
-          ),
+          Builder(
+            builder: (context) => IconButton(
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                icon: Image.asset('assets/images/Menu.png')
+            ),
+          )
         ],
       ),
+      endDrawer: SideMenu(),
       body: Container(
         // color: Colors.blue,
         color: const Color(0xFF72BBFF),
