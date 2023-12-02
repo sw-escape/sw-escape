@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sw_escape/CodingBootCamp.dart';
+import 'package:sw_escape/GraduateThesisTopcit.dart';
+import 'package:sw_escape/LowestGraduateGPA.dart';
+import 'package:sw_escape/MACHCourses.dart';
+import 'package:sw_escape/ProfessorInterview.dart';
 import 'progress.dart';
 
 import 'sideMenu.dart';
@@ -113,7 +118,7 @@ class EtcMenu extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CodingBootCampDialog()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -152,7 +157,7 @@ class EtcMenu extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => GraduateThesisTopcitDialog()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -230,7 +235,7 @@ class EtcMenu extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MACHCourseDialog()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -270,7 +275,7 @@ class EtcMenu extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LowestGraduateGPADialog()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -309,7 +314,7 @@ class EtcMenu extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfessorInterviewDialog()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색

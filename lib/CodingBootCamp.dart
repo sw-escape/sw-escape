@@ -1,34 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ProfessorInterview.dart';
-import 'sideMenu.dart';
-/*
-class CodingBootExample extends StatelessWidget {
-  const CodingBootExample({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('CoBooCam'),
-      ),
-      endDrawer: SideMenu(),
-      body: Container(
-        child: Center(
-          child: TextButton(
-              onPressed: () => showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return ProfessorInterviewDialog();
-                  }
-              ),
-              child: Text('코부?'),
-          ),
-        ),
-      ),
-    );
-  }
-}
-*/
 class CodingBootCampDialog extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
