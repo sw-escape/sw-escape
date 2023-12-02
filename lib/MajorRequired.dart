@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'student.dart';
+import 'Major.dart';
 import 'sideMenu.dart';
 
 class MajorRequired extends StatelessWidget {

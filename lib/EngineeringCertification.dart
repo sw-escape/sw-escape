@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'sideMenu.dart';
 import 'package:provider/provider.dart';
-import 'student.dart';
+import 'Major.dart';
 
 class EngineeringCertification extends StatelessWidget {
   const EngineeringCertification({super.key});
