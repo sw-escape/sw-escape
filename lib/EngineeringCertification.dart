@@ -81,7 +81,7 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('이산수학', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -97,9 +97,9 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     child: DropdownButton(
                       value: _selectedGrade[0].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -126,7 +126,7 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('자료구조', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -142,9 +142,9 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     child: DropdownButton(
                       value: _selectedGrade[1].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -171,7 +171,7 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('컴퓨터구조', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -187,9 +187,9 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     child: DropdownButton(
                       value: _selectedGrade[2].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -216,7 +216,7 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('알고리즘', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -232,9 +232,9 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     child: DropdownButton(
                       value: _selectedGrade[3].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -261,7 +261,7 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('운영체제', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -277,9 +277,9 @@ class _EngineeringCertificationPageState extends State<EngineeringCertificationP
                     child: DropdownButton(
                       value: _selectedGrade[4].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){

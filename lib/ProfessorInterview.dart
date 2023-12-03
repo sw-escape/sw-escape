@@ -66,18 +66,18 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                           fontWeight: FontWeight.bold,
                           shadows: [
                             Shadow(
-                              color: Colors.black45.withOpacity(0.5),
-                              blurRadius: 3,
+                              color: Colors.black45.withOpacity(0.3),
+                              blurRadius: 1,
                               offset: const Offset(1.0,1.0),
                             )
                           ],
                         ),
                         ),
                         const SizedBox(
-                          height: 5,
+                          height: 8,
                         ),
                         Transform.scale(
-                          scale: 1.5,
+                          scale: 1.7,
                           child: Checkbox(
                             focusColor: Colors.black,
                             value: _isChecked1,
@@ -122,23 +122,23 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('CAU 세미나(1)', style: TextStyle(
+                        Text('CAU 세미나(2)', style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           shadows: [
                             Shadow(
-                              color: Colors.black45.withOpacity(0.5),
-                              blurRadius: 3,
+                              color: Colors.black45.withOpacity(0.3),
+                              blurRadius: 1,
                               offset: const Offset(1.0,1.0),
                             )
                           ],
                         ),
                         ),
                         const SizedBox(
-                          height: 5,
+                          height: 8,
                         ),
                         Transform.scale(
-                          scale: 1.5,
+                          scale: 1.7,
                           child: Checkbox(
                             focusColor: Colors.black,
                             value: _isChecked2,
@@ -188,23 +188,23 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('CAU 세미나(1)', style: TextStyle(
+                        Text('교수님 면담(1)', style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           shadows: [
                             Shadow(
-                              color: Colors.black45.withOpacity(0.5),
-                              blurRadius: 3,
+                              color: Colors.black45.withOpacity(0.3),
+                              blurRadius: 1,
                               offset: const Offset(1.0,1.0),
                             )
                           ],
                         ),
                         ),
                         const SizedBox(
-                          height: 5,
+                          height: 8,
                         ),
                         Transform.scale(
-                          scale: 1.5,
+                          scale: 1.7,
                           child: Checkbox(
                             focusColor: Colors.black,
                             value: _isChecked3,
@@ -249,23 +249,23 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('CAU 세미나(1)', style: TextStyle(
+                        Text('교수님 면담(2)', style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           shadows: [
                             Shadow(
-                              color: Colors.black45.withOpacity(0.5),
-                              blurRadius: 3,
+                              color: Colors.black45.withOpacity(0.3),
+                              blurRadius: 1,
                               offset: const Offset(1.0,1.0),
                             )
                           ],
                         ),
                         ),
                         const SizedBox(
-                          height: 5,
+                          height: 8,
                         ),
                         Transform.scale(
-                          scale: 1.5,
+                          scale: 1.7,
                           child: Checkbox(
                             focusColor: Colors.black,
                             value: _isChecked4,
@@ -306,7 +306,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                 },
                 child: Transform.scale(
                     scale: 0.6,
-                    child: Image.asset('assets/RainbowSystem.png')),
+                    child: Image.asset('assets/images/RainbowSystem.png')),
             ),
             const SizedBox(
               height: 20,

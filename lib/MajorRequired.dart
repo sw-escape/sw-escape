@@ -24,7 +24,7 @@ class MajorRequired extends StatelessWidget {
         ],
       ),
       body: const MajorRequiredPage(),
-      endDrawer: SideMenu(),
+      endDrawer: const SideMenu(),
     );
   }
 }
@@ -82,7 +82,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('자료구조', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -100,7 +100,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -127,7 +127,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('컴퓨터구조', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -145,7 +145,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -172,7 +172,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('프로그래밍언어론', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -190,7 +190,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -217,7 +217,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('소프트웨어공학', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -235,7 +235,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -262,7 +262,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('알고리즘', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -280,7 +280,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -307,7 +307,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('운영체제', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -325,7 +325,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){

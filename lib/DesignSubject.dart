@@ -127,7 +127,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('창의적설계', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -145,7 +145,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -173,7 +173,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('캡스톤디자인(1)', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -191,7 +191,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -220,7 +220,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('캡스톤디자인(2)', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -238,7 +238,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -266,7 +266,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('논리회로', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -284,7 +284,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -312,7 +312,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('프로그래밍', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -330,7 +330,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -358,7 +358,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('소프트웨어프로젝트', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -376,7 +376,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -404,7 +404,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('객체지향프로그래밍', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -422,7 +422,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -450,7 +450,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('프로그래밍언어론', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -468,7 +468,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -496,7 +496,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('데이터베이스설계', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -514,7 +514,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -542,7 +542,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('소프트웨어공학', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -560,7 +560,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -588,7 +588,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('인공지능', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -606,7 +606,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -634,7 +634,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('고급 IoT 프로젝트', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -652,7 +652,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -680,7 +680,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('데이터베이스시스템', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -698,7 +698,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -726,7 +726,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('네트워크응용설계', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -744,7 +744,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -772,7 +772,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('내장형시스템설계', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -790,7 +790,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
-                            child: Text(grade, style: const TextStyle(fontWeight: FontWeight.bold))
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
