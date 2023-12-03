@@ -66,7 +66,7 @@ class _BSMPageState extends State<BSMPage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/BSMEx.png'),
+            Image.asset('assets/images/BSMEx.png'),
             const SizedBox(
               height: 80,
             ),

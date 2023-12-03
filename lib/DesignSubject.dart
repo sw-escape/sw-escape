@@ -50,8 +50,10 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
         _selectedValue[i] = 0.0667;
       }
       _progressValue = 0;
-      for(int j = 0;j<15;j++){
-        _progressValue += _selectedValue[j];
+      if(_selectedValue[0] != '0-0'){
+        for(int j = 0;j<15;j++){
+          _progressValue += _selectedValue[j];
+        }
       }
       if (_progressValue >= 1.0) {
         _progressValue = 1.0;
