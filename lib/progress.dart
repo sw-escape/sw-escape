@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Progress with ChangeNotifier {
 
   // 전공 기초
-  int basicMajorProgress = 75;
-  int basicMajorProgressMax = 100;
+  int basicMajorProgress = 3;
+  int basicMajorProgressMax = 14;
 
   // 전공
   // 전공필수
