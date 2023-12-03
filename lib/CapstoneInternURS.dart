@@ -23,9 +23,7 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors:[Color(0xFF507BEC),Color(0xFFADC9FF)]
-            )
-        ),
+                colors: [Color(0xFF507BEC), Color(0xFFADC9FF)])),
         child: Column(
           children: [
             Image.asset('assets/images/CapInternURSEx.png'),
@@ -37,10 +35,7 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black,
-                        width: 1
-                    ),
+                    border: Border.all(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
@@ -48,7 +43,8 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                         color: Colors.black45.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 5.0,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -58,17 +54,19 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('인턴', style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black45.withOpacity(0.5),
-                              blurRadius: 3,
-                              offset: const Offset(1.0,1.0),
-                            )
-                          ],
-                        ),
+                        Text(
+                          '인턴',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45.withOpacity(0.5),
+                                blurRadius: 3,
+                                offset: const Offset(1.0, 1.0),
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 5,
@@ -85,8 +83,7 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                               });
                             },
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3)
-                            ),
+                                borderRadius: BorderRadius.circular(3)),
                           ),
                         ),
                       ],
@@ -98,10 +95,7 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black,
-                        width: 1
-                    ),
+                    border: Border.all(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
@@ -109,7 +103,8 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                         color: Colors.black45.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 5.0,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -119,17 +114,19 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('학부연구생', style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black45.withOpacity(0.5),
-                              blurRadius: 3,
-                              offset: const Offset(1.0,1.0),
-                            )
-                          ],
-                        ),
+                        Text(
+                          '학부연구생',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45.withOpacity(0.5),
+                                blurRadius: 3,
+                                offset: const Offset(1.0, 1.0),
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 5,
@@ -146,8 +143,7 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                               });
                             },
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3)
-                            ),
+                                borderRadius: BorderRadius.circular(3)),
                           ),
                         ),
                       ],
@@ -156,7 +152,6 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                 ),
               ],
             ),
-
             const SizedBox(
               height: 20,
             ),
@@ -170,15 +165,14 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                 shadowColor: Colors.black45,
               ),
               onPressed: () async {
-                final url = Uri.parse(
-                    'https://placement.cau.ac.kr/'
-                );
-                await launchUrl(url, mode: LaunchMode.externalApplication);
+                final url = Uri.parse('https://placement.cau.ac.kr/');
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url);
+                }
               },
               child: Transform.scale(
                   scale: 0.9,
-                  child: Image.asset('assets/images/Placement.png')
-              ),
+                  child: Image.asset('assets/images/Placement.png')),
             ),
             const SizedBox(
               height: 15,
@@ -193,10 +187,10 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                 shadowColor: Colors.black45,
               ),
               onPressed: () async {
-                final url = Uri.parse(
-                    'http://ictintern.or.kr/'
-                );
-                await launchUrl(url, mode: LaunchMode.externalApplication);
+                final url = Uri.parse('http://ictintern.or.kr/');
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url);
+                }
               },
               child: Image.asset('assets/images/IctInternship.png'),
             ),
@@ -206,29 +200,24 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
             Transform.scale(
               scale: 1.5,
               child: ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    side: const BorderSide(
-                        width: 1,
-                        color: Colors.black
-                    ),
+                    side: const BorderSide(width: 1, color: Colors.black),
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
                   ),
-                  child: Text('Enter', style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black45.withOpacity(0.5),
-                          blurRadius: 3,
-                          offset: const Offset(1.0,1.0),
-                        )
-                      ]
-                  ),
-                  )
-              ),
+                  child: Text(
+                    'Enter',
+                    style: TextStyle(fontWeight: FontWeight.bold, shadows: [
+                      Shadow(
+                        color: Colors.black45.withOpacity(0.5),
+                        blurRadius: 3,
+                        offset: const Offset(1.0, 1.0),
+                      )
+                    ]),
+                  )),
             ),
           ],
         ),

@@ -14,7 +14,6 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
   bool _isChecked3 = false;
   bool _isChecked4 = false;
 
-
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -26,9 +25,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors:[Color(0xFF507BEC),Color(0xFFADC9FF)]
-            )
-        ),
+                colors: [Color(0xFF507BEC), Color(0xFFADC9FF)])),
         child: Column(
           children: [
             Image.asset('assets/images/ProfessorInterviewEx.png'),
@@ -40,10 +37,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black,
-                        width: 1
-                    ),
+                    border: Border.all(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
@@ -51,7 +45,8 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                         color: Colors.black45.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 5.0,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -61,17 +56,19 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('CAU 세미나(1)', style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black45.withOpacity(0.3),
-                              blurRadius: 1,
-                              offset: const Offset(1.0,1.0),
-                            )
-                          ],
-                        ),
+                        Text(
+                          'CAU 세미나(1)',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45.withOpacity(0.3),
+                                blurRadius: 1,
+                                offset: const Offset(1.0, 1.0),
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 8,
@@ -88,8 +85,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               });
                             },
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3)
-                            ),
+                                borderRadius: BorderRadius.circular(3)),
                           ),
                         ),
                       ],
@@ -101,10 +97,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black,
-                        width: 1
-                    ),
+                    border: Border.all(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
@@ -112,7 +105,8 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                         color: Colors.black45.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 5.0,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -122,17 +116,19 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('CAU 세미나(2)', style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black45.withOpacity(0.3),
-                              blurRadius: 1,
-                              offset: const Offset(1.0,1.0),
-                            )
-                          ],
-                        ),
+                        Text(
+                          'CAU 세미나(2)',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45.withOpacity(0.3),
+                                blurRadius: 1,
+                                offset: const Offset(1.0, 1.0),
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 8,
@@ -149,8 +145,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               });
                             },
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3)
-                            ),
+                                borderRadius: BorderRadius.circular(3)),
                           ),
                         ),
                       ],
@@ -167,10 +162,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black,
-                        width: 1
-                    ),
+                    border: Border.all(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
@@ -178,7 +170,8 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                         color: Colors.black45.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 5.0,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -188,17 +181,19 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('교수님 면담(1)', style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black45.withOpacity(0.3),
-                              blurRadius: 1,
-                              offset: const Offset(1.0,1.0),
-                            )
-                          ],
-                        ),
+                        Text(
+                          '교수님 면담(1)',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45.withOpacity(0.3),
+                                blurRadius: 1,
+                                offset: const Offset(1.0, 1.0),
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 8,
@@ -215,8 +210,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               });
                             },
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3)
-                            ),
+                                borderRadius: BorderRadius.circular(3)),
                           ),
                         ),
                       ],
@@ -228,10 +222,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black,
-                        width: 1
-                    ),
+                    border: Border.all(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
@@ -239,7 +230,8 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                         color: Colors.black45.withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 5.0,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -249,17 +241,19 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
-                        Text('교수님 면담(2)', style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black45.withOpacity(0.3),
-                              blurRadius: 1,
-                              offset: const Offset(1.0,1.0),
-                            )
-                          ],
-                        ),
+                        Text(
+                          '교수님 면담(2)',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45.withOpacity(0.3),
+                                blurRadius: 1,
+                                offset: const Offset(1.0, 1.0),
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 8,
@@ -276,8 +270,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               });
                             },
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3)
-                            ),
+                                borderRadius: BorderRadius.circular(3)),
                           ),
                         ),
                       ],
@@ -290,23 +283,24 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
               height: 20,
             ),
             ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  maximumSize: const Size.fromHeight(50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  shadowColor: Colors.black45,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                maximumSize: const Size.fromHeight(50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                onPressed: () async {
-                  final url = Uri.parse(
-                    'https://rainbow.cau.ac.kr/indexm.jsp?mobileyn=Y'
-                  );
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
-                },
-                child: Transform.scale(
-                    scale: 0.6,
-                    child: Image.asset('assets/images/RainbowSystem.png')),
+                shadowColor: Colors.black45,
+              ),
+              onPressed: () async {
+                final url = Uri.parse(
+                    'https://rainbow.cau.ac.kr/indexm.jsp?mobileyn=Y');
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url);
+                }
+              },
+              child: Transform.scale(
+                  scale: 0.6,
+                  child: Image.asset('assets/images/RainbowSystem.png')),
             ),
             const SizedBox(
               height: 20,
@@ -314,29 +308,24 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
             Transform.scale(
               scale: 1.5,
               child: ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    side: const BorderSide(
-                        width: 1,
-                        color: Colors.black
-                    ),
+                    side: const BorderSide(width: 1, color: Colors.black),
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
                   ),
-                  child: Text('Enter', style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black45.withOpacity(0.5),
-                          blurRadius: 3,
-                          offset: const Offset(1.0,1.0),
-                        )
-                      ]
-                  ),
-                  )
-              ),
+                  child: Text(
+                    'Enter',
+                    style: TextStyle(fontWeight: FontWeight.bold, shadows: [
+                      Shadow(
+                        color: Colors.black45.withOpacity(0.5),
+                        blurRadius: 3,
+                        offset: const Offset(1.0, 1.0),
+                      )
+                    ]),
+                  )),
             ),
           ],
         ),
