@@ -3,6 +3,9 @@ import 'package:provider/provider.dart';
 import '../progress.dart';
 
 import '../sideMenu.dart';
+import 'chinese_character.dart';
+import 'common_liberal_arts.dart';
+import 'core_liberal_arts.dart';
 import 'english.dart';
 
 class CommonPage extends StatelessWidget {
@@ -148,7 +151,8 @@ class CommonMenu extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: ElevatedButton(
             onPressed: () {
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ChineseCharacter()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -187,7 +191,8 @@ class CommonMenu extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CommonLiberalArts()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -226,7 +231,8 @@ class CommonMenu extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CoreLiberalArts()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
