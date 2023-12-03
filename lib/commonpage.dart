@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'progress.dart';
+import 'ProgressBar.dart';
 
 import 'sideMenu.dart';
 
@@ -38,11 +39,13 @@ class CommonPage extends StatelessWidget {
         color: const Color(0xFF72BBFF),
         child: Column(
           children: [
-            Container(
-              height: 30,
-              // color: Colors.indigo,
-            ),
-            const ProgressBar(),
+            // ProgressBar(
+            //   currentProgress: context.select((Progress p) => p.commonProgress),
+            //   maxProgress: context.select((Progress p) => p.commonProgressMax),
+            //   width: 320.0,
+            //   height: 40.0,
+            //   color: Color(0xFFAD6DDF),
+            // ),
             Container(
               height: 60,
               // color: Colors.indigo,
@@ -54,52 +57,6 @@ class CommonPage extends StatelessWidget {
     );
   }
 }
-
-
-/////////////////////////////////////////////////////////////////
-
-
-class ProgressBar extends StatefulWidget {
-  const ProgressBar({super.key});
-
-  @override
-  State<ProgressBar> createState() => _ProgressBarState();
-}
-
-class _ProgressBarState extends State<ProgressBar> {
-
-  @override
-  Widget build(BuildContext context) {
-    int progress = context.select((Progress p) => p.commonProgress);
-    int maxProgress = context.select((Progress p) => p.maxCommonProgress);
-
-    return Center(
-      child: Container(
-        width: 320.0,
-        height: 40.0,
-        decoration: BoxDecoration(
-          color: Colors.white, // 전체 진행 바의 배경색
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
-        ),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-            width: (progress / maxProgress) * 320, // 현재 진척도에 따라 너비를 조절
-            decoration: BoxDecoration(
-              color: const Color(0xFFAD6DDF), // 진행 중인 부분의 배경색
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-/////////////////////////////////////////////////////////////////
 
 
 class CommonMenu extends StatelessWidget {
@@ -122,27 +79,43 @@ class CommonMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 80), // 고정 크기 설정
+              // fixedSize: const Size(320, 80), // 고정 크기 설정
+              fixedSize: const Size(320, 100), // 고정 크기 설정
             ),
-            child: const Row(
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/common/english.png',
-                    ),
-                  ),
+                const SizedBox(height: 10,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.englishProgress),
+                  maxProgress: context.select((Progress p) => p.englishProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.red,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '영어',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                const SizedBox(height: 5,),
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      child: Image(
+                        width: 60,
+                        image: AssetImage(
+                          'assets/images/common/english.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '영어',
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -161,27 +134,43 @@ class CommonMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 80), // 고정 크기 설정
+              // fixedSize: const Size(320, 80), // 고정 크기 설정
+              fixedSize: const Size(320, 100), // 고정 크기 설정
             ),
-            child: const Row(
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/common/chinese.png',
-                    ),
-                  ),
+                const SizedBox(height: 10,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.chineseProgress),
+                  maxProgress: context.select((Progress p) => p.chineseProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.orange,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '한문',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                const SizedBox(height: 10,),
+                const Row(
+                  children: [
+                    SizedBox(width: 35,),
+                    SizedBox(
+                      child: Image(
+                        width: 50,
+                        image: AssetImage(
+                          'assets/images/common/chinese.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '한문',
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -200,27 +189,43 @@ class CommonMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 80), // 고정 크기 설정
+              // fixedSize: const Size(320, 80), // 고정 크기 설정
+              fixedSize: const Size(320, 100), // 고정 크기 설정
             ),
-            child: const Row(
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/common/knowledge.png',
-                    ),
-                  ),
+                const SizedBox(height: 10,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.commonProgress),
+                  maxProgress: context.select((Progress p) => p.commonProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.yellow,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '공통 교양',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                const SizedBox(height: 10,),
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      child: Image(
+                        width: 50,
+                        image: AssetImage(
+                          'assets/images/common/knowledge.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '공통 교양',
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -239,28 +244,43 @@ class CommonMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 80), // 고정 크기 설정
+              // fixedSize: const Size(320, 80), // 고정 크기 설정
+              fixedSize: const Size(320, 100), // 고정 크기 설정
             ),
-            child: const Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/common/study.png',
-                    ),
-                  ),
+                const SizedBox(height: 10,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.coreProgress),
+                  maxProgress: context.select((Progress p) => p.coreProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.green,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '핵심 교양',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                const SizedBox(height: 10,),
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      child: Image(
+                        width: 50,
+                        image: AssetImage(
+                          'assets/images/common/study.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '핵심 교양',
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
