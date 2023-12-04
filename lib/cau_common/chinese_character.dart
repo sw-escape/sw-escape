@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 import '../sideMenu.dart';
+import 'common_info.dart';
 
 class ChineseCharacter extends StatefulWidget {
   const ChineseCharacter({super.key});
@@ -10,7 +13,6 @@ class ChineseCharacter extends StatefulWidget {
 }
 
 class _ChineseCharacterState extends State<ChineseCharacter> {
-  bool isTOEICLevel5OrHigher = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,24 +44,70 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
           children: [
             Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  width: MediaQuery.of(context).size.width,
-                  height: 90,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15), // 둥근 모서리
-                    border: Border.all(color: Colors.black), // 까만색 테두리
-                    color: Colors.white, // 하얀색 배경
-                  ),
-                  padding: const EdgeInsets.all(20), // 안쪽 여백 설정
-                  child: const Text(
-                    '한문 수업 1과목 수강\nOR 한자 시험 4급 이상',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 15.0, horizontal: 10),
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(15),
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      width: MediaQuery.of(context).size.width,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(color: Colors.black),
+                        color: Colors.white,
+                      ),
+                      child: Center(
+                        child: const Text(
+                          '한문 수업 1과목 수강\nOR 한자 시험 4급 이상',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
+                if (context.read<CommonInfo>().isChineseCharL4 == true ||
+                    context.read<CommonInfo>().hasAttendedChineseCharClass ==
+                        true)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircularPercentIndicator(
+                      radius: 60.0,
+                      lineWidth: 10.0,
+                      percent: 1.0,
+                      center: Text('100%',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.blue)),
+                      backgroundColor: Colors.white.withOpacity(0.2),
+                      progressColor: Colors.blue,
+                    ),
+                  ),
+                if (context.read<CommonInfo>().isChineseCharL4 == false &&
+                    context.read<CommonInfo>().hasAttendedChineseCharClass ==
+                        false)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircularPercentIndicator(
+                      radius: 60.0,
+                      lineWidth: 10.0,
+                      percent: 0.0,
+                      center: Text('0%',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.blue)),
+                      backgroundColor: Colors.white.withOpacity(0.5),
+                      progressColor: Colors.blue,
+                    ),
+                  ),
                 Container(
                   margin: const EdgeInsets.all(10),
                   width: MediaQuery.of(context).size.width,
@@ -77,10 +125,10 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
                         color: Colors.black,
                       ),
                     ),
-                    value: isTOEICLevel5OrHigher,
+                    value: context.read<CommonInfo>().isChineseCharL4,
                     onChanged: (newValue) {
                       setState(() {
-                        isTOEICLevel5OrHigher = newValue!;
+                        context.read<CommonInfo>().fillChineseCharL4();
                       });
                     },
                   ),
@@ -93,14 +141,14 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
                     border: Border.all(color: Colors.black),
                     color: Colors.white,
                   ),
-                  child: const Column(
+                  child: Column(
                     children: [
                       Row(
                         children: [
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              '한자 수업',
+                              '한자 수업 수강',
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.black,
@@ -109,14 +157,31 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
                           ),
                         ],
                       ),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: '수강한 과목명 입력',
-                          border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.black), // 테두리 색상 변경
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: '수강한 과목명 입력 후 체크',
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          Checkbox(
+                            value: context
+                                .read<CommonInfo>()
+                                .hasAttendedChineseCharClass,
+                            onChanged: (newValue) {
+                              setState(() {
+                                context
+                                    .read<CommonInfo>()
+                                    .fillAttendedChineseCharClass();
+                              });
+                            },
+                          ),
+                        ],
                       ),
                       SizedBox(height: 10),
                     ],
