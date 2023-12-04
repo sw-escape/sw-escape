@@ -27,6 +27,49 @@ class CommonInfo with ChangeNotifier {
     notifyListeners();
   }
 
+  bool writingIsFilled = false;
+  bool commInEngIsFilled = false;
+  bool accountIsFilled = false;
+  bool creativityNCommIsFilled = false;
+  bool designThinkingIsFilled = false;
+  bool KHistoryIsFilled = false;
+  bool actIsFilled = false;
+
+  fillWriting() {
+    writingIsFilled = !writingIsFilled;
+    notifyListeners();
+  }
+
+  fillCommInEng() {
+    commInEngIsFilled = !commInEngIsFilled;
+    notifyListeners();
+  }
+
+  fillAccount() {
+    accountIsFilled = !accountIsFilled;
+    notifyListeners();
+  }
+
+  fillCreativityNComm() {
+    creativityNCommIsFilled = !creativityNCommIsFilled;
+    notifyListeners();
+  }
+
+  fillDesignThinking() {
+    designThinkingIsFilled = !designThinkingIsFilled;
+    notifyListeners();
+  }
+
+  fillKHistory() {
+    KHistoryIsFilled = !KHistoryIsFilled;
+    notifyListeners();
+  }
+
+  fillAct() {
+    actIsFilled = !actIsFilled;
+    notifyListeners();
+  }
+
   bool challengeIsFilled = false;
   bool creativityIsFilled = false;
   bool convergenceIsFilled = false;
