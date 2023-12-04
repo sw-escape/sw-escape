@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'progress.dart';
+import 'ProgressBar.dart';
 
 import 'sideMenu.dart';
 import 'MajorRequired.dart';
@@ -36,73 +37,21 @@ class MajorPage extends StatelessWidget {
           )
         ],
       ),
-      endDrawer: SideMenu(),
+      endDrawer: const SideMenu(),
       body: Container(
         color: const Color(0xFF72BBFF),
-        child: Column(
+        child: const Column(
           children: [
-            Container(
-              height: 30,
-              // color: Colors.indigo,
+            SizedBox(height: 30),
+            Center(
+              child: MajorMenu(),
             ),
-            const ProgressBar(),
-            Container(
-              height: 30,
-              // color: Colors.indigo,
-            ),
-            const MajorMenu(),
           ],
-        ),
+        )
       ),
     );
   }
 }
-
-
-/////////////////////////////////////////////////////////////////
-
-
-class ProgressBar extends StatefulWidget {
-  const ProgressBar({super.key});
-
-  @override
-  State<ProgressBar> createState() => _ProgressBarState();
-}
-
-class _ProgressBarState extends State<ProgressBar> {
-
-  @override
-  Widget build(BuildContext context) {
-    int progress = context.select((Progress p) => p.majorProgress);
-    int maxProgress = context.select((Progress p) => p.maxMajorProgress);
-
-    return Center(
-      child: Container(
-        width: 320.0,
-        height: 40.0,
-        decoration: BoxDecoration(
-          color: Colors.white, // 전체 진행 바의 배경색
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
-        ),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-            width: (progress / maxProgress) * 320, // 현재 진척도에 따라 너비를 조절
-            decoration: BoxDecoration(
-              color: const Color(0xFFFB7AC0), // 진행 중인 부분의 배경색
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-/////////////////////////////////////////////////////////////////
 
 
 class MajorMenu extends StatelessWidget {
@@ -119,6 +68,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
+                  // context.read<Progress>().increase();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => MajorRequired()));
                 },
                 style: ElevatedButton.styleFrom(
@@ -128,12 +78,21 @@ class MajorMenu extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30.0), // 모서리를 둥글게 만듦
                     side: const BorderSide(color: Colors.black), // 테두리 색상
                   ),
-                  fixedSize: const Size(140, 160), // 고정 크기 설정
+                  // fixedSize: const Size(140, 160), // 고정 크기 설정
+                  fixedSize: const Size(160, 180), // 고정 크기 설정
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    ProgressBar(
+                      currentProgress: context.select((Progress p) => p.majorRequiredProgress),
+                      maxProgress: context.select((Progress p) => p.majorRequiredProgressMax),
+                      width: 120.0,
+                      height: 20.0,
+                      color: Colors.red,
+                    ),
+                    const SizedBox(height: 10),
+                    const SizedBox(
                       height: 80,
                       child: Image(
                         image: AssetImage(
@@ -141,8 +100,8 @@ class MajorMenu extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
+                    const SizedBox(height: 20),
+                    const Text(
                       '전공필수',
                       style: TextStyle(
                         fontSize: 18,
@@ -166,12 +125,21 @@ class MajorMenu extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30.0), // 모서리를 둥글게 만듦
                     side: const BorderSide(color: Colors.black), // 테두리 색상
                   ),
-                  fixedSize: const Size(140, 160), // 고정 크기 설정
+                  // fixedSize: const Size(140, 160), // 고정 크기 설정
+                  fixedSize: const Size(160, 180), // 고정 크기 설정
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    ProgressBar(
+                      currentProgress: context.select((Progress p) => p.engineeringCertificationProgress),
+                      maxProgress: context.select((Progress p) => p.engineeringCertificationProgressMax),
+                      width: 120.0,
+                      height: 20.0,
+                      color: Colors.orange,
+                    ),
+                    const SizedBox(height: 10),
+                    const SizedBox(
                       height: 80,
                       child: Image(
                         image: AssetImage(
@@ -179,8 +147,8 @@ class MajorMenu extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
+                    const SizedBox(height: 20),
+                    const Text(
                       '공학인증 필수과목',
                       style: TextStyle(
                         fontSize: 14,
@@ -209,12 +177,21 @@ class MajorMenu extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30.0), // 모서리를 둥글게 만듦
                     side: const BorderSide(color: Colors.black), // 테두리 색상
                   ),
-                  fixedSize: const Size(140, 160), // 고정 크기 설정
+                  // fixedSize: const Size(140, 160), // 고정 크기 설정
+                  fixedSize: const Size(160, 180), // 고정 크기 설정
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    ProgressBar(
+                      currentProgress: context.select((Progress p) => p.designSubjectProgress),
+                      maxProgress: context.select((Progress p) => p.designSubjectProgressMax),
+                      width: 120.0,
+                      height: 20.0,
+                      color: Colors.yellow,
+                    ),
+                    const SizedBox(height: 10),
+                    const SizedBox(
                       height: 80,
                       child: Image(
                         image: AssetImage(
@@ -222,8 +199,8 @@ class MajorMenu extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
+                    const SizedBox(height: 20),
+                    const Text(
                       '설계 학점',
                       style: TextStyle(
                         fontSize: 18,
@@ -247,12 +224,21 @@ class MajorMenu extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30.0), // 모서리를 둥글게 만듦
                     side: const BorderSide(color: Colors.black), // 테두리 색상
                   ),
-                  fixedSize: const Size(140, 160), // 고정 크기 설정
+                  // fixedSize: const Size(140, 160), // 고정 크기 설정
+                  fixedSize: const Size(160, 180), // 고정 크기 설정
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    ProgressBar(
+                      currentProgress: context.select((Progress p) => p.bsmProgress),
+                      maxProgress: context.select((Progress p) => p.bsmProgressMax),
+                      width: 120.0,
+                      height: 20.0,
+                      color: Colors.green,
+                    ),
+                    const SizedBox(height: 10),
+                    const SizedBox(
                       height: 80,
                       child: Image(
                         image: AssetImage(
@@ -260,8 +246,8 @@ class MajorMenu extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
+                    const SizedBox(height: 20),
+                    const Text(
                       'BSM',
                       style: TextStyle(
                         fontSize: 18,
@@ -287,12 +273,21 @@ class MajorMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(300, 120), // 고정 크기 설정
+              // fixedSize: const Size(300, 120), // 고정 크기 설정
+              fixedSize: const Size(320, 140), // 고정 크기 설정
             ),
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.etcMajorProgress),
+                  maxProgress: context.select((Progress p) => p.etcMajorProgressMax),
+                  width: 120.0,
+                  height: 20.0,
+                  color: Colors.purpleAccent,
+                ),
+                const SizedBox(height: 5),
+                const SizedBox(
                   height: 80,
                   child: Image(
                     image: AssetImage(
@@ -300,7 +295,7 @@ class MajorMenu extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   '기타 전공과목',
                   style: TextStyle(
                     fontSize: 18,

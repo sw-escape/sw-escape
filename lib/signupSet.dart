@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:sw_escape/student.dart';
 import 'start.dart';
 
 class SignupSetScreen extends StatefulWidget {
@@ -9,12 +11,7 @@ class SignupSetScreen extends StatefulWidget {
 
 class _SignupSetScreenState extends State<SignupSetScreen> {
   String? selectedStudentID;
-  // final List<String> major = [
-  //   '주전공',
-  //   '복수전공',
-  //   '편입',
-  //   '교환학생',
-  // ];
+  String? selectedMajor;
 
   final List<String> studentIDs = [
     '14학번',
@@ -29,6 +26,13 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
     '23학번',
   ];
 
+  final List<String> majors = [
+    'Major',
+    'Double Major',
+    'Transfer Student',
+    'Exchange Student',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +45,7 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
               Text(
                 'SW ESCAPE',
                 style: TextStyle(
-                  fontFamily: 'iblack',
+                  fontFamily: 'Inter',
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   fontSize: 48,
@@ -62,14 +66,15 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                   borderRadius: BorderRadius.circular(50),
                   border: Border.all(color: Colors.black, width: 1),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       '  Student_ID',
                       style: TextStyle(
-                        fontFamily: 'iblack',
+                        fontFamily: 'Inter',
                         color: Colors.white,
                         fontStyle: FontStyle.italic,
                         fontSize: 14,
@@ -96,8 +101,8 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                         );
                       }).toList(),
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 15),
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -114,7 +119,7 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                     Text(
                       '  Major',
                       style: TextStyle(
-                        fontFamily: 'iblack',
+                        fontFamily: 'Inter',
                         color: Colors.white,
                         fontStyle: FontStyle.italic,
                         fontSize: 14,
@@ -127,10 +132,22 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                       ),
                     ),
                     SizedBox(height: 0),
-                    TextFormField(
+                    DropdownButtonFormField<String>(
+                      value: selectedMajor,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedMajor = value!;
+                        });
+                      },
+                      items: majors.map((major) {
+                        return DropdownMenuItem<String>(
+                          value: major,
+                          child: Text(major),
+                        );
+                      }).toList(),
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 15),
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -143,7 +160,7 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 50),
+                    SizedBox(height: 50), // 여기로 이동
                     Center(
                       child: Container(
                         width: 130,
@@ -160,6 +177,13 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                         ),
                         child: ElevatedButton(
                           onPressed: () {
+                            // int year = int.tryParse(selectedStudentID!.substring(0, 2)) ?? 0; // '21학번'에서 '21'을 추출하여 정수로 변환
+                            // String dept = selectedMajor ?? ''; // selectedMajor 값이 null이 아니면 사용, null이면 빈 문자열 사용
+                            //
+                            // Provider.of<Student>(context, listen: false).setInfo('userid', dept, year);
+
+                            Provider.of<Student>(context, listen: false).setSelectedStudentID(selectedStudentID);
+
                             FocusScope.of(context).unfocus();
                             FocusScope.of(context).unfocus();
                             FocusScope.of(context).unfocus();
@@ -172,15 +196,14 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                           child: Text(
                             'JOIN',
                             style: TextStyle(
-                              fontFamily: 'iblack',
+                              fontFamily: 'Inter',
                               fontSize: 18,
                               color: Colors.lightBlue[800],
                               fontStyle: FontStyle.italic,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            padding:
-                            EdgeInsets.symmetric(vertical: 7),
+                            padding: EdgeInsets.symmetric(vertical: 7),
                             primary: Colors.white,
                             onPrimary: Colors.lightBlue[800],
                             shape: RoundedRectangleBorder(
