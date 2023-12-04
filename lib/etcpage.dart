@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sw_escape/CodingBootCamp.dart';
+import 'package:sw_escape/GraduateThesisTopcit.dart';
+import 'package:sw_escape/CapstoneInternURS.dart';
+import 'package:sw_escape/LowestGraduateGPA.dart';
+import 'package:sw_escape/MACHCourses.dart';
+import 'package:sw_escape/ProfessorInterview.dart';
 import 'progress.dart';
+
+import 'sideMenu.dart';
 
 class EtcPage extends StatelessWidget {
   const EtcPage({super.key});
@@ -22,15 +30,15 @@ class EtcPage extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         actions: [
-          IconButton(
-            iconSize: 40,
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-
-            },
-          ),
+          Builder(
+            builder: (context) => IconButton(
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                icon: Image.asset('assets/images/Menu.png')
+            ),
+          )
         ],
       ),
+      endDrawer: SideMenu(),
       body: Container(
         // color: Colors.blue,
         color: const Color(0xFF72BBFF),
@@ -110,9 +118,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
-            },
+            onPressed: () => showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return CodingBootCampDialog();
+              }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -149,9 +160,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return GraduateThesisTopcitDialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -188,9 +202,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return CapInternURSDialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -227,9 +244,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return MACHCourseDialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -267,9 +287,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return LowestGraduateGPADialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -306,9 +329,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return ProfessorInterviewDialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상

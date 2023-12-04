@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'progress.dart';
+import '../progress.dart';
+
+import '../sideMenu.dart';
+import 'chinese_character.dart';
+import 'common_liberal_arts.dart';
+import 'core_liberal_arts.dart';
+import 'english.dart';
 
 class CommonPage extends StatelessWidget {
   const CommonPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -22,15 +27,14 @@ class CommonPage extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         actions: [
-          IconButton(
-            iconSize: 40,
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-
-            },
-          ),
+          Builder(
+            builder: (context) => IconButton(
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                icon: Image.asset('assets/images/Menu.png')),
+          )
         ],
       ),
+      endDrawer: SideMenu(),
       body: Container(
         // color: Colors.blue,
         color: const Color(0xFF72BBFF),
@@ -53,9 +57,7 @@ class CommonPage extends StatelessWidget {
   }
 }
 
-
 /////////////////////////////////////////////////////////////////
-
 
 class ProgressBar extends StatefulWidget {
   const ProgressBar({super.key});
@@ -65,7 +67,6 @@ class ProgressBar extends StatefulWidget {
 }
 
 class _ProgressBarState extends State<ProgressBar> {
-
   @override
   Widget build(BuildContext context) {
     int progress = context.select((Progress p) => p.commonProgress);
@@ -96,22 +97,22 @@ class _ProgressBarState extends State<ProgressBar> {
   }
 }
 
-
 /////////////////////////////////////////////////////////////////
-
 
 class CommonMenu extends StatelessWidget {
   const CommonMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column( // Column은 기본적으로 수평 정렬
+    return Column(
+      // Column은 기본적으로 수평 정렬
       children: [
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => English()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -150,7 +151,8 @@ class CommonMenu extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ChineseCharacter()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -189,7 +191,8 @@ class CommonMenu extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CommonLiberalArts()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -228,7 +231,8 @@ class CommonMenu extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CoreLiberalArts()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색

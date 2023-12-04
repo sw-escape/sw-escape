@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'progress.dart';
 
+import 'sideMenu.dart';
+import 'MajorRequired.dart';
+import 'EngineeringCertification.dart';
+import 'DesignSubject.dart';
+import 'BSM.dart';
+
 class MajorPage extends StatelessWidget {
   const MajorPage({super.key});
 
@@ -22,15 +28,15 @@ class MajorPage extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         actions: [
-          IconButton(
-            iconSize: 40,
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-
-            },
-          ),
+          Builder(
+            builder: (context) => IconButton(
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                icon: Image.asset('assets/images/Menu.png')
+            ),
+          )
         ],
       ),
+      endDrawer: SideMenu(),
       body: Container(
         color: const Color(0xFF72BBFF),
         child: Column(
@@ -109,11 +115,11 @@ class MajorMenu extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
+            Padding (
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MajorRequired()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -151,7 +157,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => EngineeringCertification()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -194,7 +200,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => DesignSubject()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -232,7 +238,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => BSM()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
