@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => Major()),
       ],
       builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false, // 'debug' 텍스트 없앰
         title: 'Flutter Demo',
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
