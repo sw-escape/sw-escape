@@ -8,7 +8,7 @@ class MACHCourseDialog extends StatefulWidget {
 }
 
 class _MACHCourseDialogState extends State<MACHCourseDialog> {
-  final _listGrade = ['1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
+  final _listGrade = ['0-0','1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
   var _selectedGrade = List<String>.filled(4, '');
   @override
   void initState() {
@@ -52,7 +52,7 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                     width: 270,
                     height: 25,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
                       child: Text('마하', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -96,7 +96,7 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                     width: 270,
                     height: 25,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
                       child: Text('마하', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -140,7 +140,7 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                     width: 270,
                     height: 25,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
                       child: Text('마하', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -184,7 +184,7 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                     width: 270,
                     height: 25,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
                       child: Text('마하', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),

@@ -4,18 +4,18 @@ import 'package:sw_escape/majorpage.dart';
 import 'package:sw_escape/student.dart';
 
 import 'MajorBasic.dart';
-import 'commonpage.dart';
+import 'cau_common/commonpage.dart';
 import 'etcpage.dart';
 import 'modify_info.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     String? selectedStudentID = Provider.of<Student>(context).selectedStudentID;
@@ -63,6 +63,9 @@ class _MainPageState extends State<MainPage> {
           child: Column(
             children: [
               MyInfo(),
+              SizedBox(
+                height: 20,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8, top: 15),
                 child: InkWell(
@@ -79,10 +82,17 @@ class _MainPageState extends State<MainPage> {
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     child: Container(
                       height: 90,
+                      width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(
                           Radius.circular(40),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '전공기초',
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                     ),
@@ -105,10 +115,17 @@ class _MainPageState extends State<MainPage> {
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     child: Container(
                       height: 90,
+                      width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(
                           Radius.circular(40),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '전공',
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                     ),
@@ -131,10 +148,17 @@ class _MainPageState extends State<MainPage> {
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     child: Container(
                       height: 90,
+                      width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(
                           Radius.circular(40),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '기타',
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                     ),
@@ -157,10 +181,17 @@ class _MainPageState extends State<MainPage> {
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     child: Container(
                       height: 90,
+                      width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(
                           Radius.circular(40),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '공통 졸업 요건',
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                     ),

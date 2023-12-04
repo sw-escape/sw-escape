@@ -3,7 +3,7 @@ import 'package:sw_escape/progress.dart';
 import 'package:sw_escape/student.dart';
 import 'package:sw_escape/Major.dart';
 import 'package:provider/provider.dart';
-import 'main_page.dart';
+import 'home_page.dart';
 import 'splash.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
             //useMaterial3: true,
             fontFamily: 'NanumBarunGothic'),
         home: SplashScreen(), //** splash 페이지로 교체함
+        // home: HomePage(), //** splash 페이지로 교체함
       ),
     );
   }

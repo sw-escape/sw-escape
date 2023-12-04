@@ -108,13 +108,13 @@ class _ModifyInfoState extends State<ModifyInfo> {
                                                 onTap: () {
                                                   setState(() {
                                                     selectedCharacter =
-                                                        'assets/images/sunglasses_girl.png';
+                                                        'assets/images/character/sunglasses_girl.png';
                                                   });
                                                   print(selectedCharacter);
                                                   Navigator.pop(context);
                                                 },
                                                 child: Image.asset(
-                                                  'assets/images/sunglasses_girl.png', // 이미지 경로에 따라 수정해주세요
+                                                  'assets/images/character/sunglasses_girl.png', // 이미지 경로에 따라 수정해주세요
                                                   width: 90,
                                                   height: 90,
                                                 ),
@@ -147,13 +147,13 @@ class _ModifyInfoState extends State<ModifyInfo> {
                                                 onTap: () {
                                                   setState(() {
                                                     selectedCharacter =
-                                                        'assets/images/sunglasses_boy.png';
+                                                        'assets/images/character/sunglasses_boy.png';
                                                   });
                                                   print(selectedCharacter);
                                                   Navigator.pop(context);
                                                 },
                                                 child: Image.asset(
-                                                  'assets/images/sunglasses_boy.png', // 이미지 경로에 따라 수정해주세요
+                                                  'assets/images/character/sunglasses_boy.png', // 이미지 경로에 따라 수정해주세요
                                                   width: 90,
                                                   height: 90,
                                                 ),
@@ -389,13 +389,13 @@ class _characterSelectState extends State<characterSelect> {
                               onTap: () {
                                 setState(() {
                                   selectedCharacter =
-                                      'assets/images/sunglasses_girl.png';
+                                      'assets/images/character/sunglasses_girl.png';
                                 });
                                 print(selectedCharacter);
                                 Navigator.pop(context);
                               },
                               child: Image.asset(
-                                'assets/images/sunglasses_girl.png', // 이미지 경로에 따라 수정해주세요
+                                'assets/images/character/sunglasses_girl.png', // 이미지 경로에 따라 수정해주세요
                                 width: 90,
                                 height: 90,
                               ),
@@ -427,13 +427,13 @@ class _characterSelectState extends State<characterSelect> {
                               onTap: () {
                                 setState(() {
                                   selectedCharacter =
-                                      'assets/images/sunglasses_boy.png';
+                                      'assets/images/character/sunglasses_boy.png';
                                 });
                                 print(selectedCharacter);
                                 Navigator.pop(context);
                               },
                               child: Image.asset(
-                                'assets/images/sunglasses_boy.png', // 이미지 경로에 따라 수정해주세요
+                                'assets/images/character/sunglasses_boy.png', // 이미지 경로에 따라 수정해주세요
                                 width: 90,
                                 height: 90,
                               ),

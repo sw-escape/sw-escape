@@ -1,7 +1,7 @@
 // 로그인
 
 import 'package:flutter/material.dart';
-import 'main_page.dart';
+import 'home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -171,7 +171,7 @@ class LoginScreen extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => MainPage(),
+                                        builder: (context) => HomePage(),
                                       ),
                                     );
                                   } else {

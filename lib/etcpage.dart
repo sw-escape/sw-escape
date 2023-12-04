@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sw_escape/CodingBootCamp.dart';
 import 'package:sw_escape/GraduateThesisTopcit.dart';
+import 'package:sw_escape/CapstoneInternURS.dart';
 import 'package:sw_escape/LowestGraduateGPA.dart';
 import 'package:sw_escape/MACHCourses.dart';
 import 'package:sw_escape/ProfessorInterview.dart';
@@ -117,9 +118,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => CodingBootCampDialog()));
-            },
+            onPressed: () => showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return CodingBootCampDialog();
+              }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -156,9 +160,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => GraduateThesisTopcitDialog()));
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return GraduateThesisTopcitDialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -195,9 +202,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return CapInternURSDialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -234,9 +244,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MACHCourseDialog()));
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return MACHCourseDialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -274,9 +287,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LowestGraduateGPADialog()));
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return LowestGraduateGPADialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상
@@ -313,9 +329,12 @@ class EtcMenu extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfessorInterviewDialog()));
-            },
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return ProfessorInterviewDialog();
+                }
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
               foregroundColor: Colors.black, // 텍스트 색상

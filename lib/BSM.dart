@@ -66,7 +66,7 @@ class _BSMPageState extends State<BSMPage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/BSMEx.png'),
+            Image.asset('assets/images/BSMEx.png'),
             const SizedBox(
               height: 80,
             ),
@@ -83,7 +83,7 @@ class _BSMPageState extends State<BSMPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('일반물리(1)', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -99,9 +99,9 @@ class _BSMPageState extends State<BSMPage> {
                     child: DropdownButton(
                       value: _selectedGrade[0].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -128,7 +128,7 @@ class _BSMPageState extends State<BSMPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('일반물리실험(1)', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -144,9 +144,9 @@ class _BSMPageState extends State<BSMPage> {
                     child: DropdownButton(
                       value: _selectedGrade[1].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -173,7 +173,7 @@ class _BSMPageState extends State<BSMPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('미적분학', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -189,9 +189,9 @@ class _BSMPageState extends State<BSMPage> {
                     child: DropdownButton(
                       value: _selectedGrade[2].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -218,7 +218,7 @@ class _BSMPageState extends State<BSMPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('선형대수학', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -234,9 +234,9 @@ class _BSMPageState extends State<BSMPage> {
                     child: DropdownButton(
                       value: _selectedGrade[3].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -263,7 +263,7 @@ class _BSMPageState extends State<BSMPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('이산수학', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -279,9 +279,9 @@ class _BSMPageState extends State<BSMPage> {
                     child: DropdownButton(
                       value: _selectedGrade[4].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -308,7 +308,7 @@ class _BSMPageState extends State<BSMPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('확률 및 통계', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -324,9 +324,9 @@ class _BSMPageState extends State<BSMPage> {
                     child: DropdownButton(
                       value: _selectedGrade[5].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
@@ -353,7 +353,7 @@ class _BSMPageState extends State<BSMPage> {
                     width: 270,
                     height: 36,
                     child: const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('수치해석', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -369,9 +369,9 @@ class _BSMPageState extends State<BSMPage> {
                     child: DropdownButton(
                       value: _selectedGrade[6].toString(),
                       items: _listGrade.map(
-                            (point)=>DropdownMenuItem(
-                            value: point,
-                            child: Text(point, style: const TextStyle(fontWeight: FontWeight.bold))
+                            (grade)=>DropdownMenuItem(
+                            value: grade,
+                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ).toList(),
                       onChanged: (value){
