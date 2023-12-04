@@ -79,7 +79,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                 child: Text(
                   'SW ESCAPE',
                   style: TextStyle(
-                    fontFamily: 'iblack',
+                    fontFamily: 'Inter',
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
                     fontSize: 48,

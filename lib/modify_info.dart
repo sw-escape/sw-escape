@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:sw_escape/student.dart';
 
 class ModifyInfo extends StatefulWidget {
-  const ModifyInfo({super.key});
+  final String? selectedStudentID;
+
+  const ModifyInfo({super.key, this.selectedStudentID});
 
   @override
   State<ModifyInfo> createState() => _ModifyInfoState();
@@ -13,11 +15,14 @@ class _ModifyInfoState extends State<ModifyInfo> {
   late String selectedCharacter = 'assets/images/glasses_girl.png';
   @override
   Widget build(BuildContext context) {
+    String? studentID = Provider.of<Student>(context).selectedStudentID;
+
     final _formkey = GlobalKey<FormState>(); // for textformfield validation
     TextEditingController _idController = TextEditingController(text: 'userid');
     TextEditingController _deptController =
         TextEditingController(text: '소프트웨어학과');
-    late int selectedYear;
+    // studentID에서 학번 연도 부분을 추출하여 정수로 변환하고, 그 값을 selectedYear 변수에 할당
+    late int selectedYear = int.tryParse(studentID?.substring(0, 2) ?? '0') ?? 0;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -253,19 +258,22 @@ class _ModifyInfoState extends State<ModifyInfo> {
                               decoration: BoxDecoration(
                                   border: Border.all(
                                       color: Colors.black, width: 0.5)),
-                              child: DropdownButtonFormField(
-                                value: 2,
+                              child: DropdownButtonFormField<int>(
+                                value: selectedYear,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
                                   hintText: '학번을 선택해주세요',
                                 ),
-                                //value: studentResult.additionalPoint,
                                 items: List.generate(10, (index) {
-                                  return DropdownMenuItem(
-                                      value: index,
+                                  return DropdownMenuItem<int>(
+                                      value: 23 - index,
                                       child: Text('${23 - index}학번'));
                                 }),
-                                onChanged: (value) {},
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedYear = value!;
+                                  });
+                                },
                                 validator: (value) {
                                   if (value == 0) {
                                     return '학번을 선택해주세요';
