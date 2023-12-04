@@ -30,6 +30,11 @@ class _SignupFormState extends State<SignupForm> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+
+    final availableHeight = screenHeight - keyboardHeight;
+
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -55,7 +60,9 @@ class _SignupFormState extends State<SignupForm> {
               ),
               SizedBox(height: 40),
               Container(
-                width: MediaQuery.of(context).size.width * 0.87, // 큰 박스 크기
+                width: MediaQuery.of(context).size.width * 0.87,
+                height: MediaQuery.of(context).size.height * 0.375,
+
                 decoration: BoxDecoration(
                   color: Color(0xFF5BB0FF),
                   borderRadius: BorderRadius.circular(50), // 큰 박스 모서리 둥글게
