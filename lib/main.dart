@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
             //useMaterial3: true,
             fontFamily: 'NanumBarunGothic'),
-        home: MainPage(), //** splash 페이지로 교체함
+        home: SplashScreen(), //** splash 페이지로 교체함
       ),
     );
   }

@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
               Text(
                 'SW ESCAPE',
                 style: TextStyle(
-                  fontFamily: 'iblack',
+                  fontFamily: 'Inter',
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   fontSize: 48,
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                       Text(
                         '  EMAIL',
                         style: TextStyle(
-                          fontFamily: 'iblack',
+                          fontFamily: 'Inter',
                           color: Colors.white,
                           fontStyle: FontStyle.italic,
                           fontSize: 14,
@@ -98,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                       Text(
                         '  PASSWORD',
                         style: TextStyle(
-                          fontFamily: 'iblack',
+                          fontFamily: 'Inter',
                           color: Colors.white,
                           fontStyle: FontStyle.italic,
                           fontSize: 14,
@@ -186,7 +186,7 @@ class LoginScreen extends StatelessWidget {
                             child: Text(
                               'LOGIN',
                               style: TextStyle(
-                                fontFamily: 'iblack',
+                                fontFamily: 'Inter',
                                 fontSize: 18,
                                 color: Colors.lightBlue[800],
                                 fontStyle: FontStyle.italic,

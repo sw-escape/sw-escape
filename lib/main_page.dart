@@ -18,6 +18,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
+    String? selectedStudentID = Provider.of<Student>(context).selectedStudentID;
+
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -43,7 +45,7 @@ class _MainPageState extends State<MainPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ModifyInfo(), // 이동할 화면 위젯
+                    builder: (context) => ModifyInfo(selectedStudentID: selectedStudentID),
                   ),
                 );
               },
@@ -181,6 +183,8 @@ class MyInfo extends StatefulWidget {
 class _MyInfoState extends State<MyInfo> {
   @override
   Widget build(BuildContext context) {
+    String? studentID = Provider.of<Student>(context).selectedStudentID;
+
     return Material(
       elevation: 4, // elevation 정도
       borderRadius: BorderRadius.only(
@@ -240,7 +244,7 @@ class _MyInfoState extends State<MyInfo> {
                     style: TextStyle(fontSize: 17),
                   ),
                   Text(
-                    '21학번',
+                    '${studentID}', // ${student.entranceYear}
                     style: TextStyle(fontSize: 17),
                   )
                 ],
