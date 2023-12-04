@@ -61,7 +61,7 @@ class _SignupFormState extends State<SignupForm> {
               SizedBox(height: 40),
               Container(
                 width: MediaQuery.of(context).size.width * 0.87,
-                height: MediaQuery.of(context).size.height * 0.375,
+                height: MediaQuery.of(context).size.height * 0.45,
 
                 decoration: BoxDecoration(
                   color: Color(0xFF5BB0FF),

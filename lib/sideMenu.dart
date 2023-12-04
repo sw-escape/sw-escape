@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sw_escape/start.dart';
 
 import 'home_page.dart';
 import 'MajorBasic.dart';
@@ -79,6 +80,22 @@ class SideMenu extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text('내 정보 수정',
                         style: TextStyle(color: Colors.white, fontSize: 18)))),
+            TextButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil( // StartScreen로 이동
+                  context,
+                  MaterialPageRoute(builder: (context) => StartScreen()),
+                      (route) => false, // 현재 페이지 스택에서 제거
+                );
+              },
+              child: const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '로그아웃',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ),
+            ),
           ],
         ),
       ),
