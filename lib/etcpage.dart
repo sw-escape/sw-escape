@@ -7,6 +7,7 @@ import 'package:sw_escape/LowestGraduateGPA.dart';
 import 'package:sw_escape/MACHCourses.dart';
 import 'package:sw_escape/ProfessorInterview.dart';
 import 'progress.dart';
+import 'ProgressBar.dart';
 
 import 'sideMenu.dart';
 
@@ -44,11 +45,13 @@ class EtcPage extends StatelessWidget {
         color: const Color(0xFF72BBFF),
         child: Column(
           children: [
-            Container(
-              height: 30,
-              // color: Colors.indigo,
-            ),
-            const ProgressBar(),
+            // ProgressBar(
+            //   currentProgress: context.select((Progress p) => p.majorRequiredProgress),
+            //   maxProgress: context.select((Progress p) => p.majorRequiredProgressMax),
+            //   width: 120.0,
+            //   height: 20.0,
+            //   color: const Color(0xFF76DF6D),
+            // ),
             Container(
               height: 20,
               // color: Colors.indigo,
@@ -60,52 +63,6 @@ class EtcPage extends StatelessWidget {
     );
   }
 }
-
-
-/////////////////////////////////////////////////////////////////
-
-
-class ProgressBar extends StatefulWidget {
-  const ProgressBar({super.key});
-
-  @override
-  State<ProgressBar> createState() => _ProgressBarState();
-}
-
-class _ProgressBarState extends State<ProgressBar> {
-
-  @override
-  Widget build(BuildContext context) {
-    int progress = context.select((Progress p) => p.etcProgress);
-    int maxProgress = context.select((Progress p) => p.maxEtcProgress);
-
-    return Center(
-      child: Container(
-        width: 320.0,
-        height: 40.0,
-        decoration: BoxDecoration(
-          color: Colors.white, // 전체 진행 바의 배경색
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
-        ),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-            width: (progress / maxProgress) * 320, // 현재 진척도에 따라 너비를 조절
-            decoration: BoxDecoration(
-              color: const Color(0xFF76DF6D), // 진행 중인 부분의 배경색
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-/////////////////////////////////////////////////////////////////
 
 
 class EtcMenu extends StatelessWidget {
@@ -131,27 +88,42 @@ class EtcMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 70), // 고정 크기 설정
+              // fixedSize: const Size(320, 70), // 고정 크기 설정
+              fixedSize: const Size(320, 80), // 고정 크기 설정
             ),
-            child: const Row(
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/etc/code.png',
-                    ),
-                  ),
+                const SizedBox(height: 5,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.codingBootCampDialogProgress),
+                  maxProgress: context.select((Progress p) => p.codingBootCampDialogProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.red,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '코딩부트캠프',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      height: 50,
+                      child: Image(
+                        image: AssetImage(
+                          'assets/images/etc/code.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '코딩부트캠프',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -173,27 +145,42 @@ class EtcMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 70), // 고정 크기 설정
+              // fixedSize: const Size(320, 70), // 고정 크기 설정
+              fixedSize: const Size(320, 80), // 고정 크기 설정
             ),
-            child: const Row(
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/etc/pencil.png',
-                    ),
-                  ),
+                const SizedBox(height: 5,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.graduateThesisTopcitDialogProgress),
+                  maxProgress: context.select((Progress p) => p.graduateThesisTopcitDialogProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.orange,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '졸업논문/TOPCIT',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      height: 50,
+                      child: Image(
+                        image: AssetImage(
+                          'assets/images/etc/pencil.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '졸업논문/TOPCIT',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -215,27 +202,42 @@ class EtcMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 70), // 고정 크기 설정
+              // fixedSize: const Size(320, 70), // 고정 크기 설정
+              fixedSize: const Size(320, 80), // 고정 크기 설정
             ),
-            child: const Row(
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/etc/light.png',
-                    ),
-                  ),
+                const SizedBox(height: 5,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.capstoneProgress),
+                  maxProgress: context.select((Progress p) => p.capstoneProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.yellow,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '캡스톤/인턴/학부연구생',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      height: 50,
+                      child: Image(
+                        image: AssetImage(
+                          'assets/images/etc/light.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '캡스톤/인턴/학부연구생',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -257,28 +259,43 @@ class EtcMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 70), // 고정 크기 설정
+              // fixedSize: const Size(320, 70), // 고정 크기 설정
+              fixedSize: const Size(320, 80), // 고정 크기 설정
             ),
-            child: const Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/etc/book.png',
-                    ),
-                  ),
+                const SizedBox(height: 5,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.machCourseDialogProgress),
+                  maxProgress: context.select((Progress p) => p.machCourseDialogProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.green,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      'MACH 교양',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                const SizedBox(height: 10,),
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      height: 30,
+                      child: Image(
+                        image: AssetImage(
+                          'assets/images/etc/book.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          'MACH 교양',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -300,27 +317,42 @@ class EtcMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 70), // 고정 크기 설정
+              // fixedSize: const Size(320, 70), // 고정 크기 설정
+              fixedSize: const Size(320, 80), // 고정 크기 설정
             ),
-            child: const Row(
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/etc/grades.png',
-                    ),
-                  ),
+                const SizedBox(height: 5,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.lowestGraduateGPADialogProgress),
+                  maxProgress: context.select((Progress p) => p.lowestGraduateGPADialogProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.blue,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '최저 졸업 평점',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      height: 50,
+                      child: Image(
+                        image: AssetImage(
+                          'assets/images/etc/grades.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '최저 졸업 평점',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -342,27 +374,42 @@ class EtcMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0), // 모서리를 둥글게 만듦
                 side: const BorderSide(color: Colors.black), // 테두리 색상
               ),
-              fixedSize: const Size(320, 70), // 고정 크기 설정
+              // fixedSize: const Size(320, 70), // 고정 크기 설정
+              fixedSize: const Size(320, 80), // 고정 크기 설정
             ),
-            child: const Row(
+            child: Column(
               children: [
-                SizedBox(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/etc/guardian.png',
-                    ),
-                  ),
+                const SizedBox(height: 5,),
+                ProgressBar(
+                  currentProgress: context.select((Progress p) => p.professorInterviewDialogProgress),
+                  maxProgress: context.select((Progress p) => p.professorInterviewDialogProgressMax),
+                  width: 250.0,
+                  height: 20.0,
+                  color: Colors.purpleAccent,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '교수님 면담',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                const Row(
+                  children: [
+                    SizedBox(width: 30,),
+                    SizedBox(
+                      height: 50,
+                      child: Image(
+                        image: AssetImage(
+                          'assets/images/etc/guardian.png',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          '교수님 면담',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
