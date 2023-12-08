@@ -40,6 +40,8 @@ dependencies:
   firebase_auth: ^4.14.1
   url_launcher: ^6.2.1
   percent_indicator: ^4.0.1
+  cloud_firestore: ^4.13.3
+  modal_progress_hud_nsn: ^0.4.0
 
 dev_dependencies:
   flutter_test:

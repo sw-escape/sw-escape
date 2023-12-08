@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//과목명, 들은 학기만 해당
 class Major with ChangeNotifier{
   Map<String, String> majors = {
     /*
