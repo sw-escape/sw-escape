@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sw_escape/OtherMajorCourse.dart';
 import 'progress.dart';
 import 'ProgressBar.dart';
 
@@ -69,7 +70,7 @@ class MajorMenu extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // context.read<Progress>().increase();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MajorRequired()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MajorRequired()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -116,7 +117,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => EngineeringCertification()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const EngineeringCertification()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -168,7 +169,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => DesignSubject()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const DesignSubject()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -215,7 +216,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => BSM()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const BSM()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -264,7 +265,7 @@ class MajorMenu extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const OtherMajorCourse()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색

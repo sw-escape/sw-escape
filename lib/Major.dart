@@ -29,28 +29,42 @@ class Major with ChangeNotifier{
     'DesignOfEmbeddedSystem':'1-1', // 내장형시스템설계
     'AdvancedIoTProject':'0-0' //고급IoT프로젝트
      */
-    // ProbabilityAndStatistics 확률과통계
-    // OpenSourceSWAndPython 오픈소스SW와 파이썬 프로그래밍
-    // AutomataAndFormalLanguage 오토마타와형식언어
-    //'DesignThinking' : '1-1' // 디자인사고 Mach
-    // OpenSourceSWProject 오픈소스SW프로젝트
-    // Compiler 컴파일러
     // NumericalAnalysis 수치해석
-    // CodingBootCamp 코딩부트캠프
-    // ComputerCommunication 컴퓨터통신
-    // ComputerGraphics 컴퓨터그래픽스
-    // HumanInterfaceMedia 휴먼인터페이스미디어
-    // ImageProgressing 영상처리
-    // LinuxSystemApplication 리눅스시스템응용설계
-    // ApplicationToPatternRecognition 패턴인식응용
-    // ComputerVision 컴퓨터비전
-    // InformationAndKnowledge 정보와지식
-    // InformationAndSecurityTheory 정보보호이론
-    // MachineLearning 머신러닝
-    // MulticoreComputing 멀티코어컴퓨팅
-    // NaturalLanguageProcessingInfoRetrieval 자연어처리및정보검색
-    // WirelessMobileCommunication 무선이동통신
-    // Business Intelligence 비즈니스 인텔리전스
+    // ProbabilityAndStatistics 확률과통계
+    //'DesignThinking' : '1-1' // 디자인사고 Mach
+
+    // OpenSourceSWAndPython 오픈소스SW와 파이썬 프로그래밍 1-1
+    // AffectiveComputing 감성컴퓨팅 2-1
+    // ComputerSystemAndAssemblyLang 컴퓨터시스템및어셈블리언어 2-1
+    // AutomataAndFormalLanguage 오토마타와형식언어 2-2
+    // OpenSourceSWProject 오픈소스SW프로젝트 3-1
+    // Compiler 컴파일러 3-1
+    // LinuxSystemApplication 리눅스시스템응용설계 3-2
+    // AppDevelopmentForMobile 모바일앱개발 3-2
+    // BusinessIntelligence 비즈니스 인텔리전스 3-2
+    //IndustryHandsOnPj 산업체핸즈온프로젝트 3-2
+    // ImageProgressing 영상처리 3-2
+    // ComputerGraphics 컴퓨터그래픽스 3-2
+    // ComputerCommunication 컴퓨터통신 3-2
+    // CodingBootCamp 코딩부트캠프 3-2
+    // HumanInterfaceMedia 휴먼인터페이스미디어 3-2
+    // MachineLearning 머신러닝 4-1
+    // MulticoreComputing 멀티코어컴퓨팅 4-1
+    // WirelessMobileCommunication 무선이동통신 4-1
+    // NatLangProcInfoRetrieval 자연어처리및정보검색 4-1
+    // InformationAndSecurityTheory 정보보호이론 4-1
+    // InformationAndKnowledge 정보와지식 4-1
+    // ComputerVision 컴퓨터비전 4-1
+    // IntroPatternRecognition 패턴인식 4-1
+    // VRAugmentedMixedReality 가상증강 혼합 현실 4-2
+    // MachineVisionPj 로봇비전프로젝트 4-2
+    // MachineLearningPj 머신러닝프로젝트 4-2
+    // BigData 빅데이터 4-2
+    // DesignPattern 설계 패턴 4-2
+    // ConvergentIoTPjDesign 융합 IoT 프로젝트 설계 4-2
+    // DesignOfGameSW 컴퓨터게임설계 4-2
+    // AppToPatternRecognition 패턴인식응용 4-2
+    // Internship 인턴쉽
     //
   };
   changeMajor(String majorName, String majorTime){
