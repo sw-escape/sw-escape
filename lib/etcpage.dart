@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sw_escape/CodingBootCamp.dart';
@@ -6,7 +8,7 @@ import 'package:sw_escape/CapstoneInternURS.dart';
 import 'package:sw_escape/LowestGraduateGPA.dart';
 import 'package:sw_escape/MACHCourses.dart';
 import 'package:sw_escape/ProfessorInterview.dart';
-import 'progress.dart';
+import 'Progress.dart';
 import 'ProgressBar.dart';
 
 import 'sideMenu.dart';
@@ -16,7 +18,6 @@ class EtcPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -56,7 +57,7 @@ class EtcPage extends StatelessWidget {
               height: 20,
               // color: Colors.indigo,
             ),
-            const EtcMenu(),
+            EtcMenu(),
           ],
         ),
       ),
@@ -66,10 +67,21 @@ class EtcPage extends StatelessWidget {
 
 
 class EtcMenu extends StatelessWidget {
-  const EtcMenu({super.key});
+  EtcMenu({super.key});
+
+  final db = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
+    // Progress bar를 위해서, firestore에서 데이터 불러오기
+    context.read<Progress>().loadNumberProgress(db, auth, "codingBootCampDialog");
+    context.read<Progress>().loadNumberProgress(db, auth, "graduateThesisTopcitDialog");
+    context.read<Progress>().loadNumberProgress(db, auth, "capstone");
+    context.read<Progress>().loadNumberProgress(db, auth, "machCourseDialog");
+    context.read<Progress>().loadNumberProgress(db, auth, "lowestGraduateGPADialog");
+    context.read<Progress>().loadNumberProgress(db, auth, "professorInterviewDialog");
+
     return Column( // Column은 기본적으로 수평 정렬
       children: [
         Padding(
@@ -95,8 +107,8 @@ class EtcMenu extends StatelessWidget {
               children: [
                 const SizedBox(height: 5,),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.codingBootCampDialogProgress),
-                  maxProgress: context.select((Progress p) => p.codingBootCampDialogProgressMax),
+                  currentProgress: context.select((Progress p) => p.requirementsProgress["codingBootCampDialog"]!),
+                  maxProgress: context.select((Progress p) => p.codingBootCampDialogMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.red,
@@ -152,8 +164,8 @@ class EtcMenu extends StatelessWidget {
               children: [
                 const SizedBox(height: 5,),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.graduateThesisTopcitDialogProgress),
-                  maxProgress: context.select((Progress p) => p.graduateThesisTopcitDialogProgressMax),
+                  currentProgress: context.select((Progress p) => p.requirementsProgress["graduateThesisTopcitDialog"]!),
+                  maxProgress: context.select((Progress p) => p.graduateThesisTopcitDialogMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.orange,
@@ -209,8 +221,8 @@ class EtcMenu extends StatelessWidget {
               children: [
                 const SizedBox(height: 5,),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.capstoneProgress),
-                  maxProgress: context.select((Progress p) => p.capstoneProgressMax),
+                  currentProgress: context.select((Progress p) => p.requirementsProgress["capstone"]!),
+                  maxProgress: context.select((Progress p) => p.capstoneMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.yellow,
@@ -266,8 +278,8 @@ class EtcMenu extends StatelessWidget {
               children: [
                 const SizedBox(height: 5,),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.machCourseDialogProgress),
-                  maxProgress: context.select((Progress p) => p.machCourseDialogProgressMax),
+                  currentProgress: context.select((Progress p) => p.requirementsProgress["machCourseDialog"]!),
+                  maxProgress: context.select((Progress p) => p.machCourseDialogMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.green,
@@ -324,8 +336,8 @@ class EtcMenu extends StatelessWidget {
               children: [
                 const SizedBox(height: 5,),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.lowestGraduateGPADialogProgress),
-                  maxProgress: context.select((Progress p) => p.lowestGraduateGPADialogProgressMax),
+                  currentProgress: context.select((Progress p) => p.requirementsProgress["lowestGraduateGPADialog"]!),
+                  maxProgress: context.select((Progress p) => p.lowestGraduateGPADialogMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.blue,
@@ -381,8 +393,8 @@ class EtcMenu extends StatelessWidget {
               children: [
                 const SizedBox(height: 5,),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.professorInterviewDialogProgress),
-                  maxProgress: context.select((Progress p) => p.professorInterviewDialogProgressMax),
+                  currentProgress: context.select((Progress p) => p.requirementsProgress["professorInterviewDialog"]!),
+                  maxProgress: context.select((Progress p) => p.professorInterviewDialogMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.purpleAccent,

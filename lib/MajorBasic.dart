@@ -131,7 +131,7 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   ),
                   child: Center(
                     child: DropdownButton(
-                      value: _selectedGrade[0].toString(),
+                      value: _selectedGrade[0].toString(), // firestore에서 읽어오고 그 값을 여기 넣기
                       items: _listGrade.map(
                             (grade)=>DropdownMenuItem(
                             value: grade,
@@ -139,7 +139,7 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                         ),
                       ).toList(),
                       onChanged: (value){
-                        setState(() {
+                        setState(() { // firestore 값 넣기 set(SetOptions(merge: true))
                           context.read<Major>().changeMajor('Calculus', value!);
                           _selectedGrade[0] = value;
                           _updateProgress(value, 0);

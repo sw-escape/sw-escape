@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'progress.dart';
+import 'package:sw_escape/Major.dart';
+import 'Progress.dart';
+import 'package:sw_escape/OtherMajorCourse.dart';
 import 'ProgressBar.dart';
 
 import 'sideMenu.dart';
@@ -14,7 +18,6 @@ class MajorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -40,9 +43,9 @@ class MajorPage extends StatelessWidget {
       endDrawer: const SideMenu(),
       body: Container(
         color: const Color(0xFF72BBFF),
-        child: const Column(
+        child: Column(
           children: [
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Center(
               child: MajorMenu(),
             ),
@@ -55,10 +58,20 @@ class MajorPage extends StatelessWidget {
 
 
 class MajorMenu extends StatelessWidget {
-  const MajorMenu({super.key});
+  MajorMenu({super.key});
+
+  final db = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
+    // Progress bar를 위해서, firestore에서 데이터 불러오기
+    context.read<Progress>().loadNumberProgress(db, auth, "majorRequired");
+    context.read<Progress>().loadNumberProgress(db, auth, "engineeringCertification");
+    context.read<Progress>().loadCreditProgress(db, auth, "designSubject");
+    context.read<Progress>().loadCreditProgress(db, auth, "bsm");
+    context.read<Progress>().loadCreditProgress(db, auth, "etcMajor");
+
     return Column( // Column은 기본적으로 수평 정렬
       children: [
         Row(
@@ -68,8 +81,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // context.read<Progress>().increase();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MajorRequired()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MajorRequired()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -85,8 +97,8 @@ class MajorMenu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ProgressBar(
-                      currentProgress: context.select((Progress p) => p.majorRequiredProgress),
-                      maxProgress: context.select((Progress p) => p.majorRequiredProgressMax),
+                      currentProgress: context.select((Progress p) => p.requirementsProgress["majorRequired"]!),
+                      maxProgress: context.select((Progress p) => p.majorRequiredMax),
                       width: 120.0,
                       height: 20.0,
                       color: Colors.red,
@@ -116,7 +128,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => EngineeringCertification()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const EngineeringCertification()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -132,8 +144,8 @@ class MajorMenu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ProgressBar(
-                      currentProgress: context.select((Progress p) => p.engineeringCertificationProgress),
-                      maxProgress: context.select((Progress p) => p.engineeringCertificationProgressMax),
+                      currentProgress: context.select((Progress p) => p.requirementsProgress["engineeringCertification"]!),
+                      maxProgress: context.select((Progress p) => p.engineeringCertificationMax),
                       width: 120.0,
                       height: 20.0,
                       color: Colors.orange,
@@ -168,7 +180,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => DesignSubject()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const DesignSubject()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -184,8 +196,8 @@ class MajorMenu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ProgressBar(
-                      currentProgress: context.select((Progress p) => p.designSubjectProgress),
-                      maxProgress: context.select((Progress p) => p.designSubjectProgressMax),
+                      currentProgress: context.select((Progress p) => p.requirementsProgress["designSubject"]!),
+                      maxProgress: context.select((Progress p) => p.designSubjectMax),
                       width: 120.0,
                       height: 20.0,
                       color: Colors.yellow,
@@ -215,7 +227,7 @@ class MajorMenu extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => BSM()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const BSM()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // 배경색
@@ -231,8 +243,8 @@ class MajorMenu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ProgressBar(
-                      currentProgress: context.select((Progress p) => p.bsmProgress),
-                      maxProgress: context.select((Progress p) => p.bsmProgressMax),
+                      currentProgress: context.select((Progress p) => p.requirementsProgress["bsm"]!),
+                      maxProgress: context.select((Progress p) => p.bsmMax),
                       width: 120.0,
                       height: 20.0,
                       color: Colors.green,
@@ -264,7 +276,7 @@ class MajorMenu extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const OtherMajorCourse()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white, // 배경색
@@ -280,8 +292,8 @@ class MajorMenu extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.etcMajorProgress),
-                  maxProgress: context.select((Progress p) => p.etcMajorProgressMax),
+                  currentProgress: context.select((Progress p) => p.requirementsProgress["etcMajor"]!),
+                  maxProgress: context.select((Progress p) => p.etcMajorMax),
                   width: 120.0,
                   height: 20.0,
                   color: Colors.purpleAccent,

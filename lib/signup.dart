@@ -30,11 +30,6 @@ class _SignupFormState extends State<SignupForm> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
-
-    final availableHeight = screenHeight - keyboardHeight;
-
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -45,7 +40,7 @@ class _SignupFormState extends State<SignupForm> {
               Text(
                 'SW ESCAPE',
                 style: TextStyle(
-                  fontFamily: 'Inter',
+                  fontFamily: 'iblack',
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   fontSize: 48,
@@ -60,8 +55,7 @@ class _SignupFormState extends State<SignupForm> {
               ),
               SizedBox(height: 40),
               Container(
-                width: MediaQuery.of(context).size.width * 0.87,
-                height: MediaQuery.of(context).size.height * 0.45,
+                width: MediaQuery.of(context).size.width * 0.87, // 큰 박스 크기
                 decoration: BoxDecoration(
                   color: Color(0xFF5BB0FF),
                   borderRadius: BorderRadius.circular(50), // 큰 박스 모서리 둥글게
@@ -78,7 +72,7 @@ class _SignupFormState extends State<SignupForm> {
                       Text(
                         '  EMAIL',
                         style: TextStyle(
-                          fontFamily: 'Inter',
+                          fontFamily: 'iblack',
                           color: Colors.white,
                           fontStyle: FontStyle.italic,
                           fontSize: 14,
@@ -137,7 +131,7 @@ class _SignupFormState extends State<SignupForm> {
                       Text(
                         '  PASSWORD',
                         style: TextStyle(
-                          fontFamily: 'Inter',
+                          fontFamily: 'iblack',
                           color: Colors.white,
                           fontStyle: FontStyle.italic,
                           fontSize: 14,
@@ -233,7 +227,7 @@ class _SignupFormState extends State<SignupForm> {
                             },
                             child: Text('NEXT',
                                 style: TextStyle(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'iblack',
                                   fontSize: 18,
                                   color: Colors.lightBlue[800],
                                   fontStyle: FontStyle.italic,
