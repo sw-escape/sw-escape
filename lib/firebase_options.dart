@@ -44,38 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCAUUGs0dHFY6yC7AU541_uT1iA_PP5LjE',
-    appId: '1:622886773076:web:cabadf0ff49fbfddd3e8c1',
-    messagingSenderId: '622886773076',
-    projectId: 'sw-escape-30e60',
-    authDomain: 'sw-escape-30e60.firebaseapp.com',
-    storageBucket: 'sw-escape-30e60.appspot.com',
-    measurementId: 'G-EDF4Z7PLTF',
+    apiKey: 'AIzaSyDZA9n25tZbx4dfKAMhcOEbINcuHUvOCkE',
+    appId: '1:506765403462:web:57e85cfb35f4ffddccb147',
+    messagingSenderId: '506765403462',
+    projectId: 'sw-escape-b32f4',
+    authDomain: 'sw-escape-b32f4.firebaseapp.com',
+    storageBucket: 'sw-escape-b32f4.appspot.com',
+    measurementId: 'G-Z753SWPPW6',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAPE669DboWHVew5aXIWxICRkvbX-FAJP4',
-    appId: '1:622886773076:android:06d917840ec928bad3e8c1',
-    messagingSenderId: '622886773076',
-    projectId: 'sw-escape-30e60',
-    storageBucket: 'sw-escape-30e60.appspot.com',
+    apiKey: 'AIzaSyCDC8Qe2gBTWFfiATh5c4CZJhHXg908I5M',
+    appId: '1:506765403462:android:b559fd7e069626c4ccb147',
+    messagingSenderId: '506765403462',
+    projectId: 'sw-escape-b32f4',
+    storageBucket: 'sw-escape-b32f4.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCS9oawfqcZBCJ0cznsy7MFix2-_NkRMiI',
-    appId: '1:622886773076:ios:29c681ea50e56aded3e8c1',
-    messagingSenderId: '622886773076',
-    projectId: 'sw-escape-30e60',
-    storageBucket: 'sw-escape-30e60.appspot.com',
+    apiKey: 'AIzaSyDyJkyE80chTzw1FB3efACtjWFSwiqM2MU',
+    appId: '1:506765403462:ios:ac82815ef7ad3b96ccb147',
+    messagingSenderId: '506765403462',
+    projectId: 'sw-escape-b32f4',
+    storageBucket: 'sw-escape-b32f4.appspot.com',
     iosBundleId: 'com.example.swEscape',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCS9oawfqcZBCJ0cznsy7MFix2-_NkRMiI',
-    appId: '1:622886773076:ios:d48d38c203e6897cd3e8c1',
-    messagingSenderId: '622886773076',
-    projectId: 'sw-escape-30e60',
-    storageBucket: 'sw-escape-30e60.appspot.com',
+    apiKey: 'AIzaSyDyJkyE80chTzw1FB3efACtjWFSwiqM2MU',
+    appId: '1:506765403462:ios:531299fd9049dd9dccb147',
+    messagingSenderId: '506765403462',
+    projectId: 'sw-escape-b32f4',
+    storageBucket: 'sw-escape-b32f4.appspot.com',
     iosBundleId: 'com.example.swEscape.RunnerTests',
   );
 }

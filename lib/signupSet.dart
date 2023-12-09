@@ -193,7 +193,7 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                               //
                               // Provider.of<Student>(context, listen: false).setInfo('userid', dept, year);
                               final newUser= await _authentication.currentUser;
-                              await FirebaseFirestore.instance.collection('user').doc(newUser!.uid).update({
+                              await FirebaseFirestore.instance.collection('users').doc(newUser!.uid).update({
                                 'StudentID' : selectedStudentID,
                                 'Major' : selectedMajor,
                               });
