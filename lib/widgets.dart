@@ -19,14 +19,19 @@ class Despcription extends StatelessWidget {
           border: Border.all(color: Colors.black), // 까만색 테두리
           color: Colors.white,
         ),
-
-        padding: const EdgeInsets.all(20), // 안쪽 여백 설정
-        child: Text(
-          description,
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.black,
-          ),
+        padding: const EdgeInsets.all(5), // 안쪽 여백 설정
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w900,
+                color: Colors.black,
+              ),
+            ),
+          ],
         ),
       ),
     );

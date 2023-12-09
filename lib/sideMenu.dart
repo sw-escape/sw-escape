@@ -3,8 +3,8 @@ import 'package:sw_escape/start.dart';
 
 import 'home_page.dart';
 import 'MajorBasic.dart';
-import 'majorpage.dart';
-import 'etcpage.dart';
+import 'major/majorpage.dart';
+import 'etc/etcpage.dart';
 import 'cau_common/commonpage.dart';
 import 'modify_info.dart';
 

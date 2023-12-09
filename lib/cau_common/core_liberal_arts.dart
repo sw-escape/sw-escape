@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../sideMenu.dart';
-import 'widgets.dart';
+import '../widgets.dart';
 import 'common_info.dart';
 
 class CoreLiberalArts extends StatefulWidget {
@@ -21,11 +21,10 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'SW ESCAPE',
+          '핵심 교양',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 22,
             fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.italic,
           ),
         ),
         backgroundColor: Colors.white,

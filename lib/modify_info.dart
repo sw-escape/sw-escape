@@ -12,7 +12,7 @@ class ModifyInfo extends StatefulWidget {
 }
 
 class _ModifyInfoState extends State<ModifyInfo> {
-  late String selectedCharacter = 'assets/images/glasses_girl.png';
+  late String selectedCharacter = context.watch<Student>().character;
   @override
   Widget build(BuildContext context) {
     String? studentID = Provider.of<Student>(context).selectedStudentID;
@@ -21,8 +21,10 @@ class _ModifyInfoState extends State<ModifyInfo> {
     TextEditingController _idController = TextEditingController(text: 'userid');
     TextEditingController _deptController =
         TextEditingController(text: '소프트웨어학과');
+    TextEditingController _yearController = TextEditingController(text: '21');
     // studentID에서 학번 연도 부분을 추출하여 정수로 변환하고, 그 값을 selectedYear 변수에 할당
-    late int selectedYear = int.tryParse(studentID?.substring(0, 2) ?? '0') ?? 0;
+    late int selectedYear =
+        int.tryParse(studentID?.substring(0, 2) ?? '0') ?? 0;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -30,7 +32,7 @@ class _ModifyInfoState extends State<ModifyInfo> {
           centerTitle: true,
           title: Text(
             '정보 수정',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.black, fontSize: 22),
           ),
           elevation: 0,
           backgroundColor: Colors.white,
@@ -63,17 +65,14 @@ class _ModifyInfoState extends State<ModifyInfo> {
                                 Positioned(
                                   top: 16,
                                   left: 0,
-                                  child: Image.asset(
-                                    selectedCharacter, // 이미지 경로에 따라 수정해주세요
-                                    width: 90,
-                                    height: 90,
-                                  ),
+                                  child: Image.asset(selectedCharacter),
+                                  width: 90,
+                                  height: 90,
                                 ),
                               ],
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                print(selectedCharacter);
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -230,6 +229,7 @@ class _ModifyInfoState extends State<ModifyInfo> {
                               style: TextStyle(fontSize: 16),
                             ),
                             TextFormField(
+                              enabled: false,
                               controller: _deptController, // 컨트롤러 할당
                               decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
@@ -237,12 +237,6 @@ class _ModifyInfoState extends State<ModifyInfo> {
                                 ),
                                 //contentPadding: EdgeInsets.only(left: 10),
                               ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return '학과를 입력해주세요';
-                                }
-                                return null;
-                              },
                             ),
                             SizedBox(
                               height: 40,
@@ -254,34 +248,16 @@ class _ModifyInfoState extends State<ModifyInfo> {
                             SizedBox(
                               height: 10,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.black, width: 0.5)),
-                              child: DropdownButtonFormField<int>(
-                                value: selectedYear,
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: '학번을 선택해주세요',
+                            TextFormField(
+                              enabled: false,
+                              controller: _yearController, // 컨트롤러 할당
+                              decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
                                 ),
-                                items: List.generate(10, (index) {
-                                  return DropdownMenuItem<int>(
-                                      value: 23 - index,
-                                      child: Text('${23 - index}학번'));
-                                }),
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedYear = value!;
-                                  });
-                                },
-                                validator: (value) {
-                                  if (value == 0) {
-                                    return '학번을 선택해주세요';
-                                  }
-                                  return null;
-                                },
+                                //contentPadding: EdgeInsets.only(left: 10),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),

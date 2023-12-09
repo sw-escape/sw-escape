@@ -19,13 +19,9 @@ class CommonPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'SW ESCAPE',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.italic,
-          ),
+        title: Image.asset(
+          'assets/images/swescape_title.png',
+          height: 40, // 이미지의 폭을 조정할 수 있습니다.
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -61,7 +57,6 @@ class CommonPage extends StatelessWidget {
     );
   }
 }
-
 
 class CommonMenu extends StatelessWidget {
   CommonMenu({super.key});
@@ -99,18 +94,25 @@ class CommonMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 ProgressBar(
-                  currentProgress: context.select((Progress p)=>p.requirementsProgress["english"]!),
+                  currentProgress: context.select(
+                      (Progress p) => p.requirementsProgress["english"]!),
                   maxProgress: context.select((Progress p) => p.englishMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.red,
                 ),
-                const SizedBox(height: 5,),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Row(
                   children: [
-                    SizedBox(width: 30,),
+                    SizedBox(
+                      width: 30,
+                    ),
                     SizedBox(
                       child: Image(
                         width: 60,
@@ -155,18 +157,25 @@ class CommonMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 ProgressBar(
-                  currentProgress: context.select((Progress p)=>p.requirementsProgress["chinese"]!),
+                  currentProgress: context.select(
+                      (Progress p) => p.requirementsProgress["chinese"]!),
                   maxProgress: context.select((Progress p) => p.chineseMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.orange,
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 const Row(
                   children: [
-                    SizedBox(width: 35,),
+                    SizedBox(
+                      width: 35,
+                    ),
                     SizedBox(
                       child: Image(
                         width: 50,
@@ -211,18 +220,25 @@ class CommonMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 ProgressBar(
-                  currentProgress: context.select((Progress p)=>p.requirementsProgress["common"]!),
+                  currentProgress: context.select(
+                      (Progress p) => p.requirementsProgress["common"]!),
                   maxProgress: context.select((Progress p) => p.commonMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.yellow,
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 const Row(
                   children: [
-                    SizedBox(width: 30,),
+                    SizedBox(
+                      width: 30,
+                    ),
                     SizedBox(
                       child: Image(
                         width: 50,
@@ -267,18 +283,25 @@ class CommonMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.requirementsProgress["core"]!),
+                  currentProgress: context
+                      .select((Progress p) => p.requirementsProgress["core"]!),
                   maxProgress: context.select((Progress p) => p.coreMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.green,
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 const Row(
                   children: [
-                    SizedBox(width: 30,),
+                    SizedBox(
+                      width: 30,
+                    ),
                     SizedBox(
                       child: Image(
                         width: 50,

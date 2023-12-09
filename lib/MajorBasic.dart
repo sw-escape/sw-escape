@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sw_escape/widgets.dart';
 import 'Major.dart';
 import 'sideMenu.dart';
 
@@ -12,14 +13,16 @@ class MajorBasic extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        title: const Text('전공 기초', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+        title: const Text(
+          '전공 기초',
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         actions: [
           Builder(
             builder: (context) => IconButton(
                 onPressed: () => Scaffold.of(context).openEndDrawer(),
-                icon: Image.asset('assets/images/Menu.png')
-            ),
+                icon: Image.asset('assets/images/Menu.png')),
           )
         ],
       ),
@@ -37,16 +40,29 @@ class MajorBasicPage extends StatefulWidget {
 }
 
 class _MajorBasicPageState extends State<MajorBasicPage> {
-  final _listGrade = ['0-0','1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
+  final _listGrade = [
+    '0-0',
+    '1-1',
+    '1-2',
+    '2-1',
+    '2-2',
+    '3-1',
+    '3-2',
+    '4-1',
+    '4-2',
+    '5-1',
+    '5-2',
+    '6-1',
+    '6-2'
+  ];
   final _selectedGrade = List<String>.filled(8, '');
   final _selectedValue = List<double>.filled(8, 0.0);
   double _progressValue = 0.0;
   void _updateProgress(String value, int i) {
     setState(() {
-      if(value == '0-0'){
+      if (value == '0-0') {
         _selectedValue[i] = 0;
-      }
-      else{
+      } else {
         _selectedValue[i] = 0.125;
       }
       _progressValue = 0;
@@ -56,20 +72,24 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
       }
     });
   }
+
   @override
   void initState() {
     super.initState();
     setState(() {
       _selectedGrade[0] = context.read<Major>().loadMajorTime('Calculus');
       _selectedGrade[1] = context.read<Major>().loadMajorTime('Physics(1)');
-      _selectedGrade[2] = context.read<Major>().loadMajorTime('PhysicsExperiment(1)');
-      _selectedGrade[3] = context.read<Major>().loadMajorTime('BasicComputerProgramming');
+      _selectedGrade[2] =
+          context.read<Major>().loadMajorTime('PhysicsExperiment(1)');
+      _selectedGrade[3] =
+          context.read<Major>().loadMajorTime('BasicComputerProgramming');
       _selectedGrade[4] = context.read<Major>().loadMajorTime('LogicCircuit');
       _selectedGrade[5] = context.read<Major>().loadMajorTime('LinearAlgebra');
-      _selectedGrade[6] = context.read<Major>().loadMajorTime('DiscreteMathematics');
+      _selectedGrade[6] =
+          context.read<Major>().loadMajorTime('DiscreteMathematics');
       _selectedGrade[7] = context.read<Major>().loadMajorTime('Programming');
-      for(int i = 0; i<8;i++){
-        if(_selectedGrade[i] != '0-0'){
+      for (int i = 0; i < 8; i++) {
+        if (_selectedGrade[i] != '0-0') {
           _selectedValue[i] = 0.125;
           _progressValue += _selectedValue[i];
         }
@@ -81,28 +101,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors:[Color(0xFF54A9F6),Color(0xFF93CBFF)]
-        )
-      ),
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xFF54A9F6), Color(0xFF93CBFF)])),
       child: Center(
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
+            SizedBox(
+              height: 10,
+            ),
+            Despcription(description: '22학점 중 14학점 이수해야 합니다.', height: 50),
+            const SizedBox(
+              height: 20,
+            ),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(10),
               child: LinearProgressIndicator(
                 value: _progressValue,
                 minHeight: 35.0,
                 color: const Color(0xFFFBBC05),
                 borderRadius: BorderRadius.circular(20),
               ),
-            ),
-            Image.asset('assets/images/MajorBasicEx.png'),
-            const SizedBox(
-              height: 30,
             ),
             SizedBox(
               height: 40,
@@ -118,7 +139,9 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 25,
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                      child: Text('미적분', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      child: Text('미적분',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -126,20 +149,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   height: 25,
                   width: 70,
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5)
-                  ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: DropdownButton(
-                      value: _selectedGrade[0].toString(), // firestore에서 읽어오고 그 값을 여기 넣기
-                      items: _listGrade.map(
-                            (grade)=>DropdownMenuItem(
-                            value: grade,
-                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ).toList(),
-                      onChanged: (value){
-                        setState(() { // firestore 값 넣기 set(SetOptions(merge: true))
+                      value: _selectedGrade[0]
+                          .toString(), // firestore에서 읽어오고 그 값을 여기 넣기
+                      items: _listGrade
+                          .map(
+                            (grade) => DropdownMenuItem(
+                              value: grade,
+                              child: (grade == '0-0')
+                                  ? const Text('학기',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                  : Text(grade,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          // firestore 값 넣기 set(SetOptions(merge: true))
                           context.read<Major>().changeMajor('Calculus', value!);
                           _selectedGrade[0] = value;
                           _updateProgress(value, 0);
@@ -164,7 +196,9 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 25,
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                      child: Text('일반물리(1)', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      child: Text('일반물리(1)',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -173,20 +207,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   width: 70,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: DropdownButton(
                       value: _selectedGrade[1].toString(),
-                      items: _listGrade.map(
-                            (grade)=>DropdownMenuItem(
-                            value: grade,
-                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ).toList(),
-                      onChanged: (value){
+                      items: _listGrade
+                          .map(
+                            (grade) => DropdownMenuItem(
+                              value: grade,
+                              child: (grade == '0-0')
+                                  ? const Text('학기',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                  : Text(grade,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
                         setState(() {
-                          context.read<Major>().changeMajor('Physics(1)', value!);
+                          context
+                              .read<Major>()
+                              .changeMajor('Physics(1)', value!);
                           _selectedGrade[1] = value;
                           _updateProgress(value, 1);
                         });
@@ -210,7 +253,9 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 25,
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                      child: Text('일반물리실험(1)', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      child: Text('일반물리실험(1)',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -219,20 +264,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   width: 70,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: DropdownButton(
                       value: _selectedGrade[2].toString(),
-                      items: _listGrade.map(
-                            (grade)=>DropdownMenuItem(
-                            value: grade,
-                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ).toList(),
-                      onChanged: (value){
+                      items: _listGrade
+                          .map(
+                            (grade) => DropdownMenuItem(
+                              value: grade,
+                              child: (grade == '0-0')
+                                  ? const Text('학기',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                  : Text(grade,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
                         setState(() {
-                          context.read<Major>().changeMajor('PhysicsExperiment(1)', value!);
+                          context
+                              .read<Major>()
+                              .changeMajor('PhysicsExperiment(1)', value!);
                           _selectedGrade[2] = value;
                           _updateProgress(value, 2);
                         });
@@ -256,7 +310,9 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 25,
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                      child: Text('기초컴퓨터프로그래밍', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      child: Text('기초컴퓨터프로그래밍',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -265,20 +321,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   width: 70,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: DropdownButton(
                       value: _selectedGrade[3].toString(),
-                      items: _listGrade.map(
-                            (grade)=>DropdownMenuItem(
-                            value: grade,
-                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ).toList(),
-                      onChanged: (value){
+                      items: _listGrade
+                          .map(
+                            (grade) => DropdownMenuItem(
+                              value: grade,
+                              child: (grade == '0-0')
+                                  ? const Text('학기',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                  : Text(grade,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
                         setState(() {
-                          context.read<Major>().changeMajor('BasicComputerProgramming', value!);
+                          context
+                              .read<Major>()
+                              .changeMajor('BasicComputerProgramming', value!);
                           _selectedGrade[3] = value;
                           _updateProgress(value, 3);
                         });
@@ -302,7 +367,9 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 25,
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                      child: Text('논리회로', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      child: Text('논리회로',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -311,20 +378,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   width: 70,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: DropdownButton(
                       value: _selectedGrade[4].toString(),
-                      items: _listGrade.map(
-                            (grade)=>DropdownMenuItem(
-                            value: grade,
-                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ).toList(),
-                      onChanged: (value){
+                      items: _listGrade
+                          .map(
+                            (grade) => DropdownMenuItem(
+                              value: grade,
+                              child: (grade == '0-0')
+                                  ? const Text('학기',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                  : Text(grade,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
                         setState(() {
-                          context.read<Major>().changeMajor('LogicCircuit', value!);
+                          context
+                              .read<Major>()
+                              .changeMajor('LogicCircuit', value!);
                           _selectedGrade[4] = value;
                           _updateProgress(value, 4);
                         });
@@ -348,7 +424,9 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 25,
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                      child: Text('선형대수학', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      child: Text('선형대수학',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -357,20 +435,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   width: 70,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: DropdownButton(
                       value: _selectedGrade[5].toString(),
-                      items: _listGrade.map(
-                            (grade)=>DropdownMenuItem(
-                            value: grade,
-                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ).toList(),
-                      onChanged: (value){
+                      items: _listGrade
+                          .map(
+                            (grade) => DropdownMenuItem(
+                              value: grade,
+                              child: (grade == '0-0')
+                                  ? const Text('학기',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                  : Text(grade,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
                         setState(() {
-                          context.read<Major>().changeMajor('LinearAlgebra', value!);
+                          context
+                              .read<Major>()
+                              .changeMajor('LinearAlgebra', value!);
                           _selectedGrade[5] = value;
                           _updateProgress(value, 5);
                         });
@@ -394,7 +481,9 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 25,
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                      child: Text('이산수학', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      child: Text('이산수학',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -403,20 +492,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   width: 70,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: DropdownButton(
                       value: _selectedGrade[6].toString(),
-                      items: _listGrade.map(
-                            (grade)=>DropdownMenuItem(
-                            value: grade,
-                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ).toList(),
-                      onChanged: (value){
+                      items: _listGrade
+                          .map(
+                            (grade) => DropdownMenuItem(
+                              value: grade,
+                              child: (grade == '0-0')
+                                  ? const Text('학기',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                  : Text(grade,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
                         setState(() {
-                          context.read<Major>().changeMajor('DiscreteMathematics', value!);
+                          context
+                              .read<Major>()
+                              .changeMajor('DiscreteMathematics', value!);
                           _selectedGrade[6] = value;
                           _updateProgress(value, 6);
                         });
@@ -440,7 +538,9 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 25,
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                      child: Text('프로그래밍', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      child: Text('프로그래밍',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -449,20 +549,29 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   width: 70,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)
-                  ),
+                      borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child: DropdownButton(
                       value: _selectedGrade[7].toString(),
-                      items: _listGrade.map(
-                            (grade)=>DropdownMenuItem(
-                            value: grade,
-                            child: (grade == '0-0') ? const Text('학기',style: TextStyle(fontWeight: FontWeight.bold)) : Text(grade, style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ).toList(),
-                      onChanged: (value){
+                      items: _listGrade
+                          .map(
+                            (grade) => DropdownMenuItem(
+                              value: grade,
+                              child: (grade == '0-0')
+                                  ? const Text('학기',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                  : Text(grade,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
                         setState(() {
-                          context.read<Major>().changeMajor('Programming', value!);
+                          context
+                              .read<Major>()
+                              .changeMajor('Programming', value!);
                           _selectedGrade[7] = value;
                           _updateProgress(value, 7);
                         });
@@ -478,4 +587,3 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
     );
   }
 }
-

@@ -18,11 +18,10 @@ class _CommonLiberalArtsState extends State<CommonLiberalArts> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'SW ESCAPE',
+          '공통 교양',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 22,
             fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.italic,
           ),
         ),
         backgroundColor: Colors.white,
@@ -61,6 +60,7 @@ class _CommonLiberalArtsState extends State<CommonLiberalArts> {
                         '총 7과목 이수해야 함',
                         style: TextStyle(
                           fontSize: 20,
+                          fontWeight: FontWeight.w900,
                           color: Colors.black,
                         ),
                       ),
