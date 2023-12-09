@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sw_escape/progress.dart';
+import 'package:sw_escape/Progress.dart';
 import 'package:sw_escape/student.dart';
 import 'package:sw_escape/Major.dart';
 import 'package:provider/provider.dart';
