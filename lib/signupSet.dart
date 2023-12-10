@@ -7,7 +7,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-
 class SignupSetScreen extends StatefulWidget {
   @override
   _SignupSetScreenState createState() => _SignupSetScreenState();
@@ -87,9 +86,11 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                           fontStyle: FontStyle.italic,
                           fontSize: 14,
                           shadows: [
-                            Shadow(offset: Offset(-1.1, 0), color: Colors.black),
+                            Shadow(
+                                offset: Offset(-1.1, 0), color: Colors.black),
                             Shadow(offset: Offset(1.1, 0), color: Colors.black),
-                            Shadow(offset: Offset(0, -1.1), color: Colors.black),
+                            Shadow(
+                                offset: Offset(0, -1.1), color: Colors.black),
                             Shadow(offset: Offset(0, 1.1), color: Colors.black),
                           ],
                         ),
@@ -109,8 +110,8 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                           );
                         }).toList(),
                         decoration: InputDecoration(
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -119,7 +120,8 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
-                            borderSide: const BorderSide(color: Colors.lightBlue),
+                            borderSide:
+                                const BorderSide(color: Colors.lightBlue),
                           ),
                         ),
                       ),
@@ -132,9 +134,11 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                           fontStyle: FontStyle.italic,
                           fontSize: 14,
                           shadows: [
-                            Shadow(offset: Offset(-1.1, 0), color: Colors.black),
+                            Shadow(
+                                offset: Offset(-1.1, 0), color: Colors.black),
                             Shadow(offset: Offset(1.1, 0), color: Colors.black),
-                            Shadow(offset: Offset(0, -1.1), color: Colors.black),
+                            Shadow(
+                                offset: Offset(0, -1.1), color: Colors.black),
                             Shadow(offset: Offset(0, 1.1), color: Colors.black),
                           ],
                         ),
@@ -154,8 +158,8 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                           );
                         }).toList(),
                         decoration: InputDecoration(
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -164,7 +168,8 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
-                            borderSide: const BorderSide(color: Colors.lightBlue),
+                            borderSide:
+                                const BorderSide(color: Colors.lightBlue),
                           ),
                         ),
                       ),
@@ -192,12 +197,13 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                               // String dept = selectedMajor ?? ''; // selectedMajor 값이 null이 아니면 사용, null이면 빈 문자열 사용
                               //
                               // Provider.of<Student>(context, listen: false).setInfo('userid', dept, year);
-                              final newUser= await _authentication.currentUser;
+                              final newUser = await _authentication.currentUser;
                               await FirebaseFirestore.instance.collection('users').doc(newUser!.uid).update({
-                                'StudentID' : selectedStudentID,
-                                'Major' : selectedMajor,
+                                'StudentID': selectedStudentID,
+                                'Major': selectedMajor,
                               });
-                              Provider.of<Student>(context, listen: false).setSelectedStudentID(selectedStudentID);
+                              Provider.of<Student>(context, listen: false)
+                                  .setSelectedStudentID(selectedStudentID);
 
                               FocusScope.of(context).unfocus();
                               FocusScope.of(context).unfocus();
