@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../Progress.dart';
 import '../ProgressBar.dart';
 import '../FirestoreManager.dart';
+import '../widgets.dart';
 
 class MajorRequired extends StatelessWidget {
   const MajorRequired({super.key});
@@ -111,21 +112,21 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                   const SizedBox(
                     height: 10,
                   ),
+                  Description(description: '반드시 수강해야 하는 전공 필수 6과목', height: 55),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   ProgressBar(
                     currentProgress: context.select((Progress p) =>
                         p.requirementsProgress["majorRequired"]!),
                     maxProgress:
                         context.select((Progress p) => p.majorRequiredMax),
-                    width: 350,
-                    height: 30,
+                    width: 360,
+                    height: 40,
                     color: Colors.red,
                   ),
                   const SizedBox(
-                    height: 20,
-                  ),
-                  Image.asset('assets/images/MajorRequiredEx.png'),
-                  const SizedBox(
-                    height: 60,
+                    height: 10,
                   ),
                   SizedBox(
                     height: 50,
@@ -185,13 +186,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "자료구조");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "majorRequired",
-                                  _selectedSemester,
-                                  0,
-                                  "자료구조");
+                              await getUserInfo(db, auth, "majorRequired",
+                                  _selectedSemester, 0, "자료구조");
                               setState(() {
                                 // 리빌드
                               });
@@ -258,13 +254,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "컴퓨터구조");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "majorRequired",
-                                  _selectedSemester,
-                                  1,
-                                  "컴퓨터구조");
+                              await getUserInfo(db, auth, "majorRequired",
+                                  _selectedSemester, 1, "컴퓨터구조");
                               setState(() {
                                 // 리빌드
                               });
@@ -331,13 +322,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "프로그래밍언어론");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "majorRequired",
-                                  _selectedSemester,
-                                  2,
-                                  "프로그래밍언어론");
+                              await getUserInfo(db, auth, "majorRequired",
+                                  _selectedSemester, 2, "프로그래밍언어론");
                               setState(() {
                                 // 리빌드
                               });
@@ -404,13 +390,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "소프트웨어공학");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "majorRequired",
-                                  _selectedSemester,
-                                  3,
-                                  "소프트웨어공학");
+                              await getUserInfo(db, auth, "majorRequired",
+                                  _selectedSemester, 3, "소프트웨어공학");
                               setState(() {
                                 // 리빌드
                               });
@@ -477,13 +458,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "알고리즘");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "majorRequired",
-                                  _selectedSemester,
-                                  4,
-                                  "알고리즘");
+                              await getUserInfo(db, auth, "majorRequired",
+                                  _selectedSemester, 4, "알고리즘");
                               setState(() {
                                 // 리빌드
                               });
@@ -550,13 +526,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "운영체제");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "majorRequired",
-                                  _selectedSemester,
-                                  5,
-                                  "운영체제");
+                              await getUserInfo(db, auth, "majorRequired",
+                                  _selectedSemester, 5, "운영체제");
                               setState(() {
                                 // 리빌드
                               });

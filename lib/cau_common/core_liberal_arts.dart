@@ -48,7 +48,7 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 20.0, horizontal: 15),
-                  child: Despcription(
+                  child: Description(
                       description: '5개 영역에서 각 한 과목 이상 이수', height: 65),
                 ),
                 if (context.watch<CommonInfo>().filledCount == 0)

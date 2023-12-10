@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../Major.dart';
 import '../sideMenu.dart';
+import '../widgets.dart';
 
 class BSM extends StatelessWidget {
   const BSM({super.key});
@@ -85,9 +86,12 @@ class _BSMPageState extends State<BSMPage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/images/BSMEx.png'),
             const SizedBox(
-              height: 80,
+              height: 10,
+            ),
+            Description(description: 'BSM(기초 과학 및 수학) 18학점, 7과목', height: 55),
+            const SizedBox(
+              height: 30,
             ),
             SizedBox(
               height: 50,

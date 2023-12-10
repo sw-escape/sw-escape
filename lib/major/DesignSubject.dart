@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../Major.dart';
 import '../sideMenu.dart';
+import '../widgets.dart';
 
 class DesignSubject extends StatelessWidget {
   const DesignSubject({super.key});
@@ -128,6 +129,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Description(
+                description: '창의적설계를 시작으로 필수 과목 2개, 설계 총 14학점 이상', height: 70),
+            const SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.all(16),
               child: LinearProgressIndicator(
@@ -136,10 +145,6 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                 color: const Color(0xFFFB7A7A),
                 borderRadius: BorderRadius.circular(20),
               ),
-            ),
-            Image.asset('assets/images/DesignSubjectEx.png'),
-            const SizedBox(
-              height: 50,
             ),
             SizedBox(
               height: 50,

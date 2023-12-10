@@ -2,19 +2,49 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
-// firestore에서 과목들의 '학기' 정보 가져오기
-Future<void> getSubjectsSemester(FirebaseFirestore db, FirebaseAuth auth, List<String> selectedSemester, List<String> subjectNames) async {
-
+Future<void> getUserInfo(
+    FirebaseFirestore db,
+    FirebaseAuth auth,
+    String collection,
+    List<String> selectedSemester,
+    int index,
+    String subjectName) async {
   User? user = auth.currentUser;
   String uid;
-  if(user != null) {
+  if (user != null) {
     uid = user.uid;
   } else {
     return;
   }
 
-  final collection = db.collection("users").doc(uid).collection("majorRequired");
+  final doc = await db
+      .collection("users")
+      .doc(uid)
+      .collection(collection)
+      .doc(subjectName)
+      .get();
+
+  if (doc.exists) {
+    final data = doc.data() as Map<String, dynamic>;
+    selectedSemester[index] = data["학기"];
+  } else {
+    selectedSemester[index] = '0-0';
+  }
+}
+
+// firestore에서 과목들의 '학기' 정보 가져오기
+Future<void> getSubjectsSemester(FirebaseFirestore db, FirebaseAuth auth,
+    List<String> selectedSemester, List<String> subjectNames) async {
+  User? user = auth.currentUser;
+  String uid;
+  if (user != null) {
+    uid = user.uid;
+  } else {
+    return;
+  }
+
+  final collection =
+      db.collection("users").doc(uid).collection("majorRequired");
   await Future.forEach(subjectNames.asMap().entries, (entry) async {
     final doc = await collection.doc(entry.value).get();
 
@@ -27,19 +57,28 @@ Future<void> getSubjectsSemester(FirebaseFirestore db, FirebaseAuth auth, List<S
   });
 }
 
-
 // firestore에서 특정 과목만의 '학기' 정보 가져오기
-Future<void> getSubjectSemester(FirebaseFirestore db, FirebaseAuth auth, String collection, List<String> selectedSemester, int index, String subjectName) async {
-
+Future<void> getSubjectSemester(
+    FirebaseFirestore db,
+    FirebaseAuth auth,
+    String collection,
+    List<String> selectedSemester,
+    int index,
+    String subjectName) async {
   User? user = auth.currentUser;
   String uid;
-  if(user != null) {
+  if (user != null) {
     uid = user.uid;
   } else {
     return;
   }
 
-  final doc = await db.collection("users").doc(uid).collection(collection).doc(subjectName).get();
+  final doc = await db
+      .collection("users")
+      .doc(uid)
+      .collection(collection)
+      .doc(subjectName)
+      .get();
 
   if (doc.exists) {
     final data = doc.data() as Map<String, dynamic>;
@@ -49,20 +88,20 @@ Future<void> getSubjectSemester(FirebaseFirestore db, FirebaseAuth auth, String 
   }
 }
 
-
 // firestore에 과목 등록하기
-Future<void> setSubject(FirebaseFirestore db, FirebaseAuth auth, String collection, String subjectName, int credit, String semester, {int? designCredit}) async {
-
+Future<void> setSubject(FirebaseFirestore db, FirebaseAuth auth,
+    String collection, String subjectName, int credit, String semester,
+    {int? designCredit}) async {
   User? user = auth.currentUser;
   String uid;
-  if(user != null) {
+  if (user != null) {
     uid = user.uid;
   } else {
     return;
   }
 
   Map<String, Object> subject;
-  if(designCredit != null) {
+  if (designCredit != null) {
     subject = <String, Object>{
       "과목명": subjectName,
       "학점": credit,
@@ -77,7 +116,8 @@ Future<void> setSubject(FirebaseFirestore db, FirebaseAuth auth, String collecti
     };
   }
 
-  await db.collection("users")
+  await db
+      .collection("users")
       .doc(uid)
       .collection(collection)
       .doc(subjectName)
@@ -85,19 +125,19 @@ Future<void> setSubject(FirebaseFirestore db, FirebaseAuth auth, String collecti
       .onError((e, _) => print("Error writing document: $e"));
 }
 
-
 // firestore에서 과목 삭제하기
-Future<void> deleteSubject(FirebaseFirestore db, FirebaseAuth auth, String collection, String subjectName) async {
-
+Future<void> deleteSubject(FirebaseFirestore db, FirebaseAuth auth,
+    String collection, String subjectName) async {
   User? user = auth.currentUser;
   String uid;
-  if(user != null) {
+  if (user != null) {
     uid = user.uid;
   } else {
     return;
   }
 
-  await db.collection("users")
+  await db
+      .collection("users")
       .doc(uid)
       .collection(collection)
       .doc(subjectName)

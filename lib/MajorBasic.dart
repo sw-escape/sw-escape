@@ -112,12 +112,12 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
             SizedBox(
               height: 10,
             ),
-            Despcription(description: '22학점 중 14학점 이수해야 합니다.', height: 50),
+            Description(description: '22학점 중 14학점 이수해야 합니다.', height: 50),
             const SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               child: LinearProgressIndicator(
                 value: _progressValue,
                 minHeight: 35.0,

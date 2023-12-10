@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../sideMenu.dart';
 import 'package:provider/provider.dart';
 import '../Major.dart';
+import '../widgets.dart';
 
 class EngineeringCertification extends StatelessWidget {
   const EngineeringCertification({super.key});
@@ -84,9 +85,12 @@ class _EngineeringCertificationPageState
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/images/ECEx.png'),
             const SizedBox(
-              height: 80,
+              height: 10,
+            ),
+            Description(description: '공학 인증 이수를 위해 수강해야 하는 5과목', height: 55),
+            const SizedBox(
+              height: 30,
             ),
             SizedBox(
               height: 50,
@@ -104,7 +108,8 @@ class _EngineeringCertificationPageState
                       padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('이산수학',
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold)),
+                            fontSize: 20,
+                          )),
                     ),
                   ),
                 ),
@@ -160,7 +165,8 @@ class _EngineeringCertificationPageState
                       padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('자료구조',
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold)),
+                            fontSize: 20,
+                          )),
                     ),
                   ),
                 ),
@@ -216,7 +222,8 @@ class _EngineeringCertificationPageState
                       padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('컴퓨터구조',
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold)),
+                            fontSize: 20,
+                          )),
                     ),
                   ),
                 ),
@@ -272,7 +279,8 @@ class _EngineeringCertificationPageState
                       padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('알고리즘',
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold)),
+                            fontSize: 20,
+                          )),
                     ),
                   ),
                 ),
@@ -328,7 +336,8 @@ class _EngineeringCertificationPageState
                       padding: EdgeInsets.fromLTRB(10, 6, 0, 0),
                       child: Text('운영체제',
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold)),
+                            fontSize: 20,
+                          )),
                     ),
                   ),
                 ),

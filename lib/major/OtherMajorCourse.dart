@@ -3,6 +3,8 @@ import '../sideMenu.dart';
 import '../Major.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets.dart';
+
 class OtherMajorCourse extends StatelessWidget {
   const OtherMajorCourse({super.key});
 
@@ -134,9 +136,12 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
         child: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            Image.asset('assets/images/OMCEx.png'),
             const SizedBox(
-              height: 80,
+              height: 10,
+            ),
+            Description(description: '이외 나머지 전공 과목', height: 55),
+            const SizedBox(
+              height: 30,
             ),
             SizedBox(
               height: 50,
