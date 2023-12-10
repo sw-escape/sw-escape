@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../Progress.dart';
 import '../ProgressBar.dart';
 import '../FirestoreManager.dart';
+import '../widgets.dart';
 
 class DesignSubject extends StatelessWidget {
   const DesignSubject({super.key});
@@ -142,7 +143,8 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
     // });
 
     // firestore에서 과목들의 '학기' 정보 가져오기
-    _getSubjectsSemesterFuture = getSubjectsSemester(db, auth, "designSubject", _selectedSemester, _subjectNames);
+    _getSubjectsSemesterFuture = getSubjectsSemester(
+        db, auth, "designSubject", _selectedSemester, _subjectNames);
   }
 
   @override
@@ -177,8 +179,10 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                     height: 10,
                   ),
                   ProgressBar(
-                    currentProgress: context.select((Progress p) => p.requirementsProgress["designSubject"]!),
-                    maxProgress: context.select((Progress p) => p.designSubjectMax),
+                    currentProgress: context.select((Progress p) =>
+                        p.requirementsProgress["designSubject"]!),
+                    maxProgress:
+                        context.select((Progress p) => p.designSubjectMax),
                     width: 350,
                     height: 30,
                     color: Colors.yellow,
@@ -186,7 +190,9 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Image.asset('assets/images/DesignSubjectEx.png'),
+                  Description(
+                      description: '창의적설계를 시작으로 필수 과목 2개, 설계 총 14학점 이상',
+                      height: 70),
                   const SizedBox(
                     height: 50,
                   ),
@@ -222,16 +228,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -295,16 +302,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -368,16 +376,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -441,16 +450,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -514,16 +524,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -587,16 +598,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -660,16 +672,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -733,16 +746,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -805,16 +819,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -878,16 +893,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -1024,16 +1040,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -1097,16 +1114,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -1170,16 +1188,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
@@ -1242,16 +1261,17 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",

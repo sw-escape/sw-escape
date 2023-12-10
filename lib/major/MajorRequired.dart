@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../Progress.dart';
 import '../ProgressBar.dart';
 import '../FirestoreManager.dart';
+import '../widgets.dart';
 
 class MajorRequired extends StatelessWidget {
   const MajorRequired({super.key});
@@ -76,8 +77,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
   void initState() {
     super.initState();
     // firestore에서 과목들의 '학기' 정보 가져오기
-    _getSubjectsSemesterFuture =
-        getSubjectsSemester(db, auth, "majorRequired", _selectedSemester, _subjectNames);
+    _getSubjectsSemesterFuture = getSubjectsSemester(
+        db, auth, "majorRequired", _selectedSemester, _subjectNames);
   }
 
   @override
@@ -114,7 +115,7 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Image.asset('assets/images/MajorRequiredEx.png'),
+                  Description(description: '반드시 수강해야 하는 전공 필수 6과목', height: 55),
                   const SizedBox(
                     height: 60,
                   ),

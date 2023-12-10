@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../FirestoreManager.dart';
 import '../Progress.dart';
 import '../ProgressBar.dart';
+import '../widgets.dart';
 
 class EngineeringCertification extends StatelessWidget {
   const EngineeringCertification({super.key});
@@ -77,19 +78,21 @@ class _EngineeringCertificationPageState
   void initState() {
     super.initState();
     // firestore에서 과목들의 '학기' 정보 가져오기
-    _getSubjectsSemesterFuture =
-        getSubjectsSemester(db, auth, "engineeringCertification", _selectedSemester, _subjectNames);
+    _getSubjectsSemesterFuture = getSubjectsSemester(
+        db, auth, "engineeringCertification", _selectedSemester, _subjectNames);
   }
 
   @override
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
-    context.read<Progress>().loadNumberProgress(db, auth, "engineeringCertification");
+    context
+        .read<Progress>()
+        .loadNumberProgress(db, auth, "engineeringCertification");
 
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,
       builder: (context, snapshot) {
-        if(snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -104,8 +107,10 @@ class _EngineeringCertificationPageState
                     height: 10,
                   ),
                   ProgressBar(
-                    currentProgress: context.select((Progress p) => p.requirementsProgress["engineeringCertification"]!),
-                    maxProgress: context.select((Progress p) => p.engineeringCertificationMax),
+                    currentProgress: context.select((Progress p) =>
+                        p.requirementsProgress["engineeringCertification"]!),
+                    maxProgress: context
+                        .select((Progress p) => p.engineeringCertificationMax),
                     width: 350,
                     height: 30,
                     color: Colors.orange,
@@ -113,7 +118,8 @@ class _EngineeringCertificationPageState
                   const SizedBox(
                     height: 20,
                   ),
-                  Image.asset('assets/images/ECEx.png'),
+                  Description(
+                      description: '공학 인증 이수를 위해 수강해야 하는 5과목', height: 55),
                   const SizedBox(
                     height: 80,
                   ),
@@ -146,17 +152,32 @@ class _EngineeringCertificationPageState
                         child: Center(
                           child: DropdownButton(
                             value: _selectedSemester[0].toString(),
-                            items: _listSemester.map(
+                            items: _listSemester
+                                .map(
                                   (semester) => DropdownMenuItem(
                                     value: semester,
-                                    child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
                                   ),
-                              ).toList(),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "engineeringCertification", "이산수학", 3, semester!);
+                                await setSubject(
+                                    db,
+                                    auth,
+                                    "engineeringCertification",
+                                    "이산수학",
+                                    3,
+                                    semester!);
                               } else {
-                                await deleteSubject(db, auth, "engineeringCertification", "이산수학");
+                                await deleteSubject(db, auth,
+                                    "engineeringCertification", "이산수학");
                               }
                               await getSubjectSemester(
                                   db,
@@ -206,15 +227,29 @@ class _EngineeringCertificationPageState
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "engineeringCertification", "자료구조", 3, semester!);
+                                await setSubject(
+                                    db,
+                                    auth,
+                                    "engineeringCertification",
+                                    "자료구조",
+                                    3,
+                                    semester!);
                               } else {
-                                await deleteSubject(db, auth, "engineeringCertification", "자료구조");
+                                await deleteSubject(db, auth,
+                                    "engineeringCertification", "자료구조");
                               }
                               await getSubjectSemester(
                                   db,
@@ -265,14 +300,28 @@ class _EngineeringCertificationPageState
                                 .map(
                                   (semester) => DropdownMenuItem(
                                     value: semester,
-                                    child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "engineeringCertification", "컴퓨터구조", 3, semester!);
+                                await setSubject(
+                                    db,
+                                    auth,
+                                    "engineeringCertification",
+                                    "컴퓨터구조",
+                                    3,
+                                    semester!);
                               } else {
-                                await deleteSubject(db, auth, "engineeringCertification", "컴퓨터구조");
+                                await deleteSubject(db, auth,
+                                    "engineeringCertification", "컴퓨터구조");
                               }
                               await getSubjectSemester(
                                   db,
@@ -322,23 +371,37 @@ class _EngineeringCertificationPageState
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "engineeringCertification", "알고리즘", 3, semester!);
+                                await setSubject(
+                                    db,
+                                    auth,
+                                    "engineeringCertification",
+                                    "알고리즘",
+                                    3,
+                                    semester!);
                               } else {
-                                await deleteSubject(db, auth, "engineeringCertification", "알고리즘");
+                                await deleteSubject(db, auth,
+                                    "engineeringCertification", "알고리즘");
                               }
                               await getSubjectSemester(
-                              db,
-                              auth,
-                              "engineeringCertification",
-                              _selectedSemester,
-                              3,
-                              "알고리즘");
+                                  db,
+                                  auth,
+                                  "engineeringCertification",
+                                  _selectedSemester,
+                                  3,
+                                  "알고리즘");
                               setState(() {
                                 // 리빌드
                               });
@@ -377,25 +440,40 @@ class _EngineeringCertificationPageState
                         child: Center(
                           child: DropdownButton(
                             value: _selectedSemester[4].toString(),
-                            items: _listSemester.map(
+                            items: _listSemester
+                                .map(
                                   (semester) => DropdownMenuItem(
                                     value: semester,
-                                    child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "engineeringCertification", "운영체제", 3, semester!);
+                                await setSubject(
+                                    db,
+                                    auth,
+                                    "engineeringCertification",
+                                    "운영체제",
+                                    3,
+                                    semester!);
                               } else {
-                                await deleteSubject(db, auth, "engineeringCertification", "운영체제");
+                                await deleteSubject(db, auth,
+                                    "engineeringCertification", "운영체제");
                               }
                               await getSubjectSemester(
-                              db,
-                              auth,
-                              "engineeringCertification",
-                              _selectedSemester,
-                              4,
-                              "운영체제");
+                                  db,
+                                  auth,
+                                  "engineeringCertification",
+                                  _selectedSemester,
+                                  4,
+                                  "운영체제");
                               setState(() {
                                 // 리빌드
                               });

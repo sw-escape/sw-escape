@@ -91,11 +91,18 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 20.0, horizontal: 15),
-                        child: Despcription(
+                        child: Description(
                             description: '5개 영역에서 각 한 과목 이상 이수', height: 65),
                       ),
                       // if (context.watch<CommonInfo>().filledCount == 0)
-                      if(numChecked([challengeIsFilled, creativityIsFilled, convergenceIsFilled, credibilityIsFilled, communicationIsFilled]) == 0)
+                      if (numChecked([
+                            challengeIsFilled,
+                            creativityIsFilled,
+                            convergenceIsFilled,
+                            credibilityIsFilled,
+                            communicationIsFilled
+                          ]) ==
+                          0)
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CircularPercentIndicator(
@@ -112,7 +119,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                           ),
                         ),
                       // if (context.watch<CommonInfo>().filledCount == 1)
-                      if(numChecked([challengeIsFilled, creativityIsFilled, convergenceIsFilled, credibilityIsFilled, communicationIsFilled]) == 1)
+                      if (numChecked([
+                            challengeIsFilled,
+                            creativityIsFilled,
+                            convergenceIsFilled,
+                            credibilityIsFilled,
+                            communicationIsFilled
+                          ]) ==
+                          1)
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CircularPercentIndicator(
@@ -129,7 +143,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                           ),
                         ),
                       // if (context.watch<CommonInfo>().filledCount == 2)
-                      if(numChecked([challengeIsFilled, creativityIsFilled, convergenceIsFilled, credibilityIsFilled, communicationIsFilled]) == 2)
+                      if (numChecked([
+                            challengeIsFilled,
+                            creativityIsFilled,
+                            convergenceIsFilled,
+                            credibilityIsFilled,
+                            communicationIsFilled
+                          ]) ==
+                          2)
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CircularPercentIndicator(
@@ -146,7 +167,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                           ),
                         ),
                       // if (context.watch<CommonInfo>().filledCount == 3)
-                      if(numChecked([challengeIsFilled, creativityIsFilled, convergenceIsFilled, credibilityIsFilled, communicationIsFilled]) == 3)
+                      if (numChecked([
+                            challengeIsFilled,
+                            creativityIsFilled,
+                            convergenceIsFilled,
+                            credibilityIsFilled,
+                            communicationIsFilled
+                          ]) ==
+                          3)
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CircularPercentIndicator(
@@ -163,7 +191,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                           ),
                         ),
                       // if (context.watch<CommonInfo>().filledCount == 4)
-                      if(numChecked([challengeIsFilled, creativityIsFilled, convergenceIsFilled, credibilityIsFilled, communicationIsFilled]) == 4)
+                      if (numChecked([
+                            challengeIsFilled,
+                            creativityIsFilled,
+                            convergenceIsFilled,
+                            credibilityIsFilled,
+                            communicationIsFilled
+                          ]) ==
+                          4)
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CircularPercentIndicator(
@@ -180,7 +215,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                           ),
                         ),
                       // if (context.watch<CommonInfo>().filledCount == 5)
-                      if(numChecked([challengeIsFilled, creativityIsFilled, convergenceIsFilled, credibilityIsFilled, communicationIsFilled]) == 5)
+                      if (numChecked([
+                            challengeIsFilled,
+                            creativityIsFilled,
+                            convergenceIsFilled,
+                            credibilityIsFilled,
+                            communicationIsFilled
+                          ]) ==
+                          5)
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CircularPercentIndicator(
@@ -213,7 +255,8 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                 Text(
                                   '도전',
                                   style: TextStyle(
-                                      fontSize: 25, fontWeight: FontWeight.w900),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900),
                                 ),
                                 Checkbox(
                                   // value: context.read<CommonInfo>().challengeIsFilled,
@@ -224,12 +267,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                   ),
                                   onChanged: (newValue) async {
                                     // 체크하는 경우
-                                    if(newValue == true){
-                                      await setSubject(db, auth, "core", "도전", 0, "0-0");
+                                    if (newValue == true) {
+                                      await setSubject(
+                                          db, auth, "core", "도전", 0, "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "core", "도전");
+                                      await deleteSubject(
+                                          db, auth, "core", "도전");
                                     }
                                     setState(() {
                                       // context.read<CommonInfo>().fillChallenge();
@@ -255,9 +300,10 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                     ),
                                     style: ButtonStyle(
                                       backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.white), // 배경색상
-                                      side: MaterialStateProperty.all<BorderSide>(
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.white), // 배경색상
+                                      side:
+                                          MaterialStateProperty.all<BorderSide>(
                                         BorderSide(
                                             color: Colors.black), // 테두리 색상 및 굵기
                                       ),
@@ -281,7 +327,8 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                 Text(
                                   '창의',
                                   style: TextStyle(
-                                      fontSize: 25, fontWeight: FontWeight.w900),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900),
                                 ),
                                 Checkbox(
                                   // value: context.read<CommonInfo>().creativityIsFilled,
@@ -292,12 +339,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                   ),
                                   onChanged: (newValue) async {
                                     // 체크하는 경우
-                                    if(newValue == true){
-                                      await setSubject(db, auth, "core", "창의", 0, "0-0");
+                                    if (newValue == true) {
+                                      await setSubject(
+                                          db, auth, "core", "창의", 0, "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "core", "창의");
+                                      await deleteSubject(
+                                          db, auth, "core", "창의");
                                     }
                                     setState(() {
                                       // context.read<CommonInfo>().fillCreativity();
@@ -323,9 +372,10 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                     ),
                                     style: ButtonStyle(
                                       backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.white), // 배경색상
-                                      side: MaterialStateProperty.all<BorderSide>(
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.white), // 배경색상
+                                      side:
+                                          MaterialStateProperty.all<BorderSide>(
                                         BorderSide(
                                             color: Colors.black), // 테두리 색상 및 굵기
                                       ),
@@ -354,7 +404,8 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                 Text(
                                   '융합',
                                   style: TextStyle(
-                                      fontSize: 25, fontWeight: FontWeight.w900),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900),
                                 ),
                                 Checkbox(
                                   // value: context.read<CommonInfo>().convergenceIsFilled,
@@ -365,12 +416,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                   ),
                                   onChanged: (newValue) async {
                                     // 체크하는 경우
-                                    if(newValue == true){
-                                      await setSubject(db, auth, "core", "융합", 0, "0-0");
+                                    if (newValue == true) {
+                                      await setSubject(
+                                          db, auth, "core", "융합", 0, "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "core", "융합");
+                                      await deleteSubject(
+                                          db, auth, "core", "융합");
                                     }
                                     setState(() {
                                       // context.read<CommonInfo>().fillConvergence();
@@ -396,9 +449,10 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                     ),
                                     style: ButtonStyle(
                                       backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.white), // 배경색상
-                                      side: MaterialStateProperty.all<BorderSide>(
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.white), // 배경색상
+                                      side:
+                                          MaterialStateProperty.all<BorderSide>(
                                         BorderSide(
                                             color: Colors.black), // 테두리 색상 및 굵기
                                       ),
@@ -422,7 +476,8 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                 Text(
                                   '신뢰',
                                   style: TextStyle(
-                                      fontSize: 25, fontWeight: FontWeight.w900),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900),
                                 ),
                                 Checkbox(
                                   // value: context.read<CommonInfo>().credibilityIsFilled,
@@ -433,12 +488,14 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                   ),
                                   onChanged: (newValue) async {
                                     // 체크하는 경우
-                                    if(newValue == true){
-                                      await setSubject(db, auth, "core", "신뢰", 0, "0-0");
+                                    if (newValue == true) {
+                                      await setSubject(
+                                          db, auth, "core", "신뢰", 0, "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "core", "신뢰");
+                                      await deleteSubject(
+                                          db, auth, "core", "신뢰");
                                     }
                                     setState(() {
                                       // context.read<CommonInfo>().fillCredibility();
@@ -464,9 +521,10 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                     ),
                                     style: ButtonStyle(
                                       backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.white), // 배경색상
-                                      side: MaterialStateProperty.all<BorderSide>(
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.white), // 배경색상
+                                      side:
+                                          MaterialStateProperty.all<BorderSide>(
                                         BorderSide(
                                             color: Colors.black), // 테두리 색상 및 굵기
                                       ),
@@ -503,8 +561,9 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                               ),
                               onChanged: (newValue) async {
                                 // 체크하는 경우
-                                if(newValue == true){
-                                  await setSubject(db, auth, "core", "소통", 0, "0-0");
+                                if (newValue == true) {
+                                  await setSubject(
+                                      db, auth, "core", "소통", 0, "0-0");
                                 }
                                 // 체크를 해제하는 경우
                                 else {
@@ -533,10 +592,12 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
                                   ),
                                 ),
                                 style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Colors.white), // 배경색상
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.white), // 배경색상
                                   side: MaterialStateProperty.all<BorderSide>(
-                                    BorderSide(color: Colors.black), // 테두리 색상 및 굵기
+                                    BorderSide(
+                                        color: Colors.black), // 테두리 색상 및 굵기
                                   ),
                                 ),
                               ),
@@ -552,7 +613,9 @@ class _CoreLiberalArtsState extends State<CoreLiberalArts> {
               ),
             );
           } else {
-            return const Center(child: CircularProgressIndicator(),);
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
         },
       ),

@@ -116,8 +116,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
     // });
 
     // firestore에서 과목들의 '학기' 정보 가져오기
-    _getSubjectsSemesterFuture =
-        getSubjectsSemester(db, auth, "basicMajor", _selectedSemester, _subjectNames);
+    _getSubjectsSemesterFuture = getSubjectsSemester(
+        db, auth, "basicMajor", _selectedSemester, _subjectNames);
   }
 
   @override
@@ -128,7 +128,7 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,
       builder: (context, snapshot) {
-        if(snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -143,8 +143,10 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                     height: 10,
                   ),
                   ProgressBar(
-                    currentProgress: context.select((Progress p) => p.requirementsProgress["basicMajor"]!),
-                    maxProgress: context.select((Progress p) => p.basicMajorMax),
+                    currentProgress: context.select(
+                        (Progress p) => p.requirementsProgress["basicMajor"]!),
+                    maxProgress:
+                        context.select((Progress p) => p.basicMajorMax),
                     width: 350,
                     height: 30,
                     color: Colors.red,
@@ -152,7 +154,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Despcription(description: '22학점 중 14학점 이수해야 합니다.', height: 50),
+                  const Description(
+                      description: '22학점 중 14학점 이수해야 합니다.', height: 50),
                   const SizedBox(
                     height: 20,
                   ),
@@ -197,31 +200,27 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "basicMajor",
-                                    "미적분", 3, semester!);
+                                await setSubject(db, auth, "basicMajor", "미적분",
+                                    3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "미적분");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "basicMajor",
-                                  _selectedSemester,
-                                  0,
-                                  "미적분");
+                              await getSubjectSemester(db, auth, "basicMajor",
+                                  _selectedSemester, 0, "미적분");
                               setState(() {
                                 // 리빌드
                               });
@@ -269,16 +268,17 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
@@ -287,13 +287,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "일반물리(2)");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "basicMajor",
-                                  _selectedSemester,
-                                  1,
-                                  "일반물리(2)");
+                              await getSubjectSemester(db, auth, "basicMajor",
+                                  _selectedSemester, 1, "일반물리(2)");
                               setState(() {
                                 // 리빌드
                               });
@@ -342,16 +337,17 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
@@ -360,13 +356,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "일반물리실험(1)");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "basicMajor",
-                                  _selectedSemester,
-                                  2,
-                                  "일반물리실험(1)");
+                              await getSubjectSemester(db, auth, "basicMajor",
+                                  _selectedSemester, 2, "일반물리실험(1)");
                               setState(() {
                                 // 리빌드
                               });
@@ -415,16 +406,17 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
@@ -433,13 +425,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "기초컴퓨터프로그래밍");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "basicMajor",
-                                  _selectedSemester,
-                                  3,
-                                  "기초컴퓨터프로그래밍");
+                              await getSubjectSemester(db, auth, "basicMajor",
+                                  _selectedSemester, 3, "기초컴퓨터프로그래밍");
                               setState(() {
                                 // 리빌드
                               });
@@ -488,31 +475,27 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "basicMajor",
-                                    "논리회로", 3, semester!);
+                                await setSubject(db, auth, "basicMajor", "논리회로",
+                                    3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "논리회로");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "basicMajor",
-                                  _selectedSemester,
-                                  4,
-                                  "논리회로");
+                              await getSubjectSemester(db, auth, "basicMajor",
+                                  _selectedSemester, 4, "논리회로");
                               setState(() {
                                 // 리빌드
                               });
@@ -561,16 +544,17 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
@@ -579,13 +563,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "선형대수학");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "basicMajor",
-                                  _selectedSemester,
-                                  5,
-                                  "선형대수학");
+                              await getSubjectSemester(db, auth, "basicMajor",
+                                  _selectedSemester, 5, "선형대수학");
                               setState(() {
                                 // 리빌드
                               });
@@ -634,31 +613,27 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "basicMajor",
-                                    "이산수학", 3, semester!);
+                                await setSubject(db, auth, "basicMajor", "이산수학",
+                                    3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "이산수학");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "basicMajor",
-                                  _selectedSemester,
-                                  6,
-                                  "이산수학");
+                              await getSubjectSemester(db, auth, "basicMajor",
+                                  _selectedSemester, 6, "이산수학");
                               setState(() {
                                 // 리빌드
                               });
@@ -707,16 +682,17 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
@@ -725,13 +701,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "프로그래밍");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "basicMajor",
-                                  _selectedSemester,
-                                  7,
-                                  "프로그래밍");
+                              await getSubjectSemester(db, auth, "basicMajor",
+                                  _selectedSemester, 7, "프로그래밍");
                               setState(() {
                                 // 리빌드
                               });

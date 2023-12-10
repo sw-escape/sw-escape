@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../Progress.dart';
 import '../ProgressBar.dart';
 import '../FirestoreManager.dart';
+import '../widgets.dart';
 
 class BSM extends StatelessWidget {
   const BSM({super.key});
@@ -89,7 +90,7 @@ class _BSMPageState extends State<BSMPage> {
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,
       builder: (context, snapshot) {
-        if(snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -104,7 +105,8 @@ class _BSMPageState extends State<BSMPage> {
                     height: 10,
                   ),
                   ProgressBar(
-                    currentProgress: context.select((Progress p) => p.requirementsProgress["bsm"]!),
+                    currentProgress: context
+                        .select((Progress p) => p.requirementsProgress["bsm"]!),
                     maxProgress: context.select((Progress p) => p.bsmMax),
                     width: 350,
                     height: 30,
@@ -113,7 +115,8 @@ class _BSMPageState extends State<BSMPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Image.asset('assets/images/BSMEx.png'),
+                  Description(
+                      description: 'BSM(기초 과학 및 수학) 18학점, 7과목', height: 55),
                   const SizedBox(
                     height: 80,
                   ),
@@ -149,31 +152,26 @@ class _BSMPageState extends State<BSMPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "bsm",
-                                    "일반물리(2)", 2, semester!);
+                                await setSubject(
+                                    db, auth, "bsm", "일반물리(2)", 2, semester!);
                               } else {
-                                await deleteSubject(
-                                    db, auth, "bsm", "일반물리(2)");
+                                await deleteSubject(db, auth, "bsm", "일반물리(2)");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "bsm",
-                                  _selectedSemester,
-                                  0,
-                                  "일반물리(2)");
+                              await getSubjectSemester(db, auth, "bsm",
+                                  _selectedSemester, 0, "일반물리(2)");
                               setState(() {
                                 // 리빌드
                               });
@@ -215,31 +213,27 @@ class _BSMPageState extends State<BSMPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "bsm",
-                                "일반물리실험(1)", 1, semester!);
+                                await setSubject(
+                                    db, auth, "bsm", "일반물리실험(1)", 1, semester!);
                               } else {
                                 await deleteSubject(
-                                db, auth, "bsm", "일반물리실험(1)");
+                                    db, auth, "bsm", "일반물리실험(1)");
                               }
-                              await getSubjectSemester(
-                              db,
-                              auth,
-                              "bsm",
-                              _selectedSemester,
-                              1,
-                              "일반물리실험(1)");
+                              await getSubjectSemester(db, auth, "bsm",
+                                  _selectedSemester, 1, "일반물리실험(1)");
                               setState(() {
                                 // 리빌드
                               });
@@ -281,31 +275,26 @@ class _BSMPageState extends State<BSMPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "bsm",
-                                    "미적분학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "bsm", "미적분학", 3, semester!);
                               } else {
-                                await deleteSubject(
-                                    db, auth, "bsm", "미적분학");
+                                await deleteSubject(db, auth, "bsm", "미적분학");
                               }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "bsm",
-                                  _selectedSemester,
-                                  2,
-                                  "미적분학");
+                              await getSubjectSemester(db, auth, "bsm",
+                                  _selectedSemester, 2, "미적분학");
                               setState(() {
                                 // 리빌드
                               });
@@ -347,31 +336,26 @@ class _BSMPageState extends State<BSMPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "bsm",
-                                "선형대수학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "bsm", "선형대수학", 3, semester!);
                               } else {
-                                await deleteSubject(
-                                db, auth, "bsm", "선형대수학");
+                                await deleteSubject(db, auth, "bsm", "선형대수학");
                               }
-                              await getSubjectSemester(
-                              db,
-                              auth,
-                              "bsm",
-                              _selectedSemester,
-                              3,
-                              "선형대수학");
+                              await getSubjectSemester(db, auth, "bsm",
+                                  _selectedSemester, 3, "선형대수학");
                               setState(() {
                                 // 리빌드
                               });
@@ -413,31 +397,26 @@ class _BSMPageState extends State<BSMPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "bsm",
-                                "이산수학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "bsm", "이산수학", 3, semester!);
                               } else {
-                                await deleteSubject(
-                                db, auth, "bsm", "이산수학");
+                                await deleteSubject(db, auth, "bsm", "이산수학");
                               }
-                              await getSubjectSemester(
-                              db,
-                              auth,
-                              "bsm",
-                              _selectedSemester,
-                              4,
-                              "이산수학");
+                              await getSubjectSemester(db, auth, "bsm",
+                                  _selectedSemester, 4, "이산수학");
                               setState(() {
                                 // 리빌드
                               });
@@ -479,31 +458,26 @@ class _BSMPageState extends State<BSMPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "bsm",
-                                "확률및통계", 3, semester!);
+                                await setSubject(
+                                    db, auth, "bsm", "확률및통계", 3, semester!);
                               } else {
-                                await deleteSubject(
-                                db, auth, "bsm", "확률및통계");
+                                await deleteSubject(db, auth, "bsm", "확률및통계");
                               }
-                              await getSubjectSemester(
-                              db,
-                              auth,
-                              "bsm",
-                              _selectedSemester,
-                              5,
-                              "확률및통계");
+                              await getSubjectSemester(db, auth, "bsm",
+                                  _selectedSemester, 5, "확률및통계");
                               setState(() {
                                 // 리빌드
                               });
@@ -545,31 +519,26 @@ class _BSMPageState extends State<BSMPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "bsm",
-                                "수치해석", 3, semester!);
+                                await setSubject(
+                                    db, auth, "bsm", "수치해석", 3, semester!);
                               } else {
-                                await deleteSubject(
-                                db, auth, "bsm", "수치해석");
+                                await deleteSubject(db, auth, "bsm", "수치해석");
                               }
-                              await getSubjectSemester(
-                              db,
-                              auth,
-                              "bsm",
-                              _selectedSemester,
-                              6,
-                              "수치해석");
+                              await getSubjectSemester(db, auth, "bsm",
+                                  _selectedSemester, 6, "수치해석");
                               setState(() {
                                 // 리빌드
                               });
