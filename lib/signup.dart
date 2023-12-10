@@ -41,7 +41,7 @@ class _SignupFormState extends State<SignupForm> {
                 Text(
                   'SW ESCAPE',
                   style: TextStyle(
-                    fontFamily: 'iblack',
+                    fontFamily: 'Inter',
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
                     fontSize: 48,
@@ -73,7 +73,7 @@ class _SignupFormState extends State<SignupForm> {
                         Text(
                           '  EMAIL',
                           style: TextStyle(
-                            fontFamily: 'iblack',
+                            fontFamily: 'Inter',
                             color: Colors.white,
                             fontStyle: FontStyle.italic,
                             fontSize: 14,
@@ -132,7 +132,7 @@ class _SignupFormState extends State<SignupForm> {
                         Text(
                           '  PASSWORD',
                           style: TextStyle(
-                            fontFamily: 'iblack',
+                            fontFamily: 'Inter',
                             color: Colors.white,
                             fontStyle: FontStyle.italic,
                             fontSize: 14,
@@ -228,7 +228,7 @@ class _SignupFormState extends State<SignupForm> {
                               },
                               child: Text('NEXT',
                                   style: TextStyle(
-                                    fontFamily: 'iblack',
+                                    fontFamily: 'Inter',
                                     fontSize: 18,
                                     color: Colors.lightBlue[800],
                                     fontStyle: FontStyle.italic,

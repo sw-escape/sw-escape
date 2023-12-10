@@ -67,4 +67,7 @@ flutter {
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.firebase:firebase-firestore:24.1.0' // Firestore 라이브러리
 }
+
+apply plugin: 'com.google.gms.google-services'
