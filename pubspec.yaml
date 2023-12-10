@@ -95,7 +95,12 @@ flutter:
 
     - family: NanumBarunGothic
       fonts:
-        - asset: assets/fonts/NanumBarunGothic.otf
+        - asset: assets/fonts/NanumBarunGothic.ttf
+          weight: 400
+
+    - family: NEXON Lv1 Gothic
+      fonts:
+        - asset: assets/fonts/NEXON Lv1 Gothic OTF.otf
           weight: 400
 
 
