@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "506765403462",
-    "project_id": "sw-escape-b32f4",
-    "storage_bucket": "sw-escape-b32f4.appspot.com"
+    "project_number": "622886773076",
+    "project_id": "sw-escape-30e60",
+    "storage_bucket": "sw-escape-30e60.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:506765403462:android:b559fd7e069626c4ccb147",
+        "mobilesdk_app_id": "1:622886773076:android:06d917840ec928bad3e8c1",
         "android_client_info": {
           "package_name": "com.example.sw_escape"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCDC8Qe2gBTWFfiATh5c4CZJhHXg908I5M"
+          "current_key": "AIzaSyAPE669DboWHVew5aXIWxICRkvbX-FAJP4"
         }
       ],
       "services": {

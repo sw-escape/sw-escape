@@ -76,18 +76,9 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
   @override
   void initState() {
     super.initState();
-    // setState(() {
-    //   _selectedGrade[0] = context.read<Major>().loadMajorTime('DataStructure');
-    //   _selectedGrade[1] = context.read<Major>().loadMajorTime('ComputerArchitecture');
-    //   _selectedGrade[2] = context.read<Major>().loadMajorTime('PrinciplesOfProgrammingLanguage');
-    //   _selectedGrade[3] = context.read<Major>().loadMajorTime('SoftwareEngineering');
-    //   _selectedGrade[4] = context.read<Major>().loadMajorTime('Algorithm');
-    //   _selectedGrade[5] = context.read<Major>().loadMajorTime('OperatingSystem');
-    // });
-
     // firestore에서 과목들의 '학기' 정보 가져오기
-    _getSubjectsSemesterFuture =
-        getSubjectsSemester(db, auth, _selectedSemester, _subjectNames);
+    _getSubjectsSemesterFuture = getSubjectsSemester(
+        db, auth, "majorRequired", _selectedSemester, _subjectNames);
   }
 
   @override
@@ -112,21 +103,21 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Description(description: '반드시 수강해야 하는 전공 필수 6과목', height: 55),
-                  const SizedBox(
-                    height: 30,
-                  ),
                   ProgressBar(
                     currentProgress: context.select((Progress p) =>
                         p.requirementsProgress["majorRequired"]!),
                     maxProgress:
                         context.select((Progress p) => p.majorRequiredMax),
-                    width: 360,
-                    height: 40,
+                    width: 350,
+                    height: 30,
                     color: Colors.red,
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
+                  ),
+                  Description(description: '반드시 수강해야 하는 전공 필수 6과목', height: 55),
+                  const SizedBox(
+                    height: 60,
                   ),
                   SizedBox(
                     height: 50,
@@ -171,13 +162,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value) {
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor(
-                            //         'DataStructure', value!);
-                            //     _selectedGrade[0] = value;
-                            //   });
-                            // }
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -186,8 +170,13 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "자료구조");
                               }
-                              await getUserInfo(db, auth, "majorRequired",
-                                  _selectedSemester, 0, "자료구조");
+                              await getSubjectSemester(
+                                  db,
+                                  auth,
+                                  "majorRequired",
+                                  _selectedSemester,
+                                  0,
+                                  "자료구조");
                               setState(() {
                                 // 리빌드
                               });
@@ -240,12 +229,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('ComputerArchitecture', value!);
-                            //     _selectedGrade[1] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -254,8 +237,13 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "컴퓨터구조");
                               }
-                              await getUserInfo(db, auth, "majorRequired",
-                                  _selectedSemester, 1, "컴퓨터구조");
+                              await getSubjectSemester(
+                                  db,
+                                  auth,
+                                  "majorRequired",
+                                  _selectedSemester,
+                                  1,
+                                  "컴퓨터구조");
                               setState(() {
                                 // 리빌드
                               });
@@ -308,12 +296,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('PrinciplesOfProgrammingLanguage', value!);
-                            //     _selectedGrade[2] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -322,8 +304,13 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "프로그래밍언어론");
                               }
-                              await getUserInfo(db, auth, "majorRequired",
-                                  _selectedSemester, 2, "프로그래밍언어론");
+                              await getSubjectSemester(
+                                  db,
+                                  auth,
+                                  "majorRequired",
+                                  _selectedSemester,
+                                  2,
+                                  "프로그래밍언어론");
                               setState(() {
                                 // 리빌드
                               });
@@ -376,12 +363,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('SoftwareEngineering', value!);
-                            //     _selectedGrade[3] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -390,8 +371,13 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "소프트웨어공학");
                               }
-                              await getUserInfo(db, auth, "majorRequired",
-                                  _selectedSemester, 3, "소프트웨어공학");
+                              await getSubjectSemester(
+                                  db,
+                                  auth,
+                                  "majorRequired",
+                                  _selectedSemester,
+                                  3,
+                                  "소프트웨어공학");
                               setState(() {
                                 // 리빌드
                               });
@@ -444,12 +430,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('Algorithm', value!);
-                            //     _selectedGrade[4] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -458,8 +438,13 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "알고리즘");
                               }
-                              await getUserInfo(db, auth, "majorRequired",
-                                  _selectedSemester, 4, "알고리즘");
+                              await getSubjectSemester(
+                                  db,
+                                  auth,
+                                  "majorRequired",
+                                  _selectedSemester,
+                                  4,
+                                  "알고리즘");
                               setState(() {
                                 // 리빌드
                               });
@@ -512,12 +497,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){ㅑ
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('OperatingSystem', value!);
-                            //     _selectedGrade[5] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -526,8 +505,13 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "운영체제");
                               }
-                              await getUserInfo(db, auth, "majorRequired",
-                                  _selectedSemester, 5, "운영체제");
+                              await getSubjectSemester(
+                                  db,
+                                  auth,
+                                  "majorRequired",
+                                  _selectedSemester,
+                                  5,
+                                  "운영체제");
                               setState(() {
                                 // 리빌드
                               });

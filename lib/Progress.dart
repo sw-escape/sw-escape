@@ -44,12 +44,13 @@ class Progress with ChangeNotifier {
   // 공통 졸업 조건
   int englishMax = 1;                    // 영어
   int chineseMax = 1;                    // 한자
-  int commonMax = 5;                     // 공통 교양
+  int commonMax = 7;                     // 공통 교양
   int coreMax = 5;                       // 핵심 교양
 
 
-  // 항목별 학점 총합 가져오기
+  // 졸업 요건 별 학점 총합 가져오기
   loadCreditProgress(FirebaseFirestore db, FirebaseAuth auth, String requirement) async {
+    print("$requirement load credit 호출");
 
     User? user = auth.currentUser;
     String uid;
@@ -59,12 +60,12 @@ class Progress with ChangeNotifier {
       return;
     }
 
-    QuerySnapshot querySnapshot = await db.collection("users").doc(uid).collection(requirement).get();
+    QuerySnapshot querySnapshot = await db.collection("usersRequirements").doc(uid).collection(requirement).get();
     int totalCredit = 0;
     for(QueryDocumentSnapshot document in querySnapshot.docs) {
       if (document.data() is Map<String, dynamic>) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-        // 'credit' 필드가 존재하면 해당 값을 더함
+        // '학점' 필드가 존재하면 해당 값을 더함
         if(data.containsKey('학점')){
           totalCredit += document['학점'] as int;
         }
@@ -74,8 +75,95 @@ class Progress with ChangeNotifier {
     notifyListeners();
   }
 
-  // 항목별 개수 총합 가져오기
+  // int? getSemesterInt(QuerySnapshot querySnapshot, String docName) {
+  //   // 문서 찾기
+  //   QueryDocumentSnapshot? queryDocSnapshot;
+  //   try {
+  //     queryDocSnapshot = querySnapshot.docs.firstWhere(
+  //           (doc) => doc.id == docName,
+  //     );
+  //   } catch (e) {
+  //     queryDocSnapshot = null;
+  //   }
+  //   // 문서에서 "학기" 필드 값 가져오기
+  //   String? semester;
+  //   if (queryDocSnapshot != null) {
+  //     if (queryDocSnapshot.data() is Map<String, dynamic>) {
+  //       Map<String, dynamic> data = queryDocSnapshot.data() as Map<String, dynamic>;
+  //       if(data.containsKey('학기')){
+  //         semester = queryDocSnapshot['학기'] as String;
+  //       }
+  //     }
+  //   }
+  //   // 문서의 "학기" 값에서 '-'를 빼고, 숫자를 int? 형으로 가져오기
+  //   String? semesterWithoutDash = semester?.replaceAll('-', '');
+  //   int? semesterInt = semesterWithoutDash != null ? int.parse(semesterWithoutDash) : null;
+  //
+  //   return semesterInt;
+  // }
+  
+  // 설계 과목들의 설계 학점 총합 가져오기
+  // loadDesignCreditProgress(FirebaseFirestore db, FirebaseAuth auth, String requirement) async {
+  //
+  //   User? user = auth.currentUser;
+  //   String uid;
+  //   if(user != null) {
+  //     uid = user.uid;
+  //   } else {
+  //     return;
+  //   }
+  //
+  //   QuerySnapshot querySnapshot = await db.collection("usersRequirements").doc(uid).collection(requirement).get();
+  //   int totalDesignCredit = 0;
+  //   int? creativeDesignSemesterInt = getSemesterInt(querySnapshot, "창의적설계");
+  //   int? capstone1SemesterInt = getSemesterInt(querySnapshot, "캡스톤디자인(1)");
+  //   int? capstone2SemesterInt = getSemesterInt(querySnapshot, "캡스톤디자인(2)");
+  //   int? capstoneSemesterInt;
+  //   if(capstone1SemesterInt != null && capstone2SemesterInt != null) {
+  //     if(capstone1SemesterInt > capstone2SemesterInt) {
+  //       capstoneSemesterInt = capstone1SemesterInt;
+  //     } else {
+  //       capstoneSemesterInt = capstone2SemesterInt;
+  //     }
+  //   }
+  //   // 창의적설계보다 학기가 낮으면 설계학점 안치고,
+  //   // 캡스톤디자인 두개중 높은 학기보다 학기가 높으면 설계학점 안침
+  //   for(QueryDocumentSnapshot document in querySnapshot.docs) {
+  //     if (document.data() is Map<String, dynamic>) {
+  //       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+  //       if(data.containsKey('학기') && data.containsKey('설계학점')){
+  //         String semester = document['학기'] as String;
+  //         String semesterWithoutDash = semester.replaceAll('-', '');
+  //         int semesterInt = int.parse(semesterWithoutDash);
+  //         // 창의적설계를 들었다면
+  //         if(creativeDesignSemesterInt != null) {
+  //           // 창의적설계 이후에 들어야 하고
+  //           if(semesterInt >= creativeDesignSemesterInt) {
+  //             // 캡스톤을 끝내지 않았다면
+  //             if(capstoneSemesterInt == null) {
+  //               String a = document['과목명'] as String;
+  //               totalDesignCredit += document['설계학점'] as int;
+  //             }
+  //             // 캡스톤을 끝냈다면
+  //             else {
+  //               // 캡스톤 이전에 들어야 인정
+  //               if(semesterInt <= capstoneSemesterInt) {
+  //                 String a = document['과목명'] as String;
+  //                 totalDesignCredit += document['설계학점'] as int;
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   requirementsProgress.update(requirement, (value) => totalDesignCredit, ifAbsent: () => totalDesignCredit);
+  //   notifyListeners();
+  // }
+
+  // 졸업 요건 별 개수 총합 가져오기
   loadNumberProgress(FirebaseFirestore db, FirebaseAuth auth, String requirement) async {
+    print("$requirement load number 호출");
 
     User? user = auth.currentUser;
     String uid;
@@ -85,7 +173,7 @@ class Progress with ChangeNotifier {
       return;
     }
 
-    QuerySnapshot querySnapshot = await db.collection("users").doc(uid).collection(requirement).get();
+    QuerySnapshot querySnapshot = await db.collection("usersRequirements").doc(uid).collection(requirement).get();
     requirementsProgress.update(requirement, (value) => querySnapshot.size, ifAbsent: () => querySnapshot.size);
     notifyListeners();
   }
