@@ -63,7 +63,7 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
   final _selectedSemester = List<String>.filled(8, '0-0');
   final _subjectNames = [
     "미적분",
-    "일반물리(1)",
+    "일반물리(2)",
     "일반물리실험(1)",
     "기초컴퓨터프로그래밍",
     "논리회로",
@@ -123,7 +123,7 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
   @override
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
-    context.read<Progress>().loadCreditProgress(db, auth, "basicMajor");
+    context.read<Progress>().loadCreditProgress(db, auth, "basicMajor", false);
 
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,

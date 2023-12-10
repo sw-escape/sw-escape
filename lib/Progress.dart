@@ -49,7 +49,7 @@ class Progress with ChangeNotifier {
 
 
   // 졸업 요건 별 학점 총합 가져오기
-  loadCreditProgress(FirebaseFirestore db, FirebaseAuth auth, String requirement) async {
+  loadCreditProgress(FirebaseFirestore db, FirebaseAuth auth, String requirement, bool isDesignCredit) async {
     print("$requirement load credit 호출");
 
     User? user = auth.currentUser;
@@ -65,9 +65,16 @@ class Progress with ChangeNotifier {
     for(QueryDocumentSnapshot document in querySnapshot.docs) {
       if (document.data() is Map<String, dynamic>) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-        // '학점' 필드가 존재하면 해당 값을 더함
-        if(data.containsKey('학점')){
-          totalCredit += document['학점'] as int;
+        if(isDesignCredit){
+          // '설계학점' 필드가 존재하면 해당 값을 더함
+          if(data.containsKey('설계학점')){
+            totalCredit += document['설계학점'] as int;
+          }
+        } else {
+          // '학점' 필드가 존재하면 해당 값을 더함
+          if(data.containsKey('학점')){
+            totalCredit += document['학점'] as int;
+          }
         }
       }
     }

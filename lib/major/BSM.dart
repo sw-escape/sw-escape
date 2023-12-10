@@ -84,7 +84,7 @@ class _BSMPageState extends State<BSMPage> {
   @override
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
-    context.read<Progress>().loadCreditProgress(db, auth, "bsm");
+    context.read<Progress>().loadCreditProgress(db, auth, "bsm", false);
 
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,

@@ -165,6 +165,8 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
                                     "자료구조", 3, semester!);
+                                await setSubject(db, auth, "majorRequired",
+                                    "자료구조", 3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "자료구조");
