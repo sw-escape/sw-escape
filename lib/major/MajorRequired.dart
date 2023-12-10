@@ -75,18 +75,9 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
   @override
   void initState() {
     super.initState();
-    // setState(() {
-    //   _selectedGrade[0] = context.read<Major>().loadMajorTime('DataStructure');
-    //   _selectedGrade[1] = context.read<Major>().loadMajorTime('ComputerArchitecture');
-    //   _selectedGrade[2] = context.read<Major>().loadMajorTime('PrinciplesOfProgrammingLanguage');
-    //   _selectedGrade[3] = context.read<Major>().loadMajorTime('SoftwareEngineering');
-    //   _selectedGrade[4] = context.read<Major>().loadMajorTime('Algorithm');
-    //   _selectedGrade[5] = context.read<Major>().loadMajorTime('OperatingSystem');
-    // });
-
     // firestore에서 과목들의 '학기' 정보 가져오기
     _getSubjectsSemesterFuture =
-        getSubjectsSemester(db, auth, _selectedSemester, _subjectNames);
+        getSubjectsSemester(db, auth, "majorRequired", _selectedSemester, _subjectNames);
   }
 
   @override
@@ -170,13 +161,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value) {
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor(
-                            //         'DataStructure', value!);
-                            //     _selectedGrade[0] = value;
-                            //   });
-                            // }
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -244,12 +228,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('ComputerArchitecture', value!);
-                            //     _selectedGrade[1] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -317,12 +295,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('PrinciplesOfProgrammingLanguage', value!);
-                            //     _selectedGrade[2] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -390,12 +362,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('SoftwareEngineering', value!);
-                            //     _selectedGrade[3] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -463,12 +429,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('Algorithm', value!);
-                            //     _selectedGrade[4] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
@@ -536,12 +496,6 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                                   ),
                                 )
                                 .toList(),
-                            // onChanged: (value){ㅑ
-                            //   setState(() {
-                            //     context.read<Major>().changeMajor('OperatingSystem', value!);
-                            //     _selectedGrade[5] = value;
-                            //   });
-                            // },
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
