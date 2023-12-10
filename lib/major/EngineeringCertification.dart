@@ -118,8 +118,7 @@ class _EngineeringCertificationPageState
                   const SizedBox(
                     height: 20,
                   ),
-                  Description(
-                      description: '공학 인증 이수를 위해 수강해야 하는 5과목', height: 55),
+                  const Description(description: '공학 인증 이수를 위해 수강해야 하는 5과목', height: 55),
                   const SizedBox(
                     height: 80,
                   ),
@@ -168,16 +167,23 @@ class _EngineeringCertificationPageState
                                 .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db,
-                                    auth,
-                                    "engineeringCertification",
-                                    "이산수학",
-                                    3,
-                                    semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "이산수학", 3, semester!);
+                                await setSubject(db, auth, "basicMajor",
+                                    "이산수학", 3, semester!);
+                                await setSubject(db, auth, "bsm",
+                                    "이산수학", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "이산수학", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth,
                                     "engineeringCertification", "이산수학");
+                                await deleteSubject(db, auth,
+                                    "basicMajor", "이산수학");
+                                await deleteSubject(db, auth,
+                                    "bsm", "이산수학");
+                                await deleteSubject(db, auth,
+                                    "etcMajor", "이산수학");
                               }
                               await getSubjectSemester(
                                   db,
@@ -240,16 +246,19 @@ class _EngineeringCertificationPageState
                                 .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db,
-                                    auth,
-                                    "engineeringCertification",
-                                    "자료구조",
-                                    3,
-                                    semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "자료구조", 3, semester!);
+                                await setSubject(db, auth, "majorRequired",
+                                    "자료구조", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "자료구조", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth,
                                     "engineeringCertification", "자료구조");
+                                await deleteSubject(db, auth,
+                                    "majorRequired", "자료구조");
+                                await deleteSubject(db, auth,
+                                    "etcMajor", "자료구조");
                               }
                               await getSubjectSemester(
                                   db,
@@ -312,16 +321,19 @@ class _EngineeringCertificationPageState
                                 .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db,
-                                    auth,
-                                    "engineeringCertification",
-                                    "컴퓨터구조",
-                                    3,
-                                    semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "컴퓨터구조", 3, semester!);
+                                await setSubject(db, auth, "majorRequired",
+                                    "컴퓨터구조", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "컴퓨터구조", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth,
                                     "engineeringCertification", "컴퓨터구조");
+                                await deleteSubject(db, auth,
+                                    "majorRequired", "컴퓨터구조");
+                                await deleteSubject(db, auth,
+                                    "etcMajor", "컴퓨터구조");
                               }
                               await getSubjectSemester(
                                   db,
@@ -384,16 +396,19 @@ class _EngineeringCertificationPageState
                                 .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db,
-                                    auth,
-                                    "engineeringCertification",
-                                    "알고리즘",
-                                    3,
-                                    semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "알고리즘", 3, semester!);
+                                await setSubject(db, auth, "majorRequired",
+                                    "알고리즘", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "알고리즘", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth,
                                     "engineeringCertification", "알고리즘");
+                                await deleteSubject(db, auth,
+                                    "majorRequired", "알고리즘");
+                                await deleteSubject(db, auth,
+                                    "etcMajor", "알고리즘");
                               }
                               await getSubjectSemester(
                                   db,
@@ -456,16 +471,19 @@ class _EngineeringCertificationPageState
                                 .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db,
-                                    auth,
-                                    "engineeringCertification",
-                                    "운영체제",
-                                    3,
-                                    semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "운영체제", 3, semester!);
+                                await setSubject(db, auth, "majorRequired",
+                                    "운영체제", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "운영체제", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth,
                                     "engineeringCertification", "운영체제");
+                                await deleteSubject(db, auth,
+                                    "majorRequired", "운영체제");
+                                await deleteSubject(db, auth,
+                                    "etcMajor", "운영체제");
                               }
                               await getSubjectSemester(
                                   db,
