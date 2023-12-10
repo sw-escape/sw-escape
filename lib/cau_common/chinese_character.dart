@@ -19,11 +19,10 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'SW ESCAPE',
+          '한문',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 22,
             fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.italic,
           ),
         ),
         backgroundColor: Colors.white,
@@ -53,7 +52,7 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
                     child: Container(
                       padding: EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
-                      height: 80,
+                      height: 60,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(color: Colors.black),
@@ -61,7 +60,7 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
                       ),
                       child: Center(
                         child: const Text(
-                          '한문 수업 1과목 수강\nOR 한자 시험 4급 이상',
+                          '한문 수업 1과목 수강 혹은 한자 시험 4급 이상',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,

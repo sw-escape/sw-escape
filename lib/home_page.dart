@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sw_escape/majorpage.dart';
+import 'package:sw_escape/major/majorpage.dart';
 import 'package:sw_escape/student.dart';
 
 import 'MajorBasic.dart';
 import 'cau_common/commonpage.dart';
-import 'etcpage.dart';
+import 'etc/etcpage.dart';
 import 'modify_info.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,14 +25,9 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           backgroundColor: Colors.white,
           elevation: 0,
-          title: const Text(
-            'SW ESCAPE',
-            style: TextStyle(
-                color: Colors.black,
-                //fontFamily: 'Inter',
-                fontSize: 23,
-                fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic),
+          title: Image.asset(
+            'assets/images/swescape_title.png',
+            height: 40, // 이미지의 폭을 조정할 수 있습니다.
           ),
           actions: [
             // Add your icon button here
@@ -45,7 +40,8 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ModifyInfo(selectedStudentID: selectedStudentID),
+                    builder: (context) =>
+                        ModifyInfo(selectedStudentID: selectedStudentID),
                   ),
                 );
               },

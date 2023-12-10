@@ -193,37 +193,29 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
                               setState(() {
                                 saving = true;
                               });
-                              try {
-                                final newUser =
-                                    await _authentication.currentUser;
-                                if (newUser != null) {
-                                  await FirebaseFirestore.instance
-                                      .collection('users')
-                                      .doc(newUser.uid)
-                                      .set({
-                                    'StudentID': selectedStudentID,
-                                    'Major': selectedMajor,
-                                  });
+                              // int year = int.tryParse(selectedStudentID!.substring(0, 2)) ?? 0; // '21학번'에서 '21'을 추출하여 정수로 변환
+                              // String dept = selectedMajor ?? ''; // selectedMajor 값이 null이 아니면 사용, null이면 빈 문자열 사용
+                              //
+                              // Provider.of<Student>(context, listen: false).setInfo('userid', dept, year);
+                              final newUser = await _authentication.currentUser;
+                              await FirebaseFirestore.instance.collection('users').doc(newUser!.uid).update({
+                                'StudentID': selectedStudentID,
+                                'Major': selectedMajor,
+                              });
+                              Provider.of<Student>(context, listen: false)
+                                  .setSelectedStudentID(selectedStudentID);
 
-                                  Provider.of<Student>(context, listen: false)
-                                      .setSelectedStudentID(selectedStudentID);
-
-                                  FocusScope.of(context).unfocus();
-                                  FocusScope.of(context).unfocus();
-                                  FocusScope.of(context).unfocus();
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => StartScreen()));
-                                }
-                              } catch (e) {
-                                // 오류 처리
-                                print(e); // 콘솔에 오류 출력
-                              } finally {
-                                setState(() {
-                                  saving = false;
-                                });
-                              }
+                              FocusScope.of(context).unfocus();
+                              FocusScope.of(context).unfocus();
+                              FocusScope.of(context).unfocus();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => StartScreen()),
+                              );
+                              setState(() {
+                                saving = false;
+                              });
                             },
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(vertical: 7),

@@ -21,11 +21,10 @@ class _EnglishState extends State<English> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'SW ESCAPE',
+          '영어',
           style: TextStyle(
-            fontSize: 25,
+            fontSize: 22,
             fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.italic,
           ),
         ),
         backgroundColor: Colors.white,
@@ -61,9 +60,10 @@ class _EnglishState extends State<English> {
                       ),
                       padding: const EdgeInsets.all(20), // 안쪽 여백 설정
                       child: const Text(
-                        '토익 스피킹 5급이상 OR\n전공과목 중 영어A 3과목 이상 이수',
+                        '토익 스피킹 5급 이상 혹은 전공 과목 중 영어A 3과목 이상 이수',
                         style: TextStyle(
                           fontSize: 20,
+                          fontWeight: FontWeight.w900,
                           color: Colors.black,
                         ),
                       ),
