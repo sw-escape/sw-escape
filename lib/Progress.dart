@@ -37,7 +37,7 @@ class Progress with ChangeNotifier {
   int codingBootCampDialogMax = 1;       // 코딩부트캠프
   int graduateThesisTopcitDialogMax = 1; // 졸업논문/TOPCIT
   int capstoneMax = 1;                   // 캡스톤/인턴/학부연구생
-  int machCourseDialogMax = 4;           // MACH 교양
+  int machCourseDialogMax = 2;           // MACH 교양
   int lowestGraduateGPADialogMax = 1;    // 최저 졸업 평점
   int professorInterviewDialogMax = 4;   // 교수님 면담 4회
 
