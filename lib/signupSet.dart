@@ -19,7 +19,6 @@ class _SignupSetScreenState extends State<SignupSetScreen> {
   final _authentication = FirebaseAuth.instance;
 
   final List<String> studentIDs = [
-    '14학번',
     '15학번',
     '16학번',
     '17학번',
