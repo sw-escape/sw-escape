@@ -219,7 +219,7 @@ class _EnglishState extends State<English> {
                                                   Colors.black),
                                           fixedSize:
                                               MaterialStateProperty.all<Size>(
-                                            Size(30, 50), // 버튼의 가로, 세로 크기 조절
+                                            Size(30, 50),
                                           ),
                                         ),
                                         onPressed: () {
