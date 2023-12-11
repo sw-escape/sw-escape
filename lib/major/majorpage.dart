@@ -60,12 +60,10 @@ class MajorMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
     context.read<Progress>().loadNumberProgress(db, auth, "majorRequired");
-    context
-        .read<Progress>()
-        .loadNumberProgress(db, auth, "engineeringCertification");
-    context.read<Progress>().loadCreditProgress(db, auth, "designSubject");
-    context.read<Progress>().loadCreditProgress(db, auth, "bsm");
-    context.read<Progress>().loadCreditProgress(db, auth, "etcMajor");
+    context.read<Progress>().loadNumberProgress(db, auth, "engineeringCertification");
+    context.read<Progress>().loadCreditProgress(db, auth, "designSubject", true);
+    context.read<Progress>().loadCreditProgress(db, auth, "bsm", false);
+    context.read<Progress>().loadCreditProgress(db, auth, "etcMajor", false);
 
     return Column(
       // Column은 기본적으로 수평 정렬

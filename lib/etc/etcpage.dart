@@ -108,7 +108,7 @@ class EtcMenu extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 ProgressBar(
                   currentProgress: context.select((Progress p) =>
@@ -170,7 +170,7 @@ class EtcMenu extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 ProgressBar(
                   currentProgress: context.select((Progress p) =>
@@ -232,7 +232,7 @@ class EtcMenu extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 ProgressBar(
                   currentProgress: context.select(
@@ -293,7 +293,7 @@ class EtcMenu extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 ProgressBar(
                   currentProgress: context.select((Progress p) =>
@@ -358,7 +358,7 @@ class EtcMenu extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 ProgressBar(
                   currentProgress: context.select((Progress p) =>
@@ -420,7 +420,7 @@ class EtcMenu extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 ProgressBar(
                   currentProgress: context.select((Progress p) =>
