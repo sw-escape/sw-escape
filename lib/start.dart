@@ -29,7 +29,7 @@ class StartScreen extends StatelessWidget {
               Text(
                 'SW ESCAPE',
                 style: TextStyle(
-                  fontFamily: 'iblack',
+                  fontFamily: 'Inter',
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   fontSize: 48,

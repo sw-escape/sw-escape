@@ -1,11 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sw_escape/majorpage.dart';
+import 'package:sw_escape/major/majorpage.dart';
 import 'package:sw_escape/student.dart';
 
+import 'FirestoreManager.dart';
 import 'MajorBasic.dart';
 import 'cau_common/commonpage.dart';
-import 'etcpage.dart';
+import 'etc/etcpage.dart';
 import 'modify_info.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,19 +21,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    String? selectedStudentID = Provider.of<Student>(context).selectedStudentID;
+
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.white,
           elevation: 0,
-          title: const Text(
-            'SW ESCAPE',
-            style: TextStyle(
-                color: Colors.black,
-                //fontFamily: 'Inter',
-                fontSize: 23,
-                fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic),
+          title: Image.asset(
+            'assets/images/swescape_title.png',
+            height: 40, // 이미지의 폭을 조정할 수 있습니다.
           ),
           actions: [
             // Add your icon button here
@@ -43,7 +43,8 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ModifyInfo(), // 이동할 화면 위젯
+                    builder: (context) =>
+                        ModifyInfo(selectedStudentID: selectedStudentID),
                   ),
                 );
               },
@@ -62,139 +63,229 @@ class _HomePageState extends State<HomePage> {
             children: [
               MyInfo(),
               SizedBox(
-                height: 20,
+                height: 40,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 15),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MajorBasic(), // 이동할 화면 위젯
-                      ),
-                    );
-                  },
-                  child: Material(
-                    elevation: 4, // elevation 정도
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: Container(
-                      height: 90,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(40),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '전공기초',
-                          style: TextStyle(fontSize: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 8.0, right: 8, top: 15),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MajorBasic(), // 이동할 화면 위젯
+                          ),
+                        );
+                      },
+                      child: Material(
+                        elevation: 4, // elevation 정도
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: Container(
+                          height: MediaQuery.of(context).size.width * 0.42,
+                          width: MediaQuery.of(context).size.width * 0.42,
+                          decoration: BoxDecoration(
+                            color: Color(0xffFBBC05),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                            border: Border.all(
+                              color: Colors.black, // 테두리 색상
+                              width: 2.0, // 테두리 두께
+                            ),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/home/Brick.png', // 이미지 경로
+                                  width: 90, // 이미지 너비 조정
+                                  height: 90, // 이미지 높이 조정
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '전공기초',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 15),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MajorPage(), // 이동할 화면 위젯
-                      ),
-                    );
-                  },
-                  child: Material(
-                    elevation: 4, // elevation 정도
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: Container(
-                      height: 90,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(40),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '전공',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 15),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EtcPage(), // 이동할 화면 위젯
-                      ),
-                    );
-                  },
-                  child: Material(
-                    elevation: 4, // elevation 정도
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: Container(
-                      height: 90,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(40),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '기타',
-                          style: TextStyle(fontSize: 20),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 8.0, right: 8, top: 15),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MajorPage(), // 이동할 화면 위젯
+                          ),
+                        );
+                      },
+                      child: Material(
+                        elevation: 4, // elevation 정도
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: Container(
+                          height: MediaQuery.of(context).size.width * 0.42,
+                          width: MediaQuery.of(context).size.width * 0.42,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black, // 테두리 색상
+                              width: 2.0, // 테두리 두께
+                            ),
+                            color: Color(0xffFB7AC0),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/home/Studio Display.png', // 이미지 경로
+                                  width: 90, // 이미지 너비 조정
+                                  height: 90, // 이미지 높이 조정
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '전공',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 15),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CommonPage(), // 이동할 화면 위젯
-                      ),
-                    );
-                  },
-                  child: Material(
-                    elevation: 4, // elevation 정도
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: Container(
-                      height: 90,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(40),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '공통 졸업 요건',
-                          style: TextStyle(fontSize: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 8.0, right: 8, top: 15),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EtcPage(), // 이동할 화면 위젯
+                          ),
+                        );
+                      },
+                      child: Material(
+                        elevation: 4, // elevation 정도
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: Container(
+                          height: MediaQuery.of(context).size.width * 0.42,
+                          width: MediaQuery.of(context).size.width * 0.42,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black, // 테두리 색상
+                              width: 2.0, // 테두리 두께
+                            ),
+                            color: Color(0xff76DF6D),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/home/Icons8.png', // 이미지 경로
+                                  width: 90, // 이미지 너비 조정
+                                  height: 90, // 이미지 높이 조정
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '기타',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 8.0, right: 8, top: 15),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CommonPage(), // 이동할 화면 위젯
+                          ),
+                        );
+                      },
+                      child: Material(
+                        elevation: 4, // elevation 정도
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: Container(
+                          height: MediaQuery.of(context).size.width * 0.42,
+                          width: MediaQuery.of(context).size.width * 0.42,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black, // 테두리 색상
+                              width: 2.0, // 테두리 두께
+                            ),
+                            color: Color(0xffAD6DDF),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/home/University.png', // 이미지 경로
+                                  width: 90, // 이미지 너비 조정
+                                  height: 90, // 이미지 높이 조정
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '공통 졸업 요건',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               )
             ],
           ),
@@ -210,14 +301,13 @@ class MyInfo extends StatefulWidget {
 }
 
 class _MyInfoState extends State<MyInfo> {
+  final db = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 4, // elevation 정도
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(40), // 왼쪽 아래 모서리의 둥글기 정도
-        bottomRight: Radius.circular(40), // 오른쪽 아래 모서리의 둥글기 정도
-      ),
+    String? studentID = Provider.of<Student>(context).selectedStudentID;
+
+    return Container(
       child: Container(
         height: 140,
         decoration: BoxDecoration(
@@ -226,6 +316,13 @@ class _MyInfoState extends State<MyInfo> {
             bottomLeft: Radius.circular(40),
             bottomRight: Radius.circular(40),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black87,
+              blurRadius: 0,
+              offset: Offset(0, 2),
+            ),
+          ],
         ),
         child: Row(
           children: [
@@ -233,13 +330,22 @@ class _MyInfoState extends State<MyInfo> {
             Column(
               children: [
                 Stack(
-                  clipBehavior: Clip.none,
+                  //clipBehavior: Clip.none,
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: 10, left: 45),
                       width: 90,
                       height: 90,
                       decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(2, 3), // 그림자 위치
+                            blurRadius: 0, // 그림자 스프레드
+                            spreadRadius: -1, // 그림자 크기
+                          ),
+                        ],
+                        border: Border.all(width: 2),
                         shape: BoxShape.circle,
                         color: Color(0xFF54A9F6),
                       ),
@@ -257,26 +363,46 @@ class _MyInfoState extends State<MyInfo> {
                 )
               ],
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20, left: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '@userid',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Text(
-                    '소프트웨어학부(전공)',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                  Text(
-                    '21학번',
-                    style: TextStyle(fontSize: 17),
-                  )
-                ],
-              ),
-            )
+            FutureBuilder<Map<String, dynamic>>(
+              future: getUserData(db, auth),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  if (snapshot.hasData) {
+                    Map<String, dynamic> userData = snapshot.data!;
+                    String major = userData['Major'];
+                    String studentID = userData['StudentID'];
+                    String email = userData['email'];
+
+                    return Container(
+                      margin: EdgeInsets.only(top: 20, left: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Major | $major',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                          SizedBox(height: 4),
+                          Text('학번 | $studentID',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                          SizedBox(height: 4),
+                          Text('email | $email',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    );
+                  } else {
+                    // 데이터가 없는 경우 처리하는 UI
+                    return Text('No data available');
+                  }
+                }
+              },
+            ),
           ],
         ),
       ),

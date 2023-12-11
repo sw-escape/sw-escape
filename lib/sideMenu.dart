@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sw_escape/start.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'home_page.dart';
 import 'MajorBasic.dart';
-import 'majorpage.dart';
-import 'etcpage.dart';
+import 'major/majorpage.dart';
+import 'etc/etcpage.dart';
 import 'cau_common/commonpage.dart';
 import 'modify_info.dart';
 
@@ -33,7 +35,7 @@ class SideMenu extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 18)))),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => MajorBasic()));
                 },
                 child: const Align(
@@ -42,7 +44,7 @@ class SideMenu extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 18)))),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => MajorPage()));
                 },
                 child: const Align(
@@ -51,7 +53,7 @@ class SideMenu extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 18)))),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => EtcPage()));
                 },
                 child: const Align(
@@ -60,7 +62,7 @@ class SideMenu extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 18)))),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => CommonPage()));
                 },
                 child: const Align(
@@ -72,13 +74,30 @@ class SideMenu extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => ModifyInfo()));
                 },
                 child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text('내 정보 수정',
                         style: TextStyle(color: Colors.white, fontSize: 18)))),
+            TextButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil( // StartScreen로 이동
+                  context,
+                  MaterialPageRoute(builder: (context) => StartScreen()),
+                      (route) => false, // 현재 페이지 스택에서 제거
+                );
+              },
+              child: const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '로그아웃',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ),
+            ),
           ],
         ),
       ),

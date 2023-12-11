@@ -39,6 +39,9 @@ dependencies:
   firebase_core: ^2.24.0
   firebase_auth: ^4.14.1
   url_launcher: ^6.2.1
+  percent_indicator: ^4.0.1
+  cloud_firestore: ^4.13.3
+  modal_progress_hud_nsn: ^0.4.0
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +76,7 @@ flutter:
     - assets/images/common/
     - assets/images/etc/
     - assets/images/character/
+    - assets/images/home/
 
 
 
@@ -92,7 +96,12 @@ flutter:
 
     - family: NanumBarunGothic
       fonts:
-        - asset: assets/fonts/NanumBarunGothic.otf
+        - asset: assets/fonts/NanumBarunGothic.ttf
+          weight: 400
+
+    - family: NEXON Lv1 Gothic
+      fonts:
+        - asset: assets/fonts/NEXON Lv1 Gothic OTF.otf
           weight: 400
 
 

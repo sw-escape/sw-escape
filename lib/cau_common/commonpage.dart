@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sw_escape/progress.dart';
+import 'package:sw_escape/Progress.dart';
 import 'package:sw_escape/ProgressBar.dart';
 
 import '../sideMenu.dart';
@@ -17,13 +19,9 @@ class CommonPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'SW ESCAPE',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.italic,
-          ),
+        title: Image.asset(
+          'assets/images/swescape_title.png',
+          height: 40, // 이미지의 폭을 조정할 수 있습니다.
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -52,7 +50,7 @@ class CommonPage extends StatelessWidget {
               height: 60,
               // color: Colors.indigo,
             ),
-            const CommonMenu(),
+            CommonMenu(),
           ],
         ),
       ),
@@ -60,12 +58,20 @@ class CommonPage extends StatelessWidget {
   }
 }
 
-
 class CommonMenu extends StatelessWidget {
-  const CommonMenu({super.key});
+  CommonMenu({super.key});
+
+  final db = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
+    // Progress bar를 위해서, firestore에서 데이터 불러오기
+    context.read<Progress>().loadNumberProgress(db, auth, "english");
+    context.read<Progress>().loadNumberProgress(db, auth, "chinese");
+    context.read<Progress>().loadNumberProgress(db, auth, "common");
+    context.read<Progress>().loadNumberProgress(db, auth, "core");
+
     return Column(
       // Column은 기본적으로 수평 정렬
       children: [
@@ -88,18 +94,25 @@ class CommonMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.englishProgress),
-                  maxProgress: context.select((Progress p) => p.englishProgressMax),
+                  currentProgress: context.select(
+                      (Progress p) => p.requirementsProgress["english"]!),
+                  maxProgress: context.select((Progress p) => p.englishMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.red,
                 ),
-                const SizedBox(height: 5,),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Row(
                   children: [
-                    SizedBox(width: 30,),
+                    SizedBox(
+                      width: 30,
+                    ),
                     SizedBox(
                       child: Image(
                         width: 60,
@@ -144,18 +157,25 @@ class CommonMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.chineseProgress),
-                  maxProgress: context.select((Progress p) => p.chineseProgressMax),
+                  currentProgress: context.select(
+                      (Progress p) => p.requirementsProgress["chinese"]!),
+                  maxProgress: context.select((Progress p) => p.chineseMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.orange,
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 const Row(
                   children: [
-                    SizedBox(width: 35,),
+                    SizedBox(
+                      width: 35,
+                    ),
                     SizedBox(
                       child: Image(
                         width: 50,
@@ -200,18 +220,25 @@ class CommonMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.commonProgress),
-                  maxProgress: context.select((Progress p) => p.commonProgressMax),
+                  currentProgress: context.select(
+                      (Progress p) => p.requirementsProgress["common"]!),
+                  maxProgress: context.select((Progress p) => p.commonMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.yellow,
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 const Row(
                   children: [
-                    SizedBox(width: 30,),
+                    SizedBox(
+                      width: 30,
+                    ),
                     SizedBox(
                       child: Image(
                         width: 50,
@@ -256,18 +283,25 @@ class CommonMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 ProgressBar(
-                  currentProgress: context.select((Progress p) => p.coreProgress),
-                  maxProgress: context.select((Progress p) => p.coreProgressMax),
+                  currentProgress: context
+                      .select((Progress p) => p.requirementsProgress["core"]!),
+                  maxProgress: context.select((Progress p) => p.coreMax),
                   width: 250.0,
                   height: 20.0,
                   color: Colors.green,
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 const Row(
                   children: [
-                    SizedBox(width: 30,),
+                    SizedBox(
+                      width: 30,
+                    ),
                     SizedBox(
                       child: Image(
                         width: 50,
