@@ -195,13 +195,22 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                   const SizedBox(
                     height: 35,
                   ),
-                  ProgressBar(
-                    currentProgress: context.select(
-                        (Progress p) => p.requirementsProgress["etcMajor"]!),
-                    maxProgress: context.select((Progress p) => p.etcMajorMax),
-                    width: 360,
-                    height: 35,
-                    color: Colors.purpleAccent,
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ProgressBar(
+                        currentProgress: context.select(
+                                (Progress p) => p.requirementsProgress["etcMajor"]!),
+                        maxProgress: context.select((Progress p) => p.etcMajorMax),
+                        width: 360,
+                        height: 35,
+                        color: Colors.purpleAccent,
+                      ),
+                      Text(
+                        '${context.select((Progress p) => p.requirementsProgress["etcMajor"]!)} / ${context.select((Progress p) => p.etcMajorMax)}',
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 10,

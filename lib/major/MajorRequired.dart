@@ -107,14 +107,23 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  ProgressBar(
-                    currentProgress: context.select((Progress p) =>
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ProgressBar(
+                        currentProgress: context.select((Progress p) =>
                         p.requirementsProgress["majorRequired"]!),
-                    maxProgress:
+                        maxProgress:
                         context.select((Progress p) => p.majorRequiredMax),
-                    width: 365,
-                    height: 35,
-                    color: Colors.red,
+                        width: 365,
+                        height: 35,
+                        color: Colors.red,
+                      ),
+                      Text(
+                        '${context.select((Progress p) => p.requirementsProgress["majorRequired"]!)} / ${context.select((Progress p) => p.majorRequiredMax)}',
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 10,

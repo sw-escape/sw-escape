@@ -111,14 +111,23 @@ class _EngineeringCertificationPageState
                   const SizedBox(
                     height: 35,
                   ),
-                  ProgressBar(
-                    currentProgress: context.select((Progress p) =>
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ProgressBar(
+                        currentProgress: context.select((Progress p) =>
                         p.requirementsProgress["engineeringCertification"]!),
-                    maxProgress: context
-                        .select((Progress p) => p.engineeringCertificationMax),
-                    width: 360,
-                    height: 35,
-                    color: Colors.orange,
+                        maxProgress: context
+                            .select((Progress p) => p.engineeringCertificationMax),
+                        width: 360,
+                        height: 35,
+                        color: Colors.orange,
+                      ),
+                      Text(
+                        '${context.select((Progress p) => p.requirementsProgress["engineeringCertification"]!)} / ${context.select((Progress p) => p.engineeringCertificationMax)}',
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 15,

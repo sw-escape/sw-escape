@@ -182,22 +182,40 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Description(
+                  const Description(
                       description: '창의적설계를 시작으로 필수 과목 2개, 설계 총 14학점 이상',
                       height: 70),
                   const SizedBox(
                     height: 30,
                   ),
-                  ProgressBar(
-                    currentProgress: context.select((Progress p) =>
+                  // ProgressBar(
+                  //   currentProgress: context.select((Progress p) =>
+                  //       p.requirementsProgress["designSubject"]!),
+                  //   maxProgress:
+                  //       context.select((Progress p) => p.designSubjectMax),
+                  //   width: 360,
+                  //   height: 35,
+                  //   color: Colors.yellow,
+                  // ),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ProgressBar(
+                        currentProgress: context.select((Progress p) =>
                         p.requirementsProgress["designSubject"]!),
-                    maxProgress:
+                        maxProgress:
                         context.select((Progress p) => p.designSubjectMax),
-                    width: 360,
-                    height: 35,
-                    color: Colors.yellow,
+                        width: 360,
+                        height: 35,
+                        color: Colors.yellow,
+                      ),
+                      Text(
+                        '${context.select((Progress p) =>
+                        p.requirementsProgress["designSubject"]!)} / ${context.select((Progress p) => p.designSubjectMax)}',
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-
                   const SizedBox(
                     height: 15,
                   ),

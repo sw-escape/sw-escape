@@ -109,13 +109,23 @@ class _BSMPageState extends State<BSMPage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  ProgressBar(
-                    currentProgress: context
-                        .select((Progress p) => p.requirementsProgress["bsm"]!),
-                    maxProgress: context.select((Progress p) => p.bsmMax),
-                    width: 360,
-                    height: 35,
-                    color: Colors.green,
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ProgressBar(
+                        currentProgress: context
+                            .select((Progress p) => p.requirementsProgress["bsm"]!),
+                        maxProgress: context.select((Progress p) => p.bsmMax),
+                        width: 360,
+                        height: 35,
+                        color: Colors.green,
+                      ),
+                      Text(
+                        '${context
+                            .select((Progress p) => p.requirementsProgress["bsm"]!)} / ${context.select((Progress p) => p.bsmMax)}',
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 10,
