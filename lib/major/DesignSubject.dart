@@ -150,7 +150,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
   @override
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
-    context.read<Progress>().loadCreditProgress(db, auth, "designSubject");
+    context.read<Progress>().loadCreditProgress(db, auth, "designSubject", true);
 
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,
@@ -242,10 +242,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "창의적설계", 3, semester!);
+                                    "창의적설계", 3, semester!, designCredit: 3);
+                                await setSubject(db, auth, "etcMajor",
+                                    "창의적설계", 3, semester!, designCredit: 3);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "창의적설계");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "창의적설계");
                               }
                               await getSubjectSemester(
                                   db,
@@ -316,10 +320,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "캡스톤디자인(1)", 3, semester!);
+                                    "캡스톤디자인(1)", 3, semester!, designCredit: 3);
+                                await setSubject(db, auth, "etcMajor",
+                                    "캡스톤디자인(1)", 3, semester!, designCredit: 3);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "캡스톤디자인(1)");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "캡스톤디자인(1)");
                               }
                               await getSubjectSemester(
                                   db,
@@ -390,10 +398,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "캡스톤디자인(2)", 3, semester!);
+                                    "캡스톤디자인(2)", 3, semester!, designCredit: 3);
+                                await setSubject(db, auth, "etcMajor",
+                                    "캡스톤디자인(2)", 3, semester!, designCredit: 3);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "캡스톤디자인(2)");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "캡스톤디자인(2)");
                               }
                               await getSubjectSemester(
                                   db,
@@ -464,10 +476,18 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "논리회로", 1, semester!);
+                                    "논리회로", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "basicMajor",
+                                    "논리회로", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "논리회로", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "논리회로");
+                                await deleteSubject(
+                                    db, auth, "basicMajor", "논리회로");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "논리회로");
                               }
                               await getSubjectSemester(
                                   db,
@@ -538,10 +558,18 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "프로그래밍", 1, semester!);
+                                    "프로그래밍", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "basicMajor",
+                                    "프로그래밍", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "프로그래밍", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "프로그래밍");
+                                await deleteSubject(
+                                    db, auth, "basicMajor", "프로그래밍");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "프로그래밍");
                               }
                               await getSubjectSemester(
                                   db,
@@ -612,10 +640,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "소프트웨어프로젝트", 1, semester!);
+                                    "소프트웨어프로젝트", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "소프트웨어프로젝트", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "소프트웨어프로젝트");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "소프트웨어프로젝트");
                               }
                               await getSubjectSemester(
                                   db,
@@ -686,10 +718,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "객체지향프로그래밍", 2, semester!);
+                                    "객체지향프로그래밍", 3, semester!, designCredit: 2);
+                                await setSubject(db, auth, "etcMajor",
+                                    "객체지향프로그래밍", 3, semester!, designCredit: 2);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "객체지향프로그래밍");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "객체지향프로그래밍");
                               }
                               await getSubjectSemester(
                                   db,
@@ -760,10 +796,18 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "프로그래밍언어론", 1, semester!);
+                                    "프로그래밍언어론", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "majorRequired",
+                                    "프로그래밍언어론", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "프로그래밍언어론", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "프로그래밍언어론");
+                                await deleteSubject(
+                                    db, auth, "majorRequired", "프로그래밍언어론");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "프로그래밍언어론");
                               }
                               await getSubjectSemester(
                                   db,
@@ -833,10 +877,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "데이터베이스설계", 1, semester!);
+                                    "데이터베이스설계", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "데이터베이스설계", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "데이터베이스설계");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "데이터베이스설계");
                               }
                               await getSubjectSemester(
                                   db,
@@ -907,10 +955,18 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "소프트웨어공학", 1, semester!);
+                                    "소프트웨어공학", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "majorRequired",
+                                    "소프트웨어공학", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "소프트웨어공학", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "소프트웨어공학");
+                                await deleteSubject(
+                                    db, auth, "majorRequired", "소프트웨어공학");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "소프트웨어공학");
                               }
                               await getSubjectSemester(
                                   db,
@@ -967,35 +1023,38 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                    value: semester,
-                                    child: (semester == '0-0')
-                                        ? const Text('학기',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold))
-                                        : Text(semester,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                  ),
-                                )
-                                .toList(),
-                            onChanged: (semester) async {
-                              if (semester != '0-0') {
-                                await setSubject(db, auth, "designSubject",
-                                    "인공지능", 1, semester!);
-                              } else {
-                                await deleteSubject(
-                                    db, auth, "designSubject", "인공지능");
-                              }
-                              await getSubjectSemester(
-                                  db,
-                                  auth,
-                                  "designSubject",
-                                  _selectedSemester,
-                                  10,
-                                  "인공지능");
-                              setState(() {
-                                // 리빌드
-                              });
+                                value: semester,
+                                child: (semester == '0-0')
+                                    ? const Text('학기',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold))
+                                    : Text(semester,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ).toList(),
+                              onChanged: (semester) async {
+                                if (semester != '0-0') {
+                                  await setSubject(db, auth, "designSubject",
+                                      "인공지능", 3, semester!, designCredit: 1);
+                                  await setSubject(db, auth, "etcMajor",
+                                      "인공지능", 3, semester!, designCredit: 1);
+                                } else {
+                                  await deleteSubject(
+                                      db, auth, "designSubject", "인공지능");
+                                  await deleteSubject(
+                                      db, auth, "etcMajor", "인공지능");
+                                }
+                                await getSubjectSemester(
+                                    db,
+                                    auth,
+                                    "designSubject",
+                                    _selectedSemester,
+                                    10,
+                                    "인공지능");
+                                setState(() {
+                                  // 리빌드
+                                });
                               // setState(() {
                               //   context
                               //       .read<Major>()
@@ -1055,10 +1114,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "고급IoT프로젝트", 1, semester!);
+                                    "고급IoT프로젝트", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "고급IoT프로젝트", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "고급IoT프로젝트");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "고급IoT프로젝트");
                               }
                               await getSubjectSemester(
                                   db,
@@ -1129,10 +1192,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "데이터베이스시스템", 1, semester!);
+                                    "데이터베이스시스템", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "데이터베이스시스템", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "데이터베이스시스템");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "데이터베이스시스템");
                               }
                               await getSubjectSemester(
                                   db,
@@ -1203,10 +1270,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "네트워크응용설계", 1, semester!);
+                                    "네트워크응용설계", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "네트워크응용설계", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "네트워크응용설계");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "네트워크응용설계");
                               }
                               await getSubjectSemester(
                                   db,
@@ -1276,10 +1347,14 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "designSubject",
-                                    "내장형시스템설계", 1, semester!);
+                                    "내장형시스템설계", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "내장형시스템설계", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "designSubject", "내장형시스템설계");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "내장형시스템설계");
                               }
                               await getSubjectSemester(
                                   db,

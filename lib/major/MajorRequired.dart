@@ -166,9 +166,17 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
                                     "자료구조", 3, semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "자료구조", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "자료구조", 3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "자료구조");
+                                await deleteSubject(
+                                    db, auth, "engineeringCertification", "자료구조");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "자료구조");
                               }
                               await getSubjectSemester(
                                   db,
@@ -233,9 +241,17 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
                                     "컴퓨터구조", 3, semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "컴퓨터구조", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "컴퓨터구조", 3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "컴퓨터구조");
+                                await deleteSubject(
+                                    db, auth, "engineeringCertification", "컴퓨터구조");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "컴퓨터구조");
                               }
                               await getSubjectSemester(
                                   db,
@@ -299,10 +315,18 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
-                                    "프로그래밍언어론", 3, semester!);
+                                    "프로그래밍언어론", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "designSubject",
+                                    "프로그래밍언어론", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "프로그래밍언어론", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "프로그래밍언어론");
+                                await deleteSubject(
+                                    db, auth, "designSubject", "프로그래밍언어론");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "프로그래밍언어론");
                               }
                               await getSubjectSemester(
                                   db,
@@ -366,10 +390,18 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
-                                    "소프트웨어공학", 3, semester!);
+                                    "소프트웨어공학", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "designSubject",
+                                    "소프트웨어공학", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "소프트웨어공학", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "소프트웨어공학");
+                                await deleteSubject(
+                                    db, auth, "designSubject", "소프트웨어공학");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "소프트웨어공학");
                               }
                               await getSubjectSemester(
                                   db,
@@ -434,9 +466,17 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
                                     "알고리즘", 3, semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "알고리즘", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "알고리즘", 3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "알고리즘");
+                                await deleteSubject(
+                                    db, auth, "engineeringCertification", "알고리즘");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "알고리즘");
                               }
                               await getSubjectSemester(
                                   db,
@@ -501,9 +541,17 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "majorRequired",
                                     "운영체제", 3, semester!);
+                                await setSubject(db, auth, "engineeringCertification",
+                                    "운영체제", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "운영체제", 3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "majorRequired", "운영체제");
+                                await deleteSubject(
+                                    db, auth, "engineeringCertification", "운영체제");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "운영체제");
                               }
                               await getSubjectSemester(
                                   db,

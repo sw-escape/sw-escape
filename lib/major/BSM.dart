@@ -85,7 +85,7 @@ class _BSMPageState extends State<BSMPage> {
   @override
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
-    context.read<Progress>().loadCreditProgress(db, auth, "bsm");
+    context.read<Progress>().loadCreditProgress(db, auth, "bsm", false);
 
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,
@@ -115,7 +115,7 @@ class _BSMPageState extends State<BSMPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Description(
+                  const Description(
                       description: 'BSM(기초 과학 및 수학) 18학점, 7과목', height: 55),
                   const SizedBox(
                     height: 80,
@@ -161,14 +161,19 @@ class _BSMPageState extends State<BSMPage> {
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                   ),
-                                )
-                                .toList(),
+                                ).toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "bsm", "일반물리(2)", 2, semester!);
+                                await setSubject(
+                                    db, auth, "basicMajor", "일반물리(2)", 2, semester!);
+                                await setSubject(
+                                    db, auth, "etcMajor", "일반물리(2)", 2, semester!);
                               } else {
                                 await deleteSubject(db, auth, "bsm", "일반물리(2)");
+                                await deleteSubject(db, auth, "basicMajor", "일반물리(2)");
+                                await deleteSubject(db, auth, "etcMajor", "일반물리(2)");
                               }
                               await getSubjectSemester(db, auth, "bsm",
                                   _selectedSemester, 0, "일반물리(2)");
@@ -228,9 +233,17 @@ class _BSMPageState extends State<BSMPage> {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "bsm", "일반물리실험(1)", 1, semester!);
+                                await setSubject(
+                                    db, auth, "basicMajor", "일반물리실험(1)", 1, semester!);
+                                await setSubject(
+                                    db, auth, "etcMajor", "일반물리실험(1)", 1, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "bsm", "일반물리실험(1)");
+                                await deleteSubject(
+                                    db, auth, "basicMajor", "일반물리실험(1)");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "일반물리실험(1)");
                               }
                               await getSubjectSemester(db, auth, "bsm",
                                   _selectedSemester, 1, "일반물리실험(1)");
@@ -290,8 +303,14 @@ class _BSMPageState extends State<BSMPage> {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "bsm", "미적분학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "basicMajor", "미적분학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "etcMajor", "미적분학", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth, "bsm", "미적분학");
+                                await deleteSubject(db, auth, "basicMajor", "미적분학");
+                                await deleteSubject(db, auth, "etcMajor", "미적분학");
                               }
                               await getSubjectSemester(db, auth, "bsm",
                                   _selectedSemester, 2, "미적분학");
@@ -351,8 +370,14 @@ class _BSMPageState extends State<BSMPage> {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "bsm", "선형대수학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "basicMajor", "선형대수학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "etcMajor", "선형대수학", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth, "bsm", "선형대수학");
+                                await deleteSubject(db, auth, "basicMajor", "선형대수학");
+                                await deleteSubject(db, auth, "etcMajor", "선형대수학");
                               }
                               await getSubjectSemester(db, auth, "bsm",
                                   _selectedSemester, 3, "선형대수학");
@@ -412,8 +437,17 @@ class _BSMPageState extends State<BSMPage> {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "bsm", "이산수학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "basicMajor", "이산수학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "engineeringCertification", "이산수학", 3, semester!);
+                                await setSubject(
+                                    db, auth, "etcMajor", "이산수학", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth, "bsm", "이산수학");
+                                await deleteSubject(db, auth, "basicMajor", "이산수학");
+                                await deleteSubject(db, auth, "engineeringCertification", "이산수학");
+                                await deleteSubject(db, auth, "etcMajor", "이산수학");
                               }
                               await getSubjectSemester(db, auth, "bsm",
                                   _selectedSemester, 4, "이산수학");
@@ -473,8 +507,11 @@ class _BSMPageState extends State<BSMPage> {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "bsm", "확률및통계", 3, semester!);
+                                await setSubject(
+                                    db, auth, "etcMajor", "확률및통계", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth, "bsm", "확률및통계");
+                                await deleteSubject(db, auth, "etcMajor", "확률및통계");
                               }
                               await getSubjectSemester(db, auth, "bsm",
                                   _selectedSemester, 5, "확률및통계");
@@ -534,8 +571,11 @@ class _BSMPageState extends State<BSMPage> {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "bsm", "수치해석", 3, semester!);
+                                await setSubject(
+                                    db, auth, "etcMajor", "수치해석", 3, semester!);
                               } else {
                                 await deleteSubject(db, auth, "bsm", "수치해석");
+                                await deleteSubject(db, auth, "etcMajor", "수치해석");
                               }
                               await getSubjectSemester(db, auth, "bsm",
                                   _selectedSemester, 6, "수치해석");

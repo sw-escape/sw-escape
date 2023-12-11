@@ -62,8 +62,8 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
   ];
   final _selectedSemester = List<String>.filled(8, '0-0');
   final _subjectNames = [
-    "미적분",
-    "일반물리(1)",
+    "미적분학",
+    "일반물리(2)",
     "일반물리실험(1)",
     "기초컴퓨터프로그래밍",
     "논리회로",
@@ -123,7 +123,7 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
   @override
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
-    context.read<Progress>().loadCreditProgress(db, auth, "basicMajor");
+    context.read<Progress>().loadCreditProgress(db, auth, "basicMajor", false);
 
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,
@@ -182,7 +182,7 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                           height: 25,
                           child: const Padding(
                             padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                            child: Text('미적분',
+                            child: Text('미적분학',
                                 style: TextStyle(
                                     fontSize: 17, fontWeight: FontWeight.bold)),
                           ),
@@ -213,14 +213,22 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                                 .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(db, auth, "basicMajor", "미적분",
+                                await setSubject(db, auth, "basicMajor", "미적분학",
+                                    3, semester!);
+                                await setSubject(db, auth, "bsm", "미적분학",
+                                    3, semester!);
+                                await setSubject(db, auth, "etcMajor", "미적분학",
                                     3, semester!);
                               } else {
                                 await deleteSubject(
-                                    db, auth, "basicMajor", "미적분");
+                                    db, auth, "basicMajor", "미적분학");
+                                await deleteSubject(
+                                    db, auth, "bsm", "미적분학");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "미적분학");
                               }
                               await getSubjectSemester(db, auth, "basicMajor",
-                                  _selectedSemester, 0, "미적분");
+                                  _selectedSemester, 0, "미적분학");
                               setState(() {
                                 // 리빌드
                               });
@@ -283,9 +291,17 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
                                     "일반물리(2)", 2, semester!);
+                                await setSubject(db, auth, "bsm",
+                                    "일반물리(2)", 2, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "일반물리(2)", 2, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "일반물리(2)");
+                                await deleteSubject(
+                                    db, auth, "bsm", "일반물리(2)");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "일반물리(2)");
                               }
                               await getSubjectSemester(db, auth, "basicMajor",
                                   _selectedSemester, 1, "일반물리(2)");
@@ -352,9 +368,17 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
                                     "일반물리실험(1)", 1, semester!);
+                                await setSubject(db, auth, "bsm",
+                                    "일반물리실험(1)", 1, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "일반물리실험(1)", 1, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "일반물리실험(1)");
+                                await deleteSubject(
+                                    db, auth, "bsm", "일반물리실험(1)");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "일반물리실험(1)");
                               }
                               await getSubjectSemester(db, auth, "basicMajor",
                                   _selectedSemester, 2, "일반물리실험(1)");
@@ -489,10 +513,18 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor", "논리회로",
-                                    3, semester!);
+                                    3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "designSubject", "논리회로",
+                                    3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor", "논리회로",
+                                    3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "논리회로");
+                                await deleteSubject(
+                                    db, auth, "designSubject", "논리회로");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "논리회로");
                               }
                               await getSubjectSemester(db, auth, "basicMajor",
                                   _selectedSemester, 4, "논리회로");
@@ -559,9 +591,17 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
                                     "선형대수학", 3, semester!);
+                                await setSubject(db, auth, "bsm",
+                                    "선형대수학", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "선형대수학", 3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "선형대수학");
+                                await deleteSubject(
+                                    db, auth, "bsm", "선형대수학");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "선형대수학");
                               }
                               await getSubjectSemester(db, auth, "basicMajor",
                                   _selectedSemester, 5, "선형대수학");
@@ -628,9 +668,21 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor", "이산수학",
                                     3, semester!);
+                                await setSubject(db, auth, "engineeringCertification", "이산수학",
+                                    3, semester!);
+                                await setSubject(db, auth, "bsm", "이산수학",
+                                    3, semester!);
+                                await setSubject(db, auth, "etcMajor", "이산수학",
+                                    3, semester!);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "이산수학");
+                                await deleteSubject(
+                                    db, auth, "engineeringCertification", "이산수학");
+                                await deleteSubject(
+                                    db, auth, "bsm", "이산수학");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "이산수학");
                               }
                               await getSubjectSemester(db, auth, "basicMajor",
                                   _selectedSemester, 6, "이산수학");
@@ -696,10 +748,18 @@ class _MajorBasicPageState extends State<MajorBasicPage> {
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(db, auth, "basicMajor",
-                                    "프로그래밍", 3, semester!);
+                                    "프로그래밍", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "designSubject",
+                                    "프로그래밍", 3, semester!, designCredit: 1);
+                                await setSubject(db, auth, "etcMajor",
+                                    "프로그래밍", 3, semester!, designCredit: 1);
                               } else {
                                 await deleteSubject(
                                     db, auth, "basicMajor", "프로그래밍");
+                                await deleteSubject(
+                                    db, auth, "designSubject", "프로그래밍");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "프로그래밍");
                               }
                               await getSubjectSemester(db, auth, "basicMajor",
                                   _selectedSemester, 7, "프로그래밍");
