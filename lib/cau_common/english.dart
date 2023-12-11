@@ -3,6 +3,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sw_escape/widgets.dart';
 import '../Progress.dart';
 import '../FirestoreManager.dart';
 
@@ -59,7 +60,7 @@ class _EnglishState extends State<English> {
       body: FutureBuilder(
         future: checkExistedData(),
         builder: (context, snapshot) {
-          if(snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.connectionState == ConnectionState.done) {
             return Container(
               // color: Colors.blue,
               color: const Color(0xFF72BBFF),
@@ -67,33 +68,17 @@ class _EnglishState extends State<English> {
                 children: [
                   Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Material(
-                          elevation: 5,
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 90,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15), // 둥근 모서리
-                              border: Border.all(color: Colors.black), // 까만색 테두리
-                              color: Colors.white, // 하얀색 배경
-                            ),
-                            padding: const EdgeInsets.all(20), // 안쪽 여백 설정
-                            child: const Text(
-                              '토익 스피킹 5급 이상 혹은 전공 과목 중 영어A 3과목 이상 이수',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
+                      SizedBox(
+                        height: 15,
                       ),
+                      Description(
+                          description: '토익 스피킹 5급 이상 혹은 전공 과목 중 영어A 3과목 이상 이수',
+                          height: 70),
                       // if (context.read<CommonInfo>().isTOEICLevel5OrHigher == true ||
                       //     context.read<CommonInfo>().isEngA3rHigher == true)
+                      SizedBox(
+                        height: 20,
+                      ),
                       if (isTOEICLevel5OrHigher == true ||
                           isEngA3rHigher == true)
                         Padding(
@@ -151,8 +136,9 @@ class _EnglishState extends State<English> {
                           value: isTOEICLevel5OrHigher,
                           onChanged: (newValue) async {
                             // 체크하는 경우
-                            if(newValue == true){
-                              await setSubject(db, auth, "english", "토익", 0, "0-0");
+                            if (newValue == true) {
+                              await setSubject(
+                                  db, auth, "english", "토익", 0, "0-0");
                             }
                             // 체크를 해제하는 경우
                             else {
@@ -185,12 +171,14 @@ class _EnglishState extends State<English> {
                               value: isEngA3rHigher,
                               onChanged: (newValue) async {
                                 // 체크하는 경우
-                                if(newValue == true){
-                                  await setSubject(db, auth, "english", "영어A", 0, "0-0");
+                                if (newValue == true) {
+                                  await setSubject(
+                                      db, auth, "english", "영어A", 0, "0-0");
                                 }
                                 // 체크를 해제하는 경우
                                 else {
-                                  await deleteSubject(db, auth, "english", "영어A");
+                                  await deleteSubject(
+                                      db, auth, "english", "영어A");
                                 }
                                 setState(() {
                                   // context.read<CommonInfo>().fillEngA3rHigher();
@@ -250,7 +238,9 @@ class _EnglishState extends State<English> {
               ),
             );
           } else {
-            return const Center(child: CircularProgressIndicator(),);
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
         },
       ),

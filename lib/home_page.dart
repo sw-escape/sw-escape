@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sw_escape/major/majorpage.dart';
 import 'package:sw_escape/student.dart';
 
+import 'FirestoreManager.dart';
 import 'MajorBasic.dart';
 import 'cau_common/commonpage.dart';
 import 'etc/etcpage.dart';
@@ -298,6 +301,8 @@ class MyInfo extends StatefulWidget {
 }
 
 class _MyInfoState extends State<MyInfo> {
+  final db = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     String? studentID = Provider.of<Student>(context).selectedStudentID;
@@ -358,26 +363,46 @@ class _MyInfoState extends State<MyInfo> {
                 )
               ],
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20, left: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '@userid',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Text(
-                    '소프트웨어학부(전공)',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                  Text(
-                    '${studentID}', // ${student.entranceYear}
-                    style: TextStyle(fontSize: 17),
-                  )
-                ],
-              ),
-            )
+            FutureBuilder<Map<String, dynamic>>(
+              future: getUserData(db, auth),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  if (snapshot.hasData) {
+                    Map<String, dynamic> userData = snapshot.data!;
+                    String major = userData['Major'];
+                    String studentID = userData['StudentID'];
+                    String email = userData['email'];
+
+                    return Container(
+                      margin: EdgeInsets.only(top: 20, left: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Major | $major',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                          SizedBox(height: 3),
+                          Text('학번 | $studentID',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                          SizedBox(height: 3),
+                          Text('email | $email',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    );
+                  } else {
+                    // 데이터가 없는 경우 처리하는 UI
+                    return Text('No data available');
+                  }
+                }
+              },
+            ),
           ],
         ),
       ),

@@ -172,9 +172,7 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
   @override
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
-    context
-        .read<Progress>()
-        .loadCreditProgress(db, auth, "etcMajor", false);
+    context.read<Progress>().loadCreditProgress(db, auth, "etcMajor", false);
 
     return FutureBuilder(
       future: _getSubjectsSemesterFuture,
@@ -193,19 +191,20 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                   const SizedBox(
                     height: 10,
                   ),
+                  const Description(description: '이외 나머지 전공 과목', height: 55),
+                  const SizedBox(
+                    height: 35,
+                  ),
                   ProgressBar(
-                    currentProgress: context.select((Progress p) => p.requirementsProgress["etcMajor"]!),
+                    currentProgress: context.select(
+                        (Progress p) => p.requirementsProgress["etcMajor"]!),
                     maxProgress: context.select((Progress p) => p.etcMajorMax),
-                    width: 350,
-                    height: 30,
+                    width: 360,
+                    height: 35,
                     color: Colors.purpleAccent,
                   ),
                   const SizedBox(
-                    height: 20,
-                  ),
-                  const Description(description: '이외 나머지 전공 과목', height: 55),
-                  const SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                   SizedBox(
                     height: 50,
@@ -239,22 +238,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "오픈소스SW와 파이썬 프로그래밍", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "오픈소스SW와 파이썬 프로그래밍", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "오픈소스SW와 파이썬 프로그래밍");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "오픈소스SW와 파이썬 프로그래밍");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 0, "오픈소스SW와 파이썬 프로그래밍");
@@ -305,22 +306,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "감성컴퓨팅", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "감성컴퓨팅",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "감성컴퓨팅");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "감성컴퓨팅");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 1, "감성컴퓨팅");
@@ -371,22 +374,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "컴퓨터시스템및어셈블리언어", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "컴퓨터시스템및어셈블리언어", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "컴퓨터시스템및어셈블리언어");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "컴퓨터시스템및어셈블리언어");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 2, "컴퓨터시스템및어셈블리언어");
@@ -436,22 +441,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "오토마타와형식언어", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "오토마타와형식언어", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "오토마타와형식언어");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "오토마타와형식언어");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 3, "오토마타와형식언어");
@@ -502,22 +509,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "오픈소스SW프로젝트", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "오픈소스SW프로젝트", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "오픈소스SW프로젝트");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "오픈소스SW프로젝트");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 4, "오픈소스SW프로젝트");
@@ -568,22 +577,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "etcMajor", "컴파일러", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "컴파일러");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "컴파일러");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 5, "컴파일러");
@@ -632,22 +643,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "리눅스시스템응용설계", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "리눅스시스템응용설계", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "리눅스시스템응용설계");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "리눅스시스템응용설계");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 6, "리눅스시스템응용설계");
@@ -698,22 +711,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "모바일앱개발", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "모바일앱개발",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "모바일앱개발");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "모바일앱개발");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 7, "모바일앱개발");
@@ -764,22 +779,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "비즈니스 인텔리전스", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "비즈니스 인텔리전스", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "비즈니스 인텔리전스");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "비즈니스 인텔리전스");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 8, "비즈니스 인텔리전스");
@@ -830,22 +847,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "산업체핸즈온프로젝트", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "산업체핸즈온프로젝트", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "산업체핸즈온프로젝트");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "산업체핸즈온프로젝트");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 9, "산업체핸즈온프로젝트");
@@ -896,22 +915,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "etcMajor", "영상처리", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "영상처리");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "영상처리");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 10, "영상처리");
@@ -962,22 +983,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "컴퓨터그래픽스", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "컴퓨터그래픽스", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "컴퓨터그래픽스");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "컴퓨터그래픽스");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 11, "컴퓨터그래픽스");
@@ -1028,22 +1051,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "컴퓨터통신", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "컴퓨터통신",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "컴퓨터통신");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "컴퓨터통신");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 12, "컴퓨터통신");
@@ -1094,22 +1119,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "코딩부트캠프", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "코딩부트캠프",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "코딩부트캠프");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "코딩부트캠프");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 13, "코딩부트캠프");
@@ -1160,22 +1187,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "휴먼인터페이스미디어", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "휴먼인터페이스미디어", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "휴먼인터페이스미디어");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "휴먼인터페이스미디어");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 14, "휴먼인터페이스미디어");
@@ -1226,22 +1255,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "etcMajor", "머신러닝", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "머신러닝");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "머신러닝");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 15, "머신러닝");
@@ -1292,22 +1323,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "멀티코어컴퓨팅", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "멀티코어컴퓨팅", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "멀티코어컴퓨팅");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "멀티코어컴퓨팅");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 16, "멀티코어컴퓨팅");
@@ -1358,22 +1391,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "무선이동통신", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "무선이동통신",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "무선이동통신");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "무선이동통신");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 17, "무선이동통신");
@@ -1423,22 +1458,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "자연어처리및정보검색", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "자연어처리및정보검색", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "자연어처리및정보검색");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "자연어처리및정보검색");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 18, "자연어처리및정보검색");
@@ -1489,22 +1526,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "정보보호이론", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "정보보호이론",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "정보보호이론");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "정보보호이론");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 19, "정보보호이론");
@@ -1554,22 +1593,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "정보와지식", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "정보와지식",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "정보와지식");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "정보와지식");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 20, "정보와지식");
@@ -1620,22 +1661,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "컴퓨터비전", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "컴퓨터비전",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "컴퓨터비전");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "컴퓨터비전");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 21, "컴퓨터비전");
@@ -1686,22 +1729,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "etcMajor", "패턴인식", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "패턴인식");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "패턴인식");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 22, "패턴인식");
@@ -1752,22 +1797,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "가상증강 혼합 현실", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "가상증강 혼합 현실", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "가상증강 혼합 현실");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "가상증강 혼합 현실");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 23, "가상증강 혼합 현실");
@@ -1818,22 +1865,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "로봇비전프로젝트", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "로봇비전프로젝트", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "로봇비전프로젝트");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "로봇비전프로젝트");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 24, "로봇비전프로젝트");
@@ -1884,22 +1933,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "머신러닝프로젝트", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "머신러닝프로젝트", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "머신러닝프로젝트");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "머신러닝프로젝트");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 25, "머신러닝프로젝트");
@@ -1950,22 +2001,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "etcMajor", "빅데이터", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "빅데이터");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "빅데이터");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 26, "빅데이터");
@@ -2014,22 +2067,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "설계 패턴", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "설계 패턴",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "설계 패턴");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "설계 패턴");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 27, "설계 패턴");
@@ -2080,22 +2135,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "융합 IoT 프로젝트 설계", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "융합 IoT 프로젝트 설계", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "융합 IoT 프로젝트 설계");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "융합 IoT 프로젝트 설계");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 28, "융합 IoT 프로젝트 설계");
@@ -2146,22 +2203,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "컴퓨터게임설계", 3, semester!);
+                                await setSubject(db, auth, "etcMajor",
+                                    "컴퓨터게임설계", 3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "컴퓨터게임설계");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "컴퓨터게임설계");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 29, "컴퓨터게임설계");
@@ -2212,22 +2271,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
-                                await setSubject(
-                                    db, auth, "etcMajor", "패턴인식응용", 3, semester!);
+                                await setSubject(db, auth, "etcMajor", "패턴인식응용",
+                                    3, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "패턴인식응용");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "패턴인식응용");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 30, "패턴인식응용");
@@ -2278,22 +2339,24 @@ class _OtherMajorCoursePageState extends State<OtherMajorCoursePage> {
                             items: _listSemester
                                 .map(
                                   (semester) => DropdownMenuItem(
-                                value: semester,
-                                child: (semester == '0-0')
-                                    ? const Text('학기',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold))
-                                    : Text(semester,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).toList(),
+                                    value: semester,
+                                    child: (semester == '0-0')
+                                        ? const Text('학기',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                        : Text(semester,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
                                     db, auth, "etcMajor", "인턴쉽", 15, semester!);
                               } else {
-                                await deleteSubject(db, auth, "etcMajor", "인턴쉽");
+                                await deleteSubject(
+                                    db, auth, "etcMajor", "인턴쉽");
                               }
                               await getSubjectSemester(db, auth, "etcMajor",
                                   _selectedSemester, 31, "인턴쉽");

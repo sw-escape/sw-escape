@@ -2,6 +2,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+Future<Map<String, dynamic>> getUserData(
+    FirebaseFirestore db, FirebaseAuth auth) async {
+  User? user = auth.currentUser;
+  String? uid;
+  if (user != null) {
+    uid = user.uid;
+  } else {
+    print('User does not exist');
+    return {}; // 빈 Map을 반환
+  }
+
+  final doc = await db.collection("users").doc(uid).get();
+
+  if (doc.exists) {
+    final data = doc.data() as Map<String, dynamic>;
+    return data;
+  } else {
+    print('Document does not exist');
+    return {}; // 빈 Map을 반환
+  }
+}
+
 // firestore에서 과목들의 '학기' 정보들을 가져와서, 입력한 매개변수인 학기 리스트에 넣기
 // ex) 학기 정보를 표시하는 졸업요건들
 Future<void> getSubjectsSemester(

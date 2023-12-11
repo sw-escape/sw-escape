@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sw_escape/student.dart';
+
+import 'FirestoreManager.dart';
 
 class ModifyInfo extends StatefulWidget {
   final String? selectedStudentID;
@@ -13,18 +17,17 @@ class ModifyInfo extends StatefulWidget {
 
 class _ModifyInfoState extends State<ModifyInfo> {
   late String selectedCharacter = context.watch<Student>().character;
+  final db = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     String? studentID = Provider.of<Student>(context).selectedStudentID;
 
     final _formkey = GlobalKey<FormState>(); // for textformfield validation
-    TextEditingController _idController = TextEditingController(text: 'userid');
-    TextEditingController _deptController =
-        TextEditingController(text: '소프트웨어학과');
-    TextEditingController _yearController = TextEditingController(text: '21');
-    // studentID에서 학번 연도 부분을 추출하여 정수로 변환하고, 그 값을 selectedYear 변수에 할당
-    late int selectedYear =
-        int.tryParse(studentID?.substring(0, 2) ?? '0') ?? 0;
+
+    TextEditingController _idController = TextEditingController();
+    TextEditingController _deptController = TextEditingController();
+    TextEditingController _yearController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -159,23 +162,6 @@ class _ModifyInfoState extends State<ModifyInfo> {
                                               ),
                                             ],
                                           ),
-                                          // Row(
-                                          //   mainAxisAlignment: MainAxisAlignment.center,
-                                          //   children: [
-                                          //     ElevatedButton(
-                                          //       style: ElevatedButton.styleFrom(
-                                          //         primary: Colors.grey,
-                                          //         shape: RoundedRectangleBorder(
-                                          //           borderRadius: BorderRadius.circular(20),
-                                          //         ),
-                                          //         minimumSize: Size(100, 40), // 버튼의 최소 크기 지정
-                                          //       ),
-                                          //       onPressed: () => Navigator.of(context).pop(),
-                                          //       child: Text('선택',
-                                          //           style: TextStyle(color: Colors.white)),
-                                          //     ),
-                                          //   ],
-                                          // ),
                                         ],
                                       ),
                                     ],
@@ -198,68 +184,93 @@ class _ModifyInfoState extends State<ModifyInfo> {
                       SizedBox(
                         height: 40,
                       ),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '아이디',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            TextFormField(
-                              controller: _idController, // 컨트롤러 할당
-                              decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black),
+                      FutureBuilder<Map<String, dynamic>>(
+                        future: getUserData(db, auth),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else {
+                            if (snapshot.hasData) {
+                              Map<String, dynamic> userData = snapshot.data!;
+                              _idController.text = userData['email'];
+                              _deptController.text = userData['Major'];
+                              _yearController.text = userData['StudentID'];
+
+                              return Container(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '이메일',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    TextFormField(
+                                      controller: _idController, // 컨트롤러 할당
+                                      decoration: const InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black),
+                                        ),
+                                        //contentPadding: EdgeInsets.only(left: 10),
+                                      ),
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return '아이디를 입력해주세요';
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    SizedBox(
+                                      height: 40,
+                                    ),
+                                    Text(
+                                      '학과',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    TextFormField(
+                                      enabled: false,
+                                      controller: _deptController, // 컨트롤러 할당
+                                      decoration: const InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black),
+                                        ),
+                                        //contentPadding: EdgeInsets.only(left: 10),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 40,
+                                    ),
+                                    Text(
+                                      '학번',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextFormField(
+                                      enabled: false,
+                                      controller: _yearController, // 컨트롤러 할당
+                                      decoration: const InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black),
+                                        ),
+                                        //contentPadding: EdgeInsets.only(left: 10),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                //contentPadding: EdgeInsets.only(left: 10),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return '아이디를 입력해주세요';
-                                }
-                                return null;
-                              },
-                            ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Text(
-                              '학과',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            TextFormField(
-                              enabled: false,
-                              controller: _deptController, // 컨트롤러 할당
-                              decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                                //contentPadding: EdgeInsets.only(left: 10),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Text(
-                              '학번',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              enabled: false,
-                              controller: _yearController, // 컨트롤러 할당
-                              decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                                //contentPadding: EdgeInsets.only(left: 10),
-                              ),
-                            ),
-                          ],
-                        ),
+                              );
+                            } else {
+                              // 데이터가 없는 경우 처리하는 UI
+                              return Text('No data available');
+                            }
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 30,
@@ -294,14 +305,14 @@ class _ModifyInfoState extends State<ModifyInfo> {
   }
 }
 
-class characterSelect extends StatefulWidget {
-  const characterSelect({super.key});
+class characterSelectPanel extends StatefulWidget {
+  const characterSelectPanel({super.key});
 
   @override
-  State<characterSelect> createState() => _characterSelectState();
+  State<characterSelectPanel> createState() => _characterSelectPanelState();
 }
 
-class _characterSelectState extends State<characterSelect> {
+class _characterSelectPanelState extends State<characterSelectPanel> {
   @override
   Widget build(BuildContext context) {
     String selectedCharacter = 'assets/images/glasses_girl.png';
