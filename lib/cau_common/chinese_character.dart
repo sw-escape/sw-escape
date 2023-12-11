@@ -58,7 +58,7 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
       body: FutureBuilder(
         future: checkExistedData(),
         builder: (context, snapshot) {
-          if(snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.connectionState == ConnectionState.done) {
             return Container(
               // color: Colors.blue,
               color: const Color(0xFF72BBFF),
@@ -94,8 +94,9 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
                           ),
                         ),
                       ),
-                      // if (context.read<CommonInfo>().isChineseCharL4 == true ||
-                      //     context.read<CommonInfo>().hasAttendedChineseCharClass == true)
+                      SizedBox(
+                        height: 10,
+                      ),
                       if (isChineseCharL4 == true ||
                           hasAttendedChineseCharClass == true)
                         Padding(
@@ -132,89 +133,99 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
                             progressColor: Colors.blue,
                           ),
                         ),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        width: MediaQuery.of(context).size.width,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15), // 둥근 모서리
-                          border: Border.all(color: Colors.black), // 까만색 테두리
-                          color: Colors.white, // 하얀색 배경
-                        ),
-                        child: CheckboxListTile(
-                          title: const Text(
-                            '한자 시험 4급 이상',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                            ),
-                          ),
-                          // value: context.read<CommonInfo>().isChineseCharL4,
-                          value: isChineseCharL4,
-                          onChanged: (newValue) async {
-                            // 체크하는 경우
-                            if(newValue == true){
-                              await setSubject(db, auth, "chinese", "한자4급", 0, "0-0");
-                            }
-                            // 체크를 해제하는 경우
-                            else {
-                              await deleteSubject(db, auth, "chinese", "한자4급");
-                            }
-                            setState(() {
-                              // context.read<CommonInfo>().fillChineseCharL4();
-                            });
-                          },
-                        ),
+                      SizedBox(
+                        height: 10,
                       ),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.black),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
+                      Material(
+                        elevation: 4,
+                        borderRadius: BorderRadius.circular(15),
+                        child: Container(
+                          height: 170,
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          //margin: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15), // 둥근 모서리
+                            border: Border.all(color: Colors.black), // 까만색 테두리
+                            color: Colors.white, // 하얀색 배경
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                // 한자 시험 4급 이상
+                                //margin: const EdgeInsets.all(10),
+                                width: MediaQuery.of(context).size.width * 0.87,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(10), // 둥근 모서리
+                                  border: Border.all(
+                                      color: Colors.black), // 까만색 테두리
+                                  color: Colors.white, // 하얀색 배경
+                                ),
+                                child: CheckboxListTile(
+                                  title: const Text(
+                                    '한자 시험 4급 이상',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  // value: context.read<CommonInfo>().isChineseCharL4,
+                                  value: isChineseCharL4,
+                                  onChanged: (newValue) async {
+                                    // 체크하는 경우
+                                    if (newValue == true) {
+                                      await setSubject(db, auth, "chinese",
+                                          "한자4급", 0, "0-0");
+                                    }
+                                    // 체크를 해제하는 경우
+                                    else {
+                                      await deleteSubject(
+                                          db, auth, "chinese", "한자4급");
+                                    }
+                                    setState(() {
+                                      // context.read<CommonInfo>().fillChineseCharL4();
+                                    });
+                                  },
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                // 한자 수업 수강
+                                height: 60,
+                                width: MediaQuery.of(context).size.width * 0.87,
+                                //margin: const EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black),
+                                  color: Colors.white,
+                                ),
+                                child: CheckboxListTile(
+                                  title: Text(
                                     '한자 수업 수강',
                                     style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.black,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      hintText: '수강한 과목명 입력 후 체크',
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Colors.black),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Checkbox(
+
                                   // value: context
                                   //     .read<CommonInfo>()
                                   //     .hasAttendedChineseCharClass,
                                   value: hasAttendedChineseCharClass,
                                   onChanged: (newValue) async {
                                     // 체크하는 경우
-                                    if(newValue == true){
-                                      await setSubject(db, auth, "chinese", "한자수업", 0, "0-0");
+                                    if (newValue == true) {
+                                      await setSubject(db, auth, "chinese",
+                                          "한자수업", 0, "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "chinese", "한자수업");
+                                      await deleteSubject(
+                                          db, auth, "chinese", "한자수업");
                                     }
                                     setState(() {
                                       // context
@@ -223,26 +234,20 @@ class _ChineseCharacterState extends State<ChineseCharacter> {
                                     });
                                   },
                                 ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                          ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-
-                      //const ProgressBar(),
-                      Container(
-                        height: 60,
-                        // color: Colors.indigo,
-                      ),
-                      //const CommonMenu(),
                     ],
                   ),
                 ],
               ),
             );
           } else {
-            return const Center(child: CircularProgressIndicator(),);
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
         },
       ),
