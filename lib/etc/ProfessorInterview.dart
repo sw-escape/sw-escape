@@ -22,10 +22,14 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
   final auth = FirebaseAuth.instance;
 
   Future<void> checkExistedData() async {
-    _isChecked1 = await isExisted(db, auth, "professorInterviewDialog", "CAU세미나(1)");
-    _isChecked2 = await isExisted(db, auth, "professorInterviewDialog", "CAU세미나(2)");
-    _isChecked3 = await isExisted(db, auth, "professorInterviewDialog", "교수님면담(1)");
-    _isChecked4 = await isExisted(db, auth, "professorInterviewDialog", "교수님면담(2)");
+    _isChecked1 =
+        await isExisted(db, auth, "professorInterviewDialog", "CAU세미나(1)");
+    _isChecked2 =
+        await isExisted(db, auth, "professorInterviewDialog", "CAU세미나(2)");
+    _isChecked3 =
+        await isExisted(db, auth, "professorInterviewDialog", "교수님면담(1)");
+    _isChecked4 =
+        await isExisted(db, auth, "professorInterviewDialog", "교수님면담(2)");
     _isChecked1 ??= false;
     _isChecked2 ??= false;
     _isChecked3 ??= false;
@@ -35,12 +39,14 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
   @override
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
-    context.read<Progress>().loadNumberProgress(db, auth, "professorInterviewDialog");
+    context
+        .read<Progress>()
+        .loadNumberProgress(db, auth, "professorInterviewDialog");
 
     return FutureBuilder(
       future: checkExistedData(),
       builder: (context, snapshot) {
-        if(snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return AlertDialog(
             content: Container(
               height: 500,
@@ -70,13 +76,13 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               color: Colors.black45.withOpacity(0.5),
                               spreadRadius: 0,
                               blurRadius: 5.0,
-                              offset:
-                              const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
                         width: 100,
-                        height: 80,
+                        height: 100,
                         child: Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Column(
@@ -84,7 +90,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               Text(
                                 'CAU 세미나(1)',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   shadows: [
                                     Shadow(
@@ -105,12 +111,22 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                                   value: _isChecked1,
                                   onChanged: (value) async {
                                     // 체크하는 경우
-                                    if(value == true) {
-                                      await setSubject(db, auth, "professorInterviewDialog", "CAU세미나(1)", 0, "0-0");
+                                    if (value == true) {
+                                      await setSubject(
+                                          db,
+                                          auth,
+                                          "professorInterviewDialog",
+                                          "CAU세미나(1)",
+                                          0,
+                                          "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "professorInterviewDialog", "CAU세미나(1)");
+                                      await deleteSubject(
+                                          db,
+                                          auth,
+                                          "professorInterviewDialog",
+                                          "CAU세미나(1)");
                                     }
                                     setState(() {
                                       // 리빌드
@@ -137,13 +153,13 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               color: Colors.black45.withOpacity(0.5),
                               spreadRadius: 0,
                               blurRadius: 5.0,
-                              offset:
-                              const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
                         width: 100,
-                        height: 80,
+                        height: 100,
                         child: Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Column(
@@ -151,7 +167,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               Text(
                                 'CAU 세미나(2)',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   shadows: [
                                     Shadow(
@@ -172,12 +188,22 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                                   value: _isChecked2,
                                   onChanged: (value) async {
                                     // 체크하는 경우
-                                    if(value == true) {
-                                      await setSubject(db, auth, "professorInterviewDialog", "CAU세미나(2)", 0, "0-0");
+                                    if (value == true) {
+                                      await setSubject(
+                                          db,
+                                          auth,
+                                          "professorInterviewDialog",
+                                          "CAU세미나(2)",
+                                          0,
+                                          "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "professorInterviewDialog", "CAU세미나(2)");
+                                      await deleteSubject(
+                                          db,
+                                          auth,
+                                          "professorInterviewDialog",
+                                          "CAU세미나(2)");
                                     }
                                     setState(() {
                                       // 리빌드
@@ -209,13 +235,13 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               color: Colors.black45.withOpacity(0.5),
                               spreadRadius: 0,
                               blurRadius: 5.0,
-                              offset:
-                              const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
                         width: 100,
-                        height: 80,
+                        height: 100,
                         child: Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Column(
@@ -223,7 +249,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               Text(
                                 '교수님 면담(1)',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   shadows: [
                                     Shadow(
@@ -244,12 +270,22 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                                   value: _isChecked3,
                                   onChanged: (value) async {
                                     // 체크하는 경우
-                                    if(value == true) {
-                                      await setSubject(db, auth, "professorInterviewDialog", "교수님면담(1)", 0, "0-0");
+                                    if (value == true) {
+                                      await setSubject(
+                                          db,
+                                          auth,
+                                          "professorInterviewDialog",
+                                          "교수님면담(1)",
+                                          0,
+                                          "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "professorInterviewDialog", "교수님면담(1)");
+                                      await deleteSubject(
+                                          db,
+                                          auth,
+                                          "professorInterviewDialog",
+                                          "교수님면담(1)");
                                     }
                                     setState(() {
                                       // 리빌드
@@ -276,13 +312,13 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               color: Colors.black45.withOpacity(0.5),
                               spreadRadius: 0,
                               blurRadius: 5.0,
-                              offset:
-                              const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
                         width: 100,
-                        height: 80,
+                        height: 100,
                         child: Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Column(
@@ -290,7 +326,7 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                               Text(
                                 '교수님 면담(2)',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   shadows: [
                                     Shadow(
@@ -311,12 +347,22 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                                   value: _isChecked4,
                                   onChanged: (value) async {
                                     // 체크하는 경우
-                                    if(value == true) {
-                                      await setSubject(db, auth, "professorInterviewDialog", "교수님면담(2)", 0, "0-0");
+                                    if (value == true) {
+                                      await setSubject(
+                                          db,
+                                          auth,
+                                          "professorInterviewDialog",
+                                          "교수님면담(2)",
+                                          0,
+                                          "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "professorInterviewDialog", "교수님면담(2)");
+                                      await deleteSubject(
+                                          db,
+                                          auth,
+                                          "professorInterviewDialog",
+                                          "교수님면담(2)");
                                     }
                                     setState(() {
                                       // 리빌드
@@ -371,7 +417,8 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
                         ),
                         child: Text(
                           'Enter',
-                          style: TextStyle(fontWeight: FontWeight.bold, shadows: [
+                          style:
+                              TextStyle(fontWeight: FontWeight.bold, shadows: [
                             Shadow(
                               color: Colors.black45.withOpacity(0.5),
                               blurRadius: 3,
@@ -386,7 +433,9 @@ class _ProfessorInterviewDialogState extends State<ProfessorInterviewDialog> {
             contentPadding: const EdgeInsets.all(0.0),
           );
         } else {
-          return const Center(child: CircularProgressIndicator(),);
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
       },
     );

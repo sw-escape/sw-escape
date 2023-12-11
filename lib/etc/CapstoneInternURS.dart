@@ -34,7 +34,7 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
     return FutureBuilder(
       future: checkExistedData(),
       builder: (context, snapshot) {
-        if(snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return AlertDialog(
             content: Container(
               height: 500,
@@ -64,8 +64,8 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                               color: Colors.black45.withOpacity(0.5),
                               spreadRadius: 0,
                               blurRadius: 5.0,
-                              offset:
-                              const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -99,12 +99,14 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                                   value: _isChecked1,
                                   onChanged: (value) async {
                                     // 체크하는 경우
-                                    if(value == true){
-                                      await setSubject(db, auth, "capstone", "인턴", 0, "0-0");
+                                    if (value == true) {
+                                      await setSubject(
+                                          db, auth, "capstone", "인턴", 0, "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "capstone", "인턴");
+                                      await deleteSubject(
+                                          db, auth, "capstone", "인턴");
                                     }
                                     setState(() {
                                       // 리빌드
@@ -131,8 +133,8 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                               color: Colors.black45.withOpacity(0.5),
                               spreadRadius: 0,
                               blurRadius: 5.0,
-                              offset:
-                              const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -166,12 +168,14 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                                   value: _isChecked2,
                                   onChanged: (value) async {
                                     // 체크하는 경우
-                                    if(value == true){
-                                      await setSubject(db, auth, "capstone", "학부연구생", 0, "0-0");
+                                    if (value == true) {
+                                      await setSubject(db, auth, "capstone",
+                                          "학부연구생", 0, "0-0");
                                     }
                                     // 체크를 해제하는 경우
                                     else {
-                                      await deleteSubject(db, auth, "capstone", "학부연구생");
+                                      await deleteSubject(
+                                          db, auth, "capstone", "학부연구생");
                                     }
                                     setState(() {
                                       // 리빌드
@@ -245,7 +249,8 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
                         ),
                         child: Text(
                           'Enter',
-                          style: TextStyle(fontWeight: FontWeight.bold, shadows: [
+                          style:
+                              TextStyle(fontWeight: FontWeight.bold, shadows: [
                             Shadow(
                               color: Colors.black45.withOpacity(0.5),
                               blurRadius: 3,
@@ -260,7 +265,9 @@ class _CapInternURSDialogState extends State<CapInternURSDialog> {
             contentPadding: const EdgeInsets.all(0.0),
           );
         } else {
-          return const Center(child: CircularProgressIndicator(),);
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
       },
     );

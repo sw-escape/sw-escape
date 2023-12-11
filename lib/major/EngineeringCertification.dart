@@ -107,7 +107,7 @@ class _EngineeringCertificationPageState
                     height: 10,
                   ),
                   const Description(
-                      description: '공학 인증 이수를 위해 수강해야 하는 5과목', height: 60),
+                      description: '공학 인증 이수를 위해 수강해야 하는 5과목', height: 62),
                   const SizedBox(
                     height: 35,
                   ),
@@ -115,17 +115,18 @@ class _EngineeringCertificationPageState
                     alignment: Alignment.center,
                     children: [
                       ProgressBar(
-                        currentProgress: context.select((Progress p) =>
-                        p.requirementsProgress["engineeringCertification"]!),
-                        maxProgress: context
-                            .select((Progress p) => p.engineeringCertificationMax),
+                        currentProgress: context.select((Progress p) => p
+                            .requirementsProgress["engineeringCertification"]!),
+                        maxProgress: context.select(
+                            (Progress p) => p.engineeringCertificationMax),
                         width: 360,
                         height: 35,
                         color: Colors.orange,
                       ),
                       Text(
                         '${context.select((Progress p) => p.requirementsProgress["engineeringCertification"]!)} / ${context.select((Progress p) => p.engineeringCertificationMax)}',
-                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

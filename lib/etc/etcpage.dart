@@ -249,7 +249,7 @@ class EtcMenu extends StatelessWidget {
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 5, right: 28),
+                      padding: const EdgeInsets.only(top: 5, right: 20),
                       child: Image(
                         image: AssetImage(
                           'assets/images/etc/light.png',

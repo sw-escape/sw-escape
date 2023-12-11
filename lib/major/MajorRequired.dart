@@ -112,16 +112,17 @@ class _MajorRequiredPageState extends State<MajorRequiredPage> {
                     children: [
                       ProgressBar(
                         currentProgress: context.select((Progress p) =>
-                        p.requirementsProgress["majorRequired"]!),
+                            p.requirementsProgress["majorRequired"]!),
                         maxProgress:
-                        context.select((Progress p) => p.majorRequiredMax),
+                            context.select((Progress p) => p.majorRequiredMax),
                         width: 365,
                         height: 35,
                         color: Colors.red,
                       ),
                       Text(
                         '${context.select((Progress p) => p.requirementsProgress["majorRequired"]!)} / ${context.select((Progress p) => p.majorRequiredMax)}',
-                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
