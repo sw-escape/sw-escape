@@ -94,10 +94,24 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           child: Center(
-                            child: Text(
-                              '전공기초',
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/home/Brick.png', // 이미지 경로
+                                  width: 90, // 이미지 너비 조정
+                                  height: 90, // 이미지 높이 조정
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '전공기초',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -133,10 +147,24 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           child: Center(
-                            child: Text(
-                              '전공',
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/home/Studio Display.png', // 이미지 경로
+                                  width: 90, // 이미지 너비 조정
+                                  height: 90, // 이미지 높이 조정
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '전공',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -177,10 +205,24 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           child: Center(
-                            child: Text(
-                              '기타',
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/home/Icons8.png', // 이미지 경로
+                                  width: 90, // 이미지 너비 조정
+                                  height: 90, // 이미지 높이 조정
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '기타',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -216,10 +258,24 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           child: Center(
-                            child: Text(
-                              '공통 졸업 요건',
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/home/University.png', // 이미지 경로
+                                  width: 90, // 이미지 너비 조정
+                                  height: 90, // 이미지 높이 조정
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '공통 졸업 요건',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
                           ),
                         ),
