@@ -14,6 +14,25 @@ class CommonInfo with ChangeNotifier {
     notifyListeners();
   }
 
+  String engA1 = '';
+  String engA2 = '';
+  String engA3 = '';
+
+  setEngA1(String subject) {
+    engA1 = subject;
+    notifyListeners();
+  }
+
+  setEngA2(String subject) {
+    engA2 = subject;
+    notifyListeners();
+  }
+
+  setEngA3(String subject) {
+    engA3 = subject;
+    notifyListeners();
+  }
+
   bool isChineseCharL4 = false;
   bool hasAttendedChineseCharClass = false;
 

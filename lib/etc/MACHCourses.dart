@@ -15,7 +15,7 @@ class MACHCourseDialog extends StatefulWidget {
 class _MACHCourseDialogState extends State<MACHCourseDialog> {
   final _listSemester = ['0-0','1-1', '1-2', '2-1', '2-2', '3-1', '3-2', '4-1', '4-2', '5-1', '5-2', '6-1', '6-2'];
   final _selectedSemester = List<String>.filled(4, '0-0');
-  final _subjectNames = ["마하1", "마하2", "마하3", "마하4"];
+  final _subjectNames = ["디지털 기업경영", "창의적 디자인사고와 비즈니스모델", "플랫폼과 뉴비즈니스", "공감의 스토리텔링"];
   final db = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance;
   late Future<void> _getSubjectsSemesterFuture;
@@ -67,8 +67,8 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                           width: 270,
                           height: 25,
                           child: const Padding(
-                            padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                            child: Text('마하', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                            padding: EdgeInsets.fromLTRB(9, 6, 0, 0),
+                            child: Text('디지털 기업경영', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                           ),
                         ),
                       ),
@@ -85,7 +85,7 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                             items: _listSemester.map(
                                   (semester)=>DropdownMenuItem(
                                   value: semester,
-                                  child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold))
+                                  child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
                               ),
                             ).toList(),
                             onChanged: (semester) async {
@@ -94,7 +94,7 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                                     db,
                                     auth,
                                     "machCourseDialog",
-                                    "마하1",
+                                    "디지털 기업경영",
                                     0,
                                     semester!
                                 );
@@ -103,7 +103,7 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                                     db,
                                     auth,
                                     "machCourseDialog",
-                                    "마하1"
+                                    "디지털 기업경영"
                                 );
                               }
                               await getSubjectSemester(
@@ -112,7 +112,7 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                                   "machCourseDialog",
                                   _selectedSemester,
                                   0,
-                                  "마하1");
+                                  "디지털 기업경영");
                               setState(() {
                                 // 리빌드
                               });
@@ -135,8 +135,8 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                           width: 270,
                           height: 25,
                           child: const Padding(
-                            padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                            child: Text('마하', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                            padding: EdgeInsets.fromLTRB(9, 7, 0, 0),
+                            child: Text('창의적 디자인사고와 비즈니스모델', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
                           ),
                         ),
                       ),
@@ -153,34 +153,34 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                             items: _listSemester.map(
                                   (semester)=>DropdownMenuItem(
                                   value: semester,
-                                  child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold))
+                                  child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
                               ),
                             ).toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
-                                db,
-                                auth,
-                                "machCourseDialog",
-                                "마하2",
-                                0,
-                                semester!
+                                    db,
+                                    auth,
+                                    "machCourseDialog",
+                                    "창의적 디자인사고와 비즈니스모델",
+                                    0,
+                                    semester!
                                 );
                               } else {
                                 await deleteSubject(
-                                db,
-                                auth,
-                                "machCourseDialog",
-                                "마하2"
+                                    db,
+                                    auth,
+                                    "machCourseDialog",
+                                    "창의적 디자인사고와 비즈니스모델"
                                 );
                               }
                               await getSubjectSemester(
-                              db,
-                              auth,
-                              "machCourseDialog",
-                              _selectedSemester,
-                              1,
-                              "마하2");
+                                  db,
+                                  auth,
+                                  "machCourseDialog",
+                                  _selectedSemester,
+                                  1,
+                                  "창의적 디자인사고와 비즈니스모델");
                               setState(() {
                                 // 리빌드
                               });
@@ -203,8 +203,8 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                           width: 270,
                           height: 25,
                           child: const Padding(
-                            padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                            child: Text('마하', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                            padding: EdgeInsets.fromLTRB(9, 7, 0, 0),
+                            child: Text('플랫폼과 뉴비즈니스', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                           ),
                         ),
                       ),
@@ -221,34 +221,34 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                             items: _listSemester.map(
                                   (semester)=>DropdownMenuItem(
                                   value: semester,
-                                  child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold))
+                                  child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
                               ),
                             ).toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
-                                db,
-                                auth,
-                                "machCourseDialog",
-                                "마하3",
-                                0,
-                                semester!
+                                    db,
+                                    auth,
+                                    "machCourseDialog",
+                                    "플랫폼과 뉴비즈니스",
+                                    0,
+                                    semester!
                                 );
                               } else {
                                 await deleteSubject(
-                                db,
-                                auth,
-                                "machCourseDialog",
-                                "마하3"
+                                    db,
+                                    auth,
+                                    "machCourseDialog",
+                                    "플랫폼과 뉴비즈니스"
                                 );
                               }
                               await getSubjectSemester(
-                              db,
-                              auth,
-                              "machCourseDialog",
-                              _selectedSemester,
-                              2,
-                              "마하3");
+                                  db,
+                                  auth,
+                                  "machCourseDialog",
+                                  _selectedSemester,
+                                  2,
+                                  "플랫폼과 뉴비즈니스");
                               setState(() {
                                 // 리빌드
                               });
@@ -271,8 +271,8 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                           width: 270,
                           height: 25,
                           child: const Padding(
-                            padding: EdgeInsets.fromLTRB(13, 4, 0, 0),
-                            child: Text('마하', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                            padding: EdgeInsets.fromLTRB(9, 7, 0, 0),
+                            child: Text('공감의 스토리텔링', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
                           ),
                         ),
                       ),
@@ -289,34 +289,34 @@ class _MACHCourseDialogState extends State<MACHCourseDialog> {
                             items: _listSemester.map(
                                   (semester)=>DropdownMenuItem(
                                   value: semester,
-                                  child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontWeight: FontWeight.bold))
+                                  child: (semester == '0-0') ? const Text('학기', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)) : Text(semester, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
                               ),
                             ).toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
                                 await setSubject(
-                                db,
-                                auth,
-                                "machCourseDialog",
-                                "마하4",
-                                0,
-                                semester!
+                                    db,
+                                    auth,
+                                    "machCourseDialog",
+                                    "공감의 스토리텔링",
+                                    0,
+                                    semester!
                                 );
                               } else {
                                 await deleteSubject(
-                                db,
-                                auth,
-                                "machCourseDialog",
-                                "마하4"
+                                    db,
+                                    auth,
+                                    "machCourseDialog",
+                                    "공감의 스토리텔링"
                                 );
                               }
                               await getSubjectSemester(
-                              db,
-                              auth,
-                              "machCourseDialog",
-                              _selectedSemester,
-                              3,
-                              "마하4");
+                                  db,
+                                  auth,
+                                  "machCourseDialog",
+                                  _selectedSemester,
+                                  3,
+                                  "공감의 스토리텔링");
                               setState(() {
                                 // 리빌드
                               });

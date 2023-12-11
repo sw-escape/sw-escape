@@ -18,7 +18,9 @@ class English extends StatefulWidget {
 }
 
 class _EnglishState extends State<English> {
-  TextEditingController _textController = TextEditingController();
+  TextEditingController _textController1 = TextEditingController();
+  TextEditingController _textController2 = TextEditingController();
+  TextEditingController _textController3 = TextEditingController();
   bool? isTOEICLevel5OrHigher = false;
   bool? isEngA3rHigher = false;
   final db = FirebaseFirestore.instance;
@@ -35,7 +37,9 @@ class _EnglishState extends State<English> {
   Widget build(BuildContext context) {
     // Progress bar를 위해서, firestore에서 데이터 불러오기
     context.read<Progress>().loadNumberProgress(db, auth, "english");
-
+    _textController1.text = context.watch<CommonInfo>().engA1;
+    _textController2.text = context.watch<CommonInfo>().engA2;
+    _textController3.text = context.watch<CommonInfo>().engA3;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -189,35 +193,128 @@ class _EnglishState extends State<English> {
                               margin: EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  TextField(
-                                    controller: _textController,
-                                    decoration: InputDecoration(
-                                      hintText: '수강한 과목명 입력',
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.black), // 테두리 색상 변경
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextField(
+                                          controller: _textController1,
+                                          decoration: InputDecoration(
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                                    vertical: 5.0,
+                                                    horizontal: 5.0),
+                                            hintText: '수강한 과목명 입력',
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      SizedBox(width: 10),
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.black),
+                                          fixedSize:
+                                              MaterialStateProperty.all<Size>(
+                                            Size(30, 50),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          context
+                                              .read<CommonInfo>()
+                                              .setEngA1(_textController1.text);
+                                        },
+                                        child: Text('입력'),
+                                      ),
+                                    ],
                                   ),
                                   SizedBox(height: 10),
-                                  TextField(
-                                    decoration: InputDecoration(
-                                      hintText: '수강한 과목명 입력',
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.black), // 테두리 색상 변경
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextField(
+                                          controller: _textController2,
+                                          decoration: InputDecoration(
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                                    vertical: 5.0,
+                                                    horizontal: 5.0),
+                                            hintText: '수강한 과목명 입력',
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      SizedBox(width: 10),
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.black), //
+                                          fixedSize:
+                                              MaterialStateProperty.all<Size>(
+                                            Size(30, 50), // 버튼의 가로, 세로 크기 조절
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          context
+                                              .read<CommonInfo>()
+                                              .setEngA2(_textController2.text);
+                                        },
+                                        child: Text('입력'),
+                                      ),
+                                    ],
                                   ),
                                   SizedBox(height: 10),
-                                  TextField(
-                                    decoration: InputDecoration(
-                                      hintText: '수강한 과목명 입력',
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.black), // 테두리 색상 변경
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextField(
+                                          controller: _textController3,
+                                          decoration: InputDecoration(
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                                    vertical: 5.0,
+                                                    horizontal: 5.0),
+                                            hintText: '수강한 과목명 입력',
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      SizedBox(width: 10),
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty
+                                              .all<Color>(Colors
+                                                  .black), // 버튼의 배경색을 검정색으로 지정
+                                          side: MaterialStateProperty.all<
+                                              BorderSide>(
+                                            BorderSide(
+                                                color: Colors.black,
+                                                width: 2.0), // 테두리 설정
+                                          ),
+                                          fixedSize:
+                                              MaterialStateProperty.all<Size>(
+                                            Size(30, 50), // 버튼의 가로, 세로 크기 조절
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          // 버튼을 눌렀을 때 수행되는 동작
+                                          context
+                                              .read<CommonInfo>()
+                                              .setEngA3(_textController3.text);
+                                        },
+                                        child: Text('입력'), // 버튼 텍스트
+                                      )
+                                    ],
                                   ),
                                 ],
                               ),

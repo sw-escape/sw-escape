@@ -385,11 +385,11 @@ class _MyInfoState extends State<MyInfo> {
                           Text('Major | $major',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
-                          SizedBox(height: 3),
+                          SizedBox(height: 4),
                           Text('학번 | $studentID',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
-                          SizedBox(height: 3),
+                          SizedBox(height: 4),
                           Text('email | $email',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),

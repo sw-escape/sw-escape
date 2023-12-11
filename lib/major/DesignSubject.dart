@@ -9,6 +9,8 @@ import '../ProgressBar.dart';
 import '../FirestoreManager.dart';
 import '../widgets.dart';
 
+bool isCreativeDesignComplete = false;
+
 class DesignSubject extends StatelessWidget {
   const DesignSubject({super.key});
 
@@ -244,6 +246,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                                 .toList(),
                             onChanged: (semester) async {
                               if (semester != '0-0') {
+                                isCreativeDesignComplete = true;
                                 await setSubject(db, auth, "designSubject",
                                     "창의적설계", 3, semester!,
                                     designCredit: 3);
@@ -251,6 +254,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                                     db, auth, "etcMajor", "창의적설계", 3, semester!,
                                     designCredit: 3);
                               } else {
+                                isCreativeDesignComplete = false;
                                 await deleteSubject(
                                     db, auth, "designSubject", "창의적설계");
                                 await deleteSubject(
@@ -354,6 +358,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _updateProgress(value, 1);
                               // });
                             },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -426,6 +439,7 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               setState(() {
                                 // 리빌드
                               });
+
                               // setState(() {
                               //   context
                               //       .read<Major>()
@@ -433,6 +447,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _selectedSemester[2] = value;
                               //   _updateProgress(value, 2);
                               // });
+                            },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
                             },
                           ),
                         ),
@@ -519,6 +542,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _updateProgress(value, 3);
                               // });
                             },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -604,6 +636,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _updateProgress(value, 4);
                               // });
                             },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -684,6 +725,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _updateProgress(value, 5);
                               // });
                             },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -763,6 +813,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _selectedSemester[6] = value;
                               //   _updateProgress(value, 6);
                               // });
+                            },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
                             },
                           ),
                         ),
@@ -848,6 +907,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _updateProgress(value, 7);
                               // });
                             },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -927,6 +995,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _selectedSemester[8] = value;
                               //   _updateProgress(value, 8);
                               // });
+                            },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
                             },
                           ),
                         ),
@@ -1013,6 +1090,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _updateProgress(value, 9);
                               // });
                             },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -1092,6 +1178,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _selectedSemester[10] = value;
                               //   _updateProgress(value, 10);
                               // });
+                            },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
                             },
                           ),
                         ),
@@ -1173,6 +1268,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _updateProgress(value, 11);
                               // });
                             },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -1253,6 +1357,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _updateProgress(value, 12);
                               // });
                             },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -1331,6 +1444,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _selectedSemester[13] = value;
                               //   _updateProgress(value, 13);
                               // });
+                            },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
                             },
                           ),
                         ),
@@ -1411,6 +1533,15 @@ class _DesignSubjectPageState extends State<DesignSubjectPage> {
                               //   _selectedSemester[14] = value;
                               //   _updateProgress(value, 14);
                               // });
+                            },
+                            onTap: () {
+                              if (isCreativeDesignComplete == false) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('창의적설계를 먼저 수강해야 합니다.'),
+                                  duration: Duration(seconds: 4), //올라와있는 시간
+                                ));
+                              }
                             },
                           ),
                         ),
