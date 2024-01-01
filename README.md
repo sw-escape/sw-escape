@@ -1,5 +1,5 @@
 # SW ESCAPE🏃
-Graduation Requirement Management Application for Software Engineering Students at Chung-Ang University"
+Graduation Requirement Management Application for Software Engineering Students at Chung-Ang University
 
 ## Manual
 <p align="center">
