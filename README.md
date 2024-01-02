@@ -1,7 +1,14 @@
 # SW ESCAPE🏃
 Graduation Requirement Management Application for Software Engineering Students at Chung-Ang University
 
-## Manual
+## 🛠️ Tech Stack
+
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+
+
+## 📄 Manual
 <p align="center">
   
 <img width="700" alt="size_graph" src="https://github.com/devJS00/sw-escape/assets/110683103/f2bfd81e-5cb7-4ff7-874e-1d2c38deacec">
